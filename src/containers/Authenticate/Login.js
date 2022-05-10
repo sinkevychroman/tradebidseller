@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   SafeAreaView,
@@ -18,9 +18,9 @@ import {
   Dimensions,
   KeyboardAvoidingView,
 } from 'react-native';
-import { colors, images, strings, fonts } from '../../themes';
-import { moderateScale } from '../../utils/ResponsiveUi';
-import { Actions, ActionConst } from 'react-native-router-flux';
+import {colors, images, strings, fonts} from '../../themes';
+import {moderateScale} from '../../utils/ResponsiveUi';
+import {Actions, ActionConst} from 'react-native-router-flux';
 import {
   ConstantUtils,
   ApiUtils,
@@ -34,17 +34,17 @@ import TextField from '../../custom/TextField';
 import Button from '../../custom/Button';
 import NetInfo from '@react-native-community/netinfo';
 import DeviceInfo from 'react-native-device-info';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { ActionCreators } from '../../redux/actions';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {ActionCreators} from '../../redux/actions';
 import thunk from 'redux-thunk';
-import { FunctionUtils, PrefrenceManager, PreferenceKey } from '../../utils';
+import {FunctionUtils, PrefrenceManager, PreferenceKey} from '../../utils';
 import Loader from '../../components/LoaderOpacity';
 import axios from 'react-native-axios';
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 // import AsyncStorage from '@react-native-community/async-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { isTesting } from '../../utils/globals';
+import {isTesting} from '../../utils/globals';
 
 const TAG = 'Login';
 class Login extends Component {
@@ -70,17 +70,17 @@ class Login extends Component {
    * @function setTestingData
    */
   setTestingData() {
-    console.log(TAG,"setTestingData")
+    console.log(TAG, 'setTestingData');
     if (isTesting) {
       this.setState({
         email: 'test17.auctionsoftware+15@gmail.com',
-        password: '12345678'
-      })
+        password: '12345678',
+      });
     }
   }
 
   async componentDidMount() {
-    console.log(TAG,"UNSAFE_componentDidMount")
+    console.log(TAG, 'UNSAFE_componentDidMount');
     let isUserRemember = await AsyncStorage.getItem(
       ConstantUtils.IS_USER_REMEMBER,
     );
@@ -91,7 +91,8 @@ class Login extends Component {
       this.setState({
         email: email,
         password: password,
-        isRemember: true,      });
+        isRemember: true,
+      });
     }
 
     //To set Testing
@@ -113,8 +114,8 @@ class Login extends Component {
     console.log(TAG, 'backAction', 'Not Login Screen');
     if (Actions.currentScene === ConstantUtils.LOGIN) {
       Alert.alert(strings.APP_NAME, 'Do you want to close the application?', [
-        { text: 'Yes', onPress: () => BackHandler.exitApp() },
-        { text: 'No', onPress: () => { } },
+        {text: 'Yes', onPress: () => BackHandler.exitApp()},
+        {text: 'No', onPress: () => {}},
       ]);
       return true;
     } else {
@@ -131,12 +132,12 @@ class Login extends Component {
   }
 
   hideShowPassword() {
-    console.log(TAG,"hideShowPassword")
-    this.setState({ hideShowPass: !this.state.hideShowPass });
+    console.log(TAG, 'hideShowPassword');
+    this.setState({hideShowPass: !this.state.hideShowPass});
   }
 
   validateSignin() {
-    const { email, password } = this.state;
+    const {email, password} = this.state;
     if (email.length === 0 || email.trim().length === 0) {
       FunctionUtils.showToast(strings.emailBlankError);
     } else if (password.length === 0 || password.trim().length === 0) {
@@ -149,14 +150,14 @@ class Login extends Component {
   async loginBtnClick() {
     const isConnected = await NetworkUtils.isNetworkAvailable();
     if (isConnected) {
-      this.setState({ isLoading: true });
+      this.setState({isLoading: true});
       const formData = new FormData();
       formData.append('business_email', this.state.email);
       formData.append('password', this.state.password);
       this.props.loginReq(formData).then(async () => {
-        const { loginResData, msgError, error } = this.props;
+        const {loginResData, msgError, error} = this.props;
         let errorData;
-        console.log("loginResData",loginResData);
+        console.log('loginResData', loginResData);
         if (loginResData && loginResData.statusCode === 200) {
           if (this.state.isRemember) {
             AsyncStorage.setItem(ConstantUtils.IS_USER_REMEMBER, 'true');
@@ -172,7 +173,6 @@ class Login extends Component {
           AsyncStorage.setItem(ConstantUtils.USER_TOKEN, loginResData.token);
           AsyncStorage.setItem(ConstantUtils.USER_EMAIL, this.state.email);
 
-
           FunctionUtils.showToast(loginResData.message);
           if (this.state.isRemember) {
             globals.rememberBtnVal = true;
@@ -180,27 +180,27 @@ class Login extends Component {
             globals.userPass = this.state.password;
           } else {
             globals.rememberBtnVal = false;
-            globals.userEmail = "";
-            globals.userPass = "";
+            globals.userEmail = '';
+            globals.userPass = '';
           }
           this.setState(
-            { isLoading: false, isRemember: false, email: '', password: '' },
+            {isLoading: false, isRemember: false, email: '', password: ''},
             Actions.push(ConstantUtils.SELL),
           );
         } else {
-          this.setState({ isLoading: false });
+          this.setState({isLoading: false});
           // console.log("msgError=======================", msgError);
           FunctionUtils.showToast(loginResData.message);
         }
       });
     } else {
-      this.setState({ isLoading: false });
+      this.setState({isLoading: false});
       FunctionUtils.showToast(strings.internetNotAvail);
     }
   }
 
   focusTextInput() {
-    console.log(TAG,"focusTextInput")
+    console.log(TAG, 'focusTextInput');
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
     // this.textInput.current.focus();
@@ -208,17 +208,17 @@ class Login extends Component {
   }
 
   rememberMeBtnClick() {
-    this.setState({ isRemember: !this.state.isRemember });
+    this.setState({isRemember: !this.state.isRemember});
   }
 
   changePass(text) {
-    console.log(TAG,"changePass -> text :",text)
-    this.setState({ password: text });
+    console.log(TAG, 'changePass -> text :', text);
+    this.setState({password: text});
   }
 
   render() {
-    const { isLoading, email, password } = this.state;
-    console.log(TAG,"password ->" + this.state.password)
+    const {isLoading, email, password} = this.state;
+    console.log(TAG, 'password ->' + this.state.password);
     return (
       <SafeAreaView
         style={{
@@ -226,7 +226,7 @@ class Login extends Component {
           marginTop: StatusBar.currentHeight,
           backgroundColor: colors.colorWhite,
         }}>
-        <View style={{ flex: 1, backgroundColor: colors.colorWhite }}>
+        <View style={{flex: 1, backgroundColor: colors.colorWhite}}>
           <View
             style={{
               height: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
@@ -271,7 +271,7 @@ class Login extends Component {
                       alignItems: 'center',
                     }}>
                     <TextField
-                      onChangeText={text => this.setState({ email: text })}
+                      onChangeText={text => this.setState({email: text})}
                       placeHolder={strings.place_holder_email}
                       isPassword={false}
                       icon={images.email_logo}
@@ -287,7 +287,7 @@ class Login extends Component {
                       secondletterkeyboard={true}
                     />
                     <TextField
-                      onChangeText={text => this.setState({ password: text })}
+                      onChangeText={text => this.setState({password: text})}
                       placeHolder={strings.place_holder_password}
                       ref={this.passwordRef}
                       icon={images.password_logo}
@@ -305,20 +305,22 @@ class Login extends Component {
                     <View
                       style={{
                         marginTop: moderateScale(5),
+                        paddingHorizontal: moderateScale(5),
                         justifyContent: 'space-between',
                         height: moderateScale(40),
                         flexDirection: 'row',
-                        width: width - moderateScale(23),
-                        alignItems: 'center'
+                        //width: "100%",
+                        alignItems: 'center',
                       }}>
-
                       <Button
                         title={strings.username_password_remember}
                         titleStyle={styles.tvUserpassStyle}
                         style={styles.btnUserpassRememberStyle}
                         isRememberButton={true}
                         isChecked={this.state.isRemember}
-                        onPress={() => { this.rememberMeBtnClick() }}
+                        onPress={() => {
+                          this.rememberMeBtnClick();
+                        }}
                       />
 
                       {/*  
@@ -343,9 +345,12 @@ class Login extends Component {
                         title={strings.forgot_password}
                         titleStyle={styles.tvForgotPassStyle}
                         style={styles.btnForgotPassStyle}
-                        isForgot ={true}
-                        onPress={() => { Linking.openURL(WebService.BASE_URL+ WebService.RESET_PASSWORD) }}
-
+                        isForgot={true}
+                        onPress={() => {
+                          Linking.openURL(
+                            WebService.BASE_URL + WebService.RESET_PASSWORD,
+                          );
+                        }}
                       />
 
                       {/* <Button
@@ -371,8 +376,9 @@ class Login extends Component {
                       title={strings.login_text}
                       titleStyle={styles.tvLoginStyle}
                       style={styles.btnLoginStyle}
-                      onPress={() => { this.validateSignin() }}
-
+                      onPress={() => {
+                        this.validateSignin();
+                      }}
                     />
 
                     {/* <Button
@@ -450,24 +456,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnUserpassRememberStyle: {
-    width: '40%',
+    width: '35%',
     height: moderateScale(30),
     backgroundColor: 'transparent',
     // justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   tvUserpassStyle: {
     color: colors.colorBlack,
     fontSize: moderateScale(14),
     // marginTop: moderateScale(10),
-    top:moderateScale(5),
+    top: moderateScale(5),
     fontFamily: fonts.Poppins_Light,
     height: moderateScale(30),
   },
   btnForgotPassStyle: {
     height: moderateScale(30),
-    width: '55%',
-    backgroundColor: colors.trasparent
+    width: '60%',
+    backgroundColor: colors.trasparent,
   },
   tvForgotPassStyle: {
     color: colors.colorBlack,
@@ -478,7 +484,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: moderateScale(30),
     maxWidth: '100%',
-    textAlign:'right'
+    textAlign: 'right',
   },
   btnLoginStyle: {
     height: moderateScale(42),
@@ -505,5 +511,5 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Poppins_Regular,
     alignSelf: 'flex-end',
     marginTop: moderateScale(10),
-  }
+  },
 });
