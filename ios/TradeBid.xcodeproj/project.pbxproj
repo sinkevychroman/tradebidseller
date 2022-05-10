@@ -370,7 +370,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = U5UGY48P7U;
+				DEVELOPMENT_TEAM = L2EY42T35G;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TradeBid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -401,7 +401,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = U5UGY48P7U;
+				DEVELOPMENT_TEAM = L2EY42T35G;
 				INFOPLIST_FILE = TradeBid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
