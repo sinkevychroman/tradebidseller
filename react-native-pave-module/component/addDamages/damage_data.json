@@ -1,0 +1,1154 @@
+{
+  "PART": {
+    "SCRATCHED_MINOR": {
+      "label": "Has Minor Scratch",
+      "description": "Has Minor Scratch - Not Through Paint",
+      "tolerance": "< 2 inch - No Paint Damage ",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SCRATCHED_MEDIUM": {
+      "label": "Has Medium Scratch",
+      "description": "Has Medium Scratch - Not Through Paint",
+      "tolerance": "2 inch to 4 inch No Paint Damage",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SCRATCHED_MAJOR": {
+      "label": "Has Major Scratch",
+      "description": "Has Major Scratch - Not Through Paint",
+      "tolerance": "4 inch to 8 inch No Paint Damage",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "SCRATCHED_MINOR_THRU": {
+      "label": "Has Minor Scratch",
+      "description": "Has Minor Scratch - Through Paint",
+      "tolerance": "< 2 inch - Has Paint Damage ",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SCRATCHED_MEDIUM_THRU": {
+      "label": "Has Minor Scratch",
+      "description": "Has Medium Scratch - Through Paint",
+      "tolerance": "2 inch to 4 inch - Has Paint Damage ",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SCRATCHED_MAJOR_THRU": {
+      "label": "Has Major Scratch",
+      "description": "Has Major Scratch - Through Paint",
+      "tolerance": "4 inch to 8 inch Has Paint Damage ",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "CHIPPED_MINOR": {
+      "label": "Paint Has Small Chip",
+      "description": "Paint Has Small Chip",
+      "tolerance": "1 or 2 Small Chips",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "CHIPPED_MEDIUM": {
+      "label": "Paint Has Medium Chip",
+      "description": "Paint Has Medium Chip",
+      "tolerance": "3 or 4 Small Chips",
+      "repair_method": "Repair",
+      "repair_type": "SMART",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "CHIPPED_MAJOR": {
+      "label": "Paint Has Major Chip",
+      "description": "Paint Has Major Chip",
+      "tolerance": "5 or More Medium Chips",
+      "repair_method": "Repair",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "DENTED_MINOR": {
+      "label": "Has Minor Dent",
+      "description": "Has Minor Dent - Not Through Paint",
+      "tolerance": "< 2 Inch - No Paint Damage",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "DENTED_MEDIUM": {
+      "label": "Has Medium Dent",
+      "description": "Has Medium Dent - Not Through Paint",
+      "tolerance": "2 inch to 4 inch No Paint Damage",
+      "repair_method": "PDR (Cold Metal Repair)",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "DENTED_MAJOR": {
+      "label": "Has Major Dent",
+      "description": "Has Major Dent - Not Through Paint",
+      "tolerance": "4 inch to 8 inch No Paint Damage",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "DENTED_MINOR_THRU": {
+      "label": "Has Minor Dent",
+      "description": "Has Minor Dent - Through  Paint",
+      "tolerance": "< 2 inch - Has Paint Damage ",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "DENTED_MEDIUM_THRU": {
+      "label": "Has Medium Dent",
+      "description": "Has Medium Dent - Through Paint",
+      "tolerance": "2 inch to 4 inch Has Paint Damage",
+      "repair_method": "PDR (Cold Metal Repair)",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "DENTED_MAJOR_THRU": {
+      "label": "Has Major Dent",
+      "description": "Has Major Dent - Through Paint",
+      "tolerance": "4 inch to 8 inch Has Paint Damage",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "MISALIGNED": {
+      "label": "Misaligned With Other Panel",
+      "description": "Misaligned With Other Panel",
+      "tolerance": "Seam is Not Aligned With Other Panel",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "BROKEN": {
+      "label": "Is Broken",
+      "description": "Is Broken",
+      "tolerance": "Body Panel Not Aligned / Cracked / Not in Proper Place",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "RUSTED_MINOR": {
+      "label": "Has Minor Rust",
+      "description": "Has Minor Rust",
+      "tolerance": "2 inch to 3 inch",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "RUSTED_MEDIUM": {
+      "label": "Has Medium Rust",
+      "description": "Has Medium Rust",
+      "tolerance": "3 inch to 5 inch",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "RUSTED_MAJOR": {
+      "label": "Has Major Rust",
+      "description": "Has Major Rust",
+      "tolerance": "> 6 inch ",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "GOUGED": {
+      "label": "Is Gouged",
+      "description": "Is Gouged",
+      "tolerance": "2 inch to 4 inch",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "DIRTY_MEDIUM": {
+      "label": "Is Dirty",
+      "description": "Is Dirty",
+      "tolerance": "Dirty Area (Unable to Inspect)",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "TAPED_REPAIR": {
+      "label": "Is Held By Tape",
+      "description": "Is Held By Tape",
+      "tolerance": "Tape Repair",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "BENT": {
+      "label": "Is Bent or Twisted",
+      "description": "Is Bent or Twisted",
+      "tolerance": "Is Twisted or Out of Place",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "MISSING": {
+      "label": "Is Missing",
+      "description": "Is Missing",
+      "tolerance": "Missing Body Panel",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "WORN": {
+      "label": "Shows Signs Of Wear",
+      "description": "Shows Signs Of Wear",
+      "tolerance": "Worn, Dull or Faded Color",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "ROAD_PAINT": {
+      "label": "Is Covered With Road Paint",
+      "description": "Is Covered With Road Paint",
+      "tolerance": "Covered with White or Yellow Road Paint",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "FOGGY": {
+      "label": "Is Dull And Foggy",
+      "description": "Is Dull And Foggy",
+      "tolerance": "Very Dull",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    }
+  },
+  "BODY": {
+    "DENTED_MINOR": {
+      "label": "Has Minor Dent",
+      "description": "Has Minor Dent - Not Through Paint",
+      "tolerance": "< 2 inch - No Paint Damage ",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "DENTED_MEDIUM": {
+      "label": "Has Medium Dent - Not Through Paint",
+      "description": "Has Medium Dent - Not Through Paint",
+      "tolerance": "2 inch to 4 inch No Paint Damage",
+      "repair_method": "PDR (Cold Metal Repair)",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "DENTED_MAJOR": {
+      "label": "Has Major Dent - Not Through Paint",
+      "description": "Has Major Dent - Not Through Paint",
+      "tolerance": "4 inch to 8 inch No Paint Damage",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    },
+    "DENTED_MINOR_THRU": {
+      "label": "Has Minor Dent - Through  Paint",
+      "description": "Has Minor Dent - Through  Paint",
+      "tolerance": "< 2 inch - Has Paint Damage  ",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "DENTED_MEDIUM_THRU": {
+      "label": "Has Medium Dent - Through  Paint",
+      "description": "Has Medium Dent - Through  Paint",
+      "tolerance": "2 inch to 4 inch Has Paint Damage",
+      "repair_method": "PDR (Cold Metal Repair)",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "DENTED_MAJOR_THRU": {
+      "label": "Has Major Dent - Through  Paint",
+      "description": "Has Major Dent - Through  Paint",
+      "tolerance": "4 inch to 8 inch Has Paint Damage",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    },
+    "COLLISION_DAMAGE": {
+      "label": "Has Collision Damage",
+      "description": "Has Collision Damage",
+      "tolerance": "> 8 inch May Have Paint Damage",
+      "repair_method": "Replace",
+      "repair_type": "Major Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 5,
+      "frame_grade_score": 5
+    },
+    "OTHER_PAINT_SCUFF": {
+      "label": "Is Scuffed With Other Color Of Paint",
+      "description": "Is Scuffed With Other Color Of Paint",
+      "tolerance": "5 inch to 6 inch Has Other Color of Paint",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "MISALIGNED": {
+      "label": "Misaligned With Other Panel",
+      "description": "Misaligned With Other Panel",
+      "tolerance": "Seam is Not Aligned With Other Panel",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "PREVIOUS_REPAIR": {
+      "label": "Previous Repair",
+      "description": "Previous Repair",
+      "tolerance": "Mismatch Color / Poor Repair",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    },
+    "SCRATCHED_MINOR": {
+      "label": "Has Minor Scratch",
+      "description": "Has Minor Scratch - Not Through Paint",
+      "tolerance": "< 2 inch - No Paint Damage ",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SCRATCHED_MEDIUM": {
+      "label": "Has Medium Scratch",
+      "description": "Has Medium Scratch - Not Through Paint",
+      "tolerance": "2 inch to 4 inch No Paint Damage",
+      "repair_method": "Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "SCRATCHED_MAJOR": {
+      "label": "Has Major Scratch - Not Through  Paint",
+      "description": "Has Major Scratch - Not Through  Paint",
+      "tolerance": "4 inch to 8 inch No Paint Damage",
+      "repair_method": "Replace",
+      "repair_type": "Major Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 4,
+      "frame_grade_score": 4
+    },
+    "SCRATCHED_MINOR_THRU": {
+      "label": "Has Minor Scratch",
+      "description": "Has Minor Scratch - Through Paint",
+      "tolerance": "< 2 inch - Has Paint Damage ",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SCRATCHED_MEDIUM_THRU": {
+      "label": "Has Minor Scratch",
+      "description": "Has Medium Scratch - Through Paint",
+      "tolerance": "2 inch to 4 inch  Has Paint Damage ",
+      "repair_method": "Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "SCRATCHED_MAJOR_THRU": {
+      "label": "Has Major Scratch",
+      "description": "Has Major Scratch - Through Paint",
+      "tolerance": "4 inch to 8 inch Has Paint Damage ",
+      "repair_method": "Replace",
+      "repair_type": "Major Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 4,
+      "frame_grade_score": 4
+    },
+    "RUSTED_MINOR": {
+      "label": "Has Minor Rust",
+      "description": "Has Minor Rust",
+      "tolerance": "2 inch to 3 inch",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "RUSTED_MEDIUM": {
+      "label": "Has Medium Rust",
+      "description": "Has Medium Rust",
+      "tolerance": "3 inch to 5 inch",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "RUSTED_MAJOR": {
+      "label": "Has Major Rust",
+      "description": "Has Major Rust",
+      "tolerance": "> 6 inch ",
+      "repair_method": "Repair & Refinish",
+      "repair_type": " Major Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 4,
+      "frame_grade_score": 4
+    },
+    "DIRTY_MEDIUM": {
+      "label": "Is Medium Dirty",
+      "description": "Is Medium Dirty",
+      "tolerance": "Dirty Area (Unable to Inspect)",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "OXIDIZED_PAINT": {
+      "label": "Paint Is Oxidized or Faded",
+      "description": "Paint Is Oxidized or Faded",
+      "tolerance": "4 inch to 5 inch Dull and Faded Color",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "ROAD_TAR": {
+      "label": "Has Road Tar Stain",
+      "description": "Has Road Tar Stain",
+      "tolerance": "Covered with Black Tar",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "ROAD_PAINT": {
+      "label": "s Covered With Road Paint",
+      "description": "s Covered With Road Paint",
+      "tolerance": "Covered with White or Yellow Road Paint",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "TAPED_REPAIR": {
+      "label": "Is Held By Tape",
+      "description": "Is Held By Tape",
+      "tolerance": "Body Panel Held by Tape / Damage Hidden by Tape",
+      "repair_method": "Replace/Repair",
+      "repair_type": "Major Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    },
+    "MISSING": {
+      "label": "Is Missing",
+      "description": "Is Missing",
+      "tolerance": "Missing Body Part",
+      "repair_method": "Replace",
+      "repair_type": "Major Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 4,
+      "frame_grade_score": 4
+    },
+    "WORN": {
+      "label": "Shows Signs Of Wear",
+      "description": "Shows Signs Of Wear",
+      "tolerance": "Worn, Dull or Faded Color",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    },
+    "BROKEN": {
+      "label": "Cracked",
+      "description": "Cracked",
+      "tolerance": "Body Panel Not Aligned / Cracked / Not in Proper Place",
+      "repair_method": "Replace",
+      "repair_type": "Major Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    },
+    "WRONG_COLOR": {
+      "label": "Paint Does Not Match",
+      "description": "Paint Does Not Match",
+      "tolerance": "The Paint Color or Surface Does Not Match",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    },
+    "HAS_DECAL": {
+      "label": "There is a decal/sticker on the body",
+      "description": "There is a decal/sticker on the body",
+      "tolerance": "Non Factory Decal/ Sticker",
+      "repair_method": "Refinish",
+      "repair_type": "SMART",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "DULL_PAINT": {
+      "label": "Is Dull And Foggy",
+      "description": "Is Dull And Foggy",
+      "tolerance": "Worn or Missing/Faded Color",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SAND_BLASTED": {
+      "label": "Covered With Multiple Stone Chips",
+      "description": "Covered With Multiple Stone Chips",
+      "tolerance": "Most of The Area is Covered With Chips",
+      "repair_method": "Repair & Refinish",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    },
+    "CHIPPED_MINOR": {
+      "label": "Paint Has Small Chip",
+      "description": "Paint Has Small Chip",
+      "tolerance": "1 or 2 Small Chips",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "CHIPPED_MEDIUM": {
+      "label": "Paint Has Medium Chip",
+      "description": "Paint Has Medium Chip",
+      "tolerance": "3 or 4 Small Chips",
+      "repair_method": "Repair",
+      "repair_type": "SMART",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "CHIPPED_MAJOR": {
+      "label": "Paint Has Major Chip",
+      "description": "Paint Has Major Chip",
+      "tolerance": "5 or More Medium Chips",
+      "repair_method": "Repair",
+      "repair_type": "Minor Body Shop Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    }
+  },
+  "GLASS": {
+    "SCRATCHED_MINOR": {
+      "label": "Glass Has Minor Scratch",
+      "description": "Glass Has Minor Scratch",
+      "tolerance": "3 inch to 4 inch",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SCRATCHED_MEDIUM": {
+      "label": "Glass Has Medium Scratch",
+      "description": "Glass Has Medium Scratch",
+      "tolerance": "6 inch to 7 inch",
+      "repair_method": "Glass Repair",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "SCRATCHED_MAJOR": {
+      "label": "Glass Has Medium Scratch",
+      "description": "Glass Has Major Scratch",
+      "tolerance": "9 inch to 10 inch",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "CHIPPED_MINOR": {
+      "label": "Paint Has Small Chip",
+      "description": "Paint Has Small Chip",
+      "tolerance": "< 1/8 inch",
+      "repair_method": "Report only",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "CHIPPED_MEDIUM": {
+      "label": "Paint Has Medium Chip",
+      "description": "Paint Has Medium Chip",
+      "tolerance": "1 inch to 2 inch ",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "CHIPPED_MAJOR": {
+      "label": "Paint Has Major Chip",
+      "description": "Paint Has Major Chip",
+      "tolerance": "> 2 inch ",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "TAPED_REPAIR": {
+      "label": "Glass Is Held By Tape",
+      "description": "Glass Is Held By Tape",
+      "tolerance": "Glass is Held by Tape",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "MISSING": {
+      "label": "Glass Is Missing",
+      "description": "Glass Is Missing",
+      "tolerance": "Missing Glass",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "FOGGY": {
+      "label": "Glass Is Dull And Foggy",
+      "description": "Glass Is Dull And Foggy",
+      "tolerance": "Dull and Not Clear",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "STAR_CRACK": {
+      "label": "Glass Has Star Shaped Crack",
+      "description": "Glass Has Star Shaped Crack",
+      "tolerance": "Has a Star Shaped Crack",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "MULTIPLE_CHIPS": {
+      "label": "Glass Has Multiple Chips",
+      "description": "Glass Has Multiple Chips",
+      "tolerance": "4 or More Noticable Chips in One Area",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "SANDBLASTED_MINOR": {
+      "label": "Glass is Minor Sandblasted",
+      "description": "Glass is Minor Sandblasted",
+      "tolerance": "Acceptable",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Item",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SANDBLASTED_MAJOR": {
+      "label": "Glass is Major Sandblasted",
+      "description": "Glass is Major Sandblasted",
+      "tolerance": "Replacement Required",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "CRACKED": {
+      "label": "Glass Has Crack",
+      "description": "Glass Has Crack",
+      "tolerance": "Replacement Required",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "MULTIPLE_SCRATCHES": {
+      "label": "Multiple Scratches Heavy",
+      "description": "Multiple Scratches Heavy",
+      "tolerance": "Replacement Required",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    }
+  },
+  "WHEEL": {
+    "SCUFFED_MINOR": {
+      "label": "Has Minor Scuff",
+      "description": "Has Minor Scuff",
+      "tolerance": "< 1/8 inch",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "SCUFFED_MEDIUM": {
+      "label": "Has Medium Scuff",
+      "description": "Has Medium Scuff",
+      "tolerance": "1 inch to 2 inch",
+      "repair_method": "Specialist Repair",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "SCUFFED_MAJOR": {
+      "label": "Has Major Scuff",
+      "description": "Has Major Scuff",
+      "tolerance": "4 inch to 5 inch",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "CHIPPED_MINOR_THRU": {
+      "label": "Has Minor Chip",
+      "description": "Has Minor Chip",
+      "tolerance": "Has up to 2 Chips",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "CHIPPED_MEDIUM_THRU": {
+      "label": "Has Medium Chip",
+      "description": "Has Medium Chip",
+      "tolerance": "Has up to 4 Chips",
+      "repair_method": "Specialist Repair",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "CHIPPED_MAJOR_THRU": {
+      "label": "Has Major Chip",
+      "description": "Has Major Chip",
+      "tolerance": "Has 4-5 Chips",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "SCRATCH_MINOR_THRU": {
+      "label": "Has Minor Scratch Through Surface",
+      "description": "Has Minor Scratch Through Surface",
+      "tolerance": "1 inch to 2 inch",
+      "repair_method": "Specialist Repair",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "SCRATCH_MEDIUM_THRU": {
+      "label": "Has Medium Scratch Through Surface",
+      "description": "Has Medium Scratch Through Surface",
+      "tolerance": "3 inch to 4 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "SCRATCH_MAJOR_THRU": {
+      "label": "Has Medium Scratch Through Surface",
+      "description": "Has Medium Scratch Through Surface",
+      "tolerance": "5 inch to 6 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "CRACKED": {
+      "label": "Item Is Cracked/Broken",
+      "description": "Item Is Cracked/Broken",
+      "tolerance": "Cracked",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "WINTER_RIM": {
+      "label": "Is A Winter Rim",
+      "description": "Is A Winter Rim",
+      "tolerance": "Is not Styled and Black in Color",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "MISSING_CENTER_CAP": {
+      "label": "Is Missing Center Cap",
+      "description": "Is Missing Center Cap",
+      "tolerance": "Has a Hole in the Centre were the Cap belongs",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "MISSING_WHEEL": {
+      "label": "The Item is Missing",
+      "description": "The Item is Missing",
+      "tolerance": "Replacement Required",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "MISSING_WHEEL_COVER": {
+      "label": "Wheel Cover is Missing",
+      "description": "Wheel Cover is Missing",
+      "tolerance": "Is not Styled and Black in Color",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "STAINED": {
+      "label": "The wheel has brake dust stains",
+      "description": "The wheel has brake dust stains",
+      "tolerance": "Stained",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Item",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "SPARE_WHEEL": {
+      "label": "The Wheel is a Spare Tire",
+      "description": "The Wheel is a Spare Tire",
+      "tolerance": "Unacceptable",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "MISMATCHED_WHEEL": {
+      "label": "Wheel Does Not Match",
+      "description": "Wheel Does Not Match",
+      "tolerance": "Unacceptable",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "CORROSION_MEDIUM": {
+      "label": "The Surface Has Medium Corrosion or Stains",
+      "description": "The Surface Has Medium Corrosion or Stains",
+      "tolerance": "4 inch to 5 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "CORROSION_MAJOR": {
+      "label": "The Surface Has Major Corrosion or Stains",
+      "description": "The Surface Has Major Corrosion or Stains",
+      "tolerance": "7 inch to 8 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "CURB_RASH_MINOR": {
+      "label": "Has Minor Curbing",
+      "description": "Has Minor Curbing",
+      "tolerance": "2 inch to 3 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "CURB_RASH_MEDIUM": {
+      "label": "Has Medium Curbing",
+      "description": "Has Medium Curbing",
+      "tolerance": "5 inch to 6 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "CURB_RASH_MAJOR": {
+      "label": "Has Major Curbing",
+      "description": "Has Major Curbing",
+      "tolerance": "8 inch to 9 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "WARPED": {
+      "label": "The Shape is Warped",
+      "description": "The Shape is Warped",
+      "tolerance": "Replacement Required",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "PEELING_MEDIUM": {
+      "label": "The Surface is Peeling Medium",
+      "description": "The Surface is Peeling Medium",
+      "tolerance": "1 inch to 2 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    },
+    "PEELING_MAJOR": {
+      "label": "The Surface is Peeling Major",
+      "description": "The Surface is Peeling Major",
+      "tolerance": "4 inch to 5 inch",
+      "repair_method": "Refinish",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 1,
+      "frame_grade_score": 1
+    }
+  },
+  "TIRE": {
+    "GOOD_CONDITION": {
+      "label": "Good Condition",
+      "description": "Good Condition",
+      "tolerance": "Some Sign of Wear",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "WORN_MEDIUM": {
+      "label": "Is Medium Worn",
+      "description": "Is Medium Worn",
+      "tolerance": "Medium Signs of Wear",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "WORN_MAJOR": {
+      "label": "Is Majorly Worn",
+      "description": "Is Majorly Worn",
+      "tolerance": "Replace",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "LIKE_NEW": {
+      "label": "Tire Is Good",
+      "description": "Tire Is Good",
+      "tolerance": "Looks New and No Sign of Wear",
+      "repair_method": "Report",
+      "repair_type": "INFO",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "WINTER_TREAD": {
+      "label": "Is A Winter Tire",
+      "description": "Is A Winter Tire",
+      "tolerance": "Winter / Mud Tire",
+      "repair_method": "Report",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 0,
+      "frame_grade_score": 0
+    },
+    "BULGED": {
+      "label": "Has Protrusion On Sidewall",
+      "description": "Has Protrusion On Sidewall",
+      "tolerance": "Has Bulged Spot",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "WEATHER_CRACKED": {
+      "label": "Tread Is Weather Cracked",
+      "description": "Tread Is Weather Cracked",
+      "tolerance": "Has Cracks in Rubber",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "MISSMATCH_TIRE": {
+      "label": "Tire Brand Does Not Match",
+      "description": "Tire Brand Does Not Match",
+      "tolerance": "Brand / Size Does Not Match",
+      "repair_method": "Replace",
+      "repair_type": "SMART Repair",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "FLAT_TIRE": {
+      "label": "This tire is low on air or is flat",
+      "description": "This tire is low on air or is flat",
+      "tolerance": "Flat  tires are not acceptable",
+      "repair_method": "Repair",
+      "repair_type": "SMART",
+      "unit_measure": "Per Component",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    }
+  },
+  "INTERIOR": {
+    "STAINS": {
+      "label": "The seats or carpets have stains",
+      "description": "The seats or carpets have stains",
+      "tolerance": "Any Stains that are not easily cleaned",
+      "repair_method": "Refinish",
+      "repair_type": "SMART",
+      "unit_measure": "Per Item",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "WORN": {
+      "label": "The seats or carpets have areas that are worn",
+      "description": "The seats or carpets have areas that are worn",
+      "tolerance": "Any Signs of Wear",
+      "repair_method": "Refinish",
+      "repair_type": "SMART",
+      "unit_measure": "Per Item",
+      "grade_score": 2,
+      "frame_grade_score": 2
+    },
+    "DAMAGED": {
+      "label": "The seats, dash or carpets have areas that are damaged",
+      "description": "The seats, dash or carpets have areas that are damaged",
+      "tolerance": "Any Signs of Damaged",
+      "repair_method": "Repair/Replace",
+      "repair_type": "SMART",
+      "unit_measure": "Per Item",
+      "grade_score": 3,
+      "frame_grade_score": 3
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "REGISTRATION": {
+    "TITLE_PRESENT": {
+      "label": "Registration Documents Present?",
+      "description": "The Seller must announce if the vehicle Registration Certificate is present and in Sellers name.",
+      "arbitration": "regular",
+      "input_type": "boolean",
+      "list": "null"
+    }
+  },
+  "KEYS": {
+    "ALL_KEYS_PRESENT": {
+      "label": "All Keys Are Present?",
+      "description": "The Seller must announce if all the original keys and fobs are present.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    }
+  },
+  "BOOKS": {
+    "BOOKS_PRESENT": {
+      "label": "Are All Service, Warranty and Owner's Manual Present?",
+      "description": "The Seller must announce if all the original books are present.",
+      "arbitration": "regular",
+      "input_type": "boolean",
+      "list": "null"
+    }
+  },
+  "DISCS": {
+    "DISCS_PRESENT": {
+      "label": "All Software and Navigation Discs Are Present?",
+      "description": "The Seller must announce if all the original software and navigation discs are present.",
+      "arbitration": "regular",
+      "input_type": "boolean",
+      "list": "null"
+    }
+  },
+  "TYRES": {
+    "RIMS_TYRES": {
+      "label": "If Aftermarket/Winter Tyres and Rims, Are Originals Included?",
+      "description": "The Seller has the option to include the original rims and tyres that came with the vehicle",
+      "arbitration": "regular",
+      "input_type": "boolean",
+      "list": "null"
+    }
+  },
+  "OTHER": {
+    "OTHER_ANNOUNCEMENTS": {
+      "label": "Any Other Announcements?",
+      "description": "The Seller has the option to include additional information about the vehicle.",
+      "arbitration": "regular",
+      "input_type": "text",
+      "list": "null"
+    }
+  }
+}

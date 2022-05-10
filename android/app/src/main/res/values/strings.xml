@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TB Seller</string>
+    <string name="CodePushDeploymentKey" moduleConfig="true" translatable="false">YOU_ANDROID_CODEPUSH_KEY</string>
+</resources>

@@ -1,0 +1,47 @@
+{
+  "TITLE_ORIGIN": {
+    "GREY_MARKET": null,
+    "INCORRECT_VEHICLE_MARKING": null,
+    "MANUFACTURER_REPURCHASE": [],
+    "OUT_OF_STATE": [],
+    "TITLE_BRANDED": "None",
+    "TOTAL_LOSS": null,
+    "CROSS_BOARDER": null,
+    "VIN_PLATE_ISSUES": null,
+    "WARRANTY_CANCELLED": null,
+    "STOLEN_AND_RECOVERED": null
+  },
+  "ODOMETER": {
+    "ODOM_5_DIGIT": null,
+    "ODOM_FAULTY": null,
+    "ODOM_IN_OTHER": null,
+    "ODOM_REPLACED": null,
+    "ODOM_ROLL_BACK": null,
+    "ODOM_UNREADABLE": null,
+    "TMU": null,
+    "RMU": []
+  },
+  "DAMAGE": {
+    "ACCIDENT_REPAIR": 0,
+    "ADJACENT_PANELS_REPLACED": null,
+    "EXCESSIVE_RUST": null,
+    "FIRE_DAMAGE": null,
+    "FLOOD_DAMAGE": false,
+    "IRREPARABLE": null,
+    "STRUCTURAL_DAMAGE": null
+  },
+  "MECHANICAL": {
+    "ABS_DEFECTIVE": null,
+    "AIR_BAG_DEFECTIVE": null,
+    "ALTERNATE_FUEL": null,
+    "NONE_SPECS": null,
+    "MAJOR_REPAIR": []
+  },
+  "PREVIOUS USER": {
+    "PREVIOUS_DAILY_RENTAL": null,
+    "PREVIOUS_DRIVING_SCHOOL_VEHICLE": null,
+    "PREVIOUS_EMERGENCY_VEHICLE": null,
+    "PREVIOUS_POLICE_VEHICLE": null,
+    "PREVIOUS_TAXI_LIMO": null
+  }
+}

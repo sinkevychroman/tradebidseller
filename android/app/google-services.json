@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "115319180148",
+    "project_id": "tradebid-a9c72",
+    "storage_bucket": "tradebid-a9c72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115319180148:android:16e5f3b7a06718f4623a21",
+        "android_client_info": {
+          "package_name": "com.tradebid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115319180148-fv16gvlnkpjqpudd36dncsv7td49upug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm9-WMOOr79tVoT93OgjHg0Yc3Zst96iQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115319180148-fv16gvlnkpjqpudd36dncsv7td49upug.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "115319180148-j7h595euth2cus47qisb630gnoioeqt7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.tradebid"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

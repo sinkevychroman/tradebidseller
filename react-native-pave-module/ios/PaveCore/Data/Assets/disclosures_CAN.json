@@ -1,0 +1,291 @@
+{
+  "TITLE_ORIGIN": [
+    {
+      "label": "Grey Market",
+      "description": "The Seller must declare if the vehicle was ever registered in a country other than the United States or Canada or manufactured not in compliance with  North  American standards. All Grey market vehicles offered for sale must include a CarProof Verified vehicle history report or equivalent.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Incorrect Vehicle Marking",
+      "description": "The Seller must disclose if any logo, badge, decal, emblem, ornament or similar markings on the vehicle do not match the make, model or series of the vehicle.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Manufacturer Repurchase",
+      "description": "The Seller must disclose if the motor vehicle was repurchased by the manufacturer under the Canadian Motor Vehicle Arbitration Plan or under the laws of any jurisdiction including but not limited to  U.S. lemon laws.  If the reasons for, date and/or jurisdiction of the repurchase are known, they should be disclosed.",
+      "arbitration": "regular",
+      "input_type": "text",
+      "list": "null"
+    },
+    {
+      "label": "Out of Province",
+      "description": "If the province of the last registration (or equivalent) to a retail customer is different than the jurisdiction from which the vehicle is currently being sold, the vehicle must be declared an out of province vehicle and the Seller must identify the last province in which the vehicle was registered (or equivalent) to a retail customer.For vehicles sold in Ontario only:A vehicle remains an out of province vehicle and must be so declared, if it was previously registered (or equivalent) to a retail customer in another province and has been registered in Ontario for less than 7 consecutive years. The Seller must declare all of the provinces in which the vehicle was previously registered.",
+      "arbitration": "extended",
+      "input_type": "checkbox",
+      "list": [
+        "Alberta",
+        "British Columbia",
+        "Manitoba",
+        "New Brunswick",
+        "Newfoundland and Labrador",
+        "Northwest Territories",
+        "Nova Scotia",
+        "Nunavut",
+        "Ontario",
+        "Prince Edward Island",
+        "Quebec",
+        "Saskatchewan",
+        "Yukon"
+      ]
+    },
+    {
+      "label": "Title Branded",
+      "description": "The  Seller must disclose if the vehicle’s title has been branded in accordance with provincial or state law and must indicate the brand(s) assigned.",
+      "arbitration": "extended",
+      "input_type": "radio",
+      "list": ["None", "Irreparable", "Salvage", "Rebuilt"]
+    },
+    {
+      "label": "Total Loss",
+      "description": "The Seller must declare if an insurer determined the vehicle was a total loss.",
+      "arbitration": "extended",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "U.S. Vehicle",
+      "description": "The Seller must declare if the vehicle was ever registered in the  United States or manufactured not in compliance with Canadian standards. All U.S. vehicles offered for sale must include a CarProof Verified vehicle history report or equivalent.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "VIN Plate issues",
+      "description": "The Seller must disclose if the original VIN plate (on the driver’s side of the dashboard) has been removed, altered or replaced. Vehicles may not be offered for sale unless the original VIN plate is intact or has been replaced in accordance with provincial and federal regulatory requirements.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Warranty Cancelled",
+      "description": "The Seller must disclose if the manufacturer has cancelled the warranty on the Vehicle or has given notice of its intention to do so. Notice of warranty cancellation given after the date of sale is not subject to arbitration.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Stolen and Recovered",
+      "description": "The Seller must disclose if a vehicle was recovered after being reported stolen.",
+      "arbitration": "extended",
+      "input_type": "button",
+      "list": "null"
+    }
+  ],
+  "ODOMETER": [
+    {
+      "label": "Odometer has Only 5 Digits",
+      "description": "The Seller must disclose if the odometer is a 5 digit odometer with over 100,000 miles or kilometers.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Odometer Broken/Faulty",
+      "description": "The Seller must disclose if the odometer of the vehicle is broken or faulty, i.e. not accurately tracking distance driven.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Odometer in  Miles",
+      "description": "The Seller must disclose if the odometer is in miles.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Odometer Replaced",
+      "description": "The Seller must disclose if the odometer has been replaced.",
+      "arbitration": "extended",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Odometer Roll Back",
+      "description": "The Seller must disclose if the odometer has been rolled back.",
+      "arbitration": "extended",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Odometer Unreadable",
+      "description": "The Seller must declare the odometer to be unreadable if it is accurately tracking distance driven but cannot be read due to  pixel damage, because the vehicle cannot be started to obtain an odometer reading or similar reasons.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "True Kilometers Unknown",
+      "description": "The Seller must declare a vehicle TKU (true kilometres unknown) if the distance travelled is unknown and there are no reliable records available to verify the odometer reading as of a certain date.  When a vehicle is declared TKU, the total distance that a vehicle has been driven is likely substantially higher than the reading shown on the odometer.",
+      "arbitration": "extended",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Recent Kilometers Unknown",
+      "description": "If the total distance driven is unknown, but based on reliable records, the distance driven as of a certain date is known, the Seller must declare the last known distance and provide the date.",
+      "arbitration": "extended",
+      "input_type": "date-number",
+      "list": "null"
+    }
+  ],
+  "DAMAGE": [
+    {
+      "label": "Accident Repair",
+      "description": "The Seller must declare a Vehicle to be Accident Repaired if the total cost to fix damage caused by a single incident was $3,000 or more ($2,000 cumulative incidents in British Columbia).The Accident Repair declaration must be made regardless of whether the damage was caused by collision, accident, weather or by some other incident. If the dollar value of the repair is known, it must be declared. If the Accident Repair information comes from a vehicle history report and the Seller believes that the Vehicle History Report is incorrect, it is the Seller’s obligation to get the report corrected within the Arbitration period or risk having the sale cancelled. Although not required, if the Seller chooses to declare an Accident Repair under $3,000 ($2,000 cumulative in B.C.), it may do so separately as an additional disclosure. Arbitration  is  not  allowed  for  repairs  under  $3,000  ($2,000  cumulative  in  British Columbia).",
+      "arbitration": "regular",
+      "input_type": "number",
+      "list": "null"
+    },
+    {
+      "label": "Adjacent Panels Replaced",
+      "description": "The Seller must declare if two or more adjacent panels (excluding bumper panels) have been replaced on a vehicle. Please note: If the panels were replaced due to an accident or another incident, depending on the cost of the repairs, it may also be necessary for the Seller to make the Accident Repair declaration.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Excessive Rust",
+      "description": "The Seller must disclose if the vehicle suffers from excessive rust. Rust is considered to be excessive when the location or quantity of the rust affects the structural integrity of the vehicle, e.g. the frame or any structural component is perforated by rust.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Fire Damage",
+      "description": "The Seller must disclose if the vehicle has been damaged by fire.",
+      "arbitration": "extended",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Flood Damage",
+      "description": "The Seller must declare a vehicle as Flood Damaged when: i) water or other liquid has penetrated the vehicle to the level of the floorboards or higher; or ii) if any of the following components have been damaged due to immersion: Front or rear lighting or wiring harnesses, Engine and its major components, Transmission and differential, Dash instrument panel and wiring, Passenger seat cushions, Power seat or window motor, Major sound system components.",
+      "arbitration": "extended",
+      "input_type": "checkbox",
+      "list": [
+        "Front or rear lighting or wiring harnesses",
+        "Engine and its major components",
+        "Transmission and differential",
+        "Dash instrument panel and wiring",
+        "Passenger seat cushions",
+        "Power seat or window motor",
+        "Major sound system components"
+      ]
+    },
+    {
+      "label": "Irreparable",
+      "description": "Regardless of whether the title has been branded, the Seller must disclose if the vehicle is not capable of being repaired for roadworthy operation and may only be used for parts or scrap.  Irreparable vehicles are assumed to also be Total Loss vehicles and thus the Total Loss declaration does not need to be made.",
+      "arbitration": "extended",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Structural Damage",
+      "description": "The Seller must declare a vehicle to have structural damage if it meets the definition of structural damage set out in the National Auto Auction Association’s Structural Damage Policy.  See www.naaa.com",
+      "arbitration": "extended",
+      "input_type": "button",
+      "list": "null"
+    }
+  ],
+  "MECHANICAL": [
+    {
+      "label": "ABS Defective",
+      "description": "The Seller must disclose if the anti‐lock braking system is not operational (if equipped). Arbitration is only available for repairs over $750 (standard Mitchell warranty rates).",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Air Bags Missing/Defective",
+      "description": "The Seller must disclose if the vehicle’s airbags are missing or not operational.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Alternate Fuel or Conversion",
+      "description": "The Seller must disclose if the vehicle uses propane or natural gas, or at any time had a propane or natural gas fuel system.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Material Variation from Production Specs",
+      "description": "The Seller must disclose if the vehicle varies materially from the original manufacturer’s specifications.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Major Repair Needed",
+      "description": "The Seller must disclose if a major component of the vehicle is defective or not operational and the component would cost over $750 (on a non-cumulative basis) to repair or replace in accordance with standard Mitchell warranty rates. Major components include: Engine, Transmission, Power train, Sub‐frame, Suspension, Computer equipment, Fuel operating system, Electrical system, Emissions system, Air Conditioning, Hail damage. The following items are not subject to arbitration: Upholstery, Glass, Tires, Visible body damage.",
+      "arbitration": "regular",
+      "input_type": "checkbox",
+      "list": [
+        "Engine",
+        "Transmission",
+        "Powertrain",
+        "Sub-­frame",
+        "Suspension",
+        "Computer equipment",
+        "Fuel operating system",
+        "Electrical system",
+        "Emissions system",
+        "Air Conditioning",
+        "Hail damage"
+      ]
+    }
+  ],
+  "PREVIOUS_USE": [
+    {
+      "label": "Previous Daily Rental",
+      "description": "The Seller must disclose if the vehicle was previously used as a daily rental vehicle (unless the vehicle was subsequently owned by a non‐dealer).",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": []
+    },
+    {
+      "label": "Previous Driving School Vehicle",
+      "description": "The Seller must disclose if the vehicle was previously used as a driving school vehicle.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Previous Emergency Services Vehicle",
+      "description": "The Seller must disclose if the vehicle was previously used as an emergency services vehicle.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Previous Police Vehicle",
+      "description": "The Seller must disclose if the vehicle was previously used as a police cruiser.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Previous Taxi/Limo",
+      "description": "The Seller must disclose if the vehicle was previously used as a taxi or limousine.",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    }
+  ]
+}
