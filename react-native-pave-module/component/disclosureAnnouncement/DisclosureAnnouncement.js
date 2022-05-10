@@ -255,8 +255,10 @@ function TableView(props) {
       .replace(/ /g, '_')
       .replace(/'/g, '')
       .replace(/\//g, '_')
-      .replace(/-/g, '');
-
+      .replace(/-/g, '')
+      .replace(/,/g, '')
+      .replace(/>/g, '')
+      .replace(/€/g, '');
     // Logger(key);
 
     function onValueChange(keyDeclaration, val) {
@@ -266,8 +268,8 @@ function TableView(props) {
     }
 
     return (
-      <Collapse key={key}>
-        <CollapseHeader>
+      <Collapse key={key} isCollapsed={true}>
+        <CollapseHeader isCollapsed={true}>
           <View style={styles.SecondTitleContainer}>
             <View style={{flex: 9, justifyContent: 'center'}}>
               <Text style={styles.titleText}>{value.label}</Text>
@@ -280,11 +282,13 @@ function TableView(props) {
         </CollapseHeader>
         <CollapseBody>
           <View style={styles.description}>
-            <Text>{value.description}</Text>
+            {value.description.toString().length > 0 && (
+              <Text>{value.description}</Text>
+            )}
             {/* <Text>{value.input_type}</Text> */}
 
             {value.input_type === 'button' || value.input_type === 'boolean' ? (
-              <View style={{alignItems: 'center', marginTop: 20}}>
+              <View style={{alignItems: 'center', marginTop: 10}}>
                 {ButtonTypeView(
                   key,
                   onValueChange,
@@ -294,7 +298,7 @@ function TableView(props) {
             ) : null}
 
             {value.input_type === 'checkbox' ? (
-              <View style={{alignItems: 'center', marginTop: 20}}>
+              <View style={{alignItems: 'center', marginTop: 10}}>
                 {CheckBoxListView(
                   value.list,
                   dataTable[key],
@@ -305,14 +309,14 @@ function TableView(props) {
             ) : null}
 
             {value.input_type === 'radio' ? (
-              <View style={{alignItems: 'center', marginTop: 20}}>
+              <View style={{alignItems: 'center', marginTop: 10}}>
                 {RadioListView(value.list, dataTable[key], key, onValueChange)}
               </View>
             ) : null}
 
             {['text', 'date-number', 'number'].indexOf(value.input_type) >=
             0 ? (
-              <View style={{alignItems: 'center', marginTop: 20}}>
+              <View style={{alignItems: 'center', marginTop: 10}}>
                 {TextInputView(value.input_type, key, onValueChange)}
               </View>
             ) : null}
@@ -326,12 +330,15 @@ function TableView(props) {
     return Object.entries(dataShow).map(([key, value]) => {
       return (
         <Collapse
+          isCollapsed={true}
           key={`_${key}`}
           onToggle={() => {
             // console.log(key);
           }}>
-          <CollapseHeader>{MainTitleView(key)}</CollapseHeader>
-          <CollapseBody>
+          <CollapseHeader isCollapsed={false}>
+            {MainTitleView(key)}
+          </CollapseHeader>
+          <CollapseBody isCollapsed={true}>
             <View>{value.map(SecondTitleView)}</View>
           </CollapseBody>
         </Collapse>
@@ -362,7 +369,10 @@ function TableView(props) {
               : screenData.height - StatusBarHeight - 140 - 100
             : screenData.height - 80 - 50,
         }}>
-        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <ScrollView
+          contentContainerStyle={{flexGrow: 1}}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}>
           <View style={{height: 30, width: 200}}>
             <View
               style={{
@@ -408,9 +418,8 @@ const TableViewDeclaration = (props) => {
 
   const {onDoneDeclaration, sessionID} = props;
 
-  const sessionUpload = SessionUploadManager.getInstance().getSessionUpload(
-    sessionID,
-  );
+  const sessionUpload =
+    SessionUploadManager.getInstance().getSessionUpload(sessionID);
   sessionUpload.setCheckDeclare(false);
   // console.log(sessionUpload);
 
@@ -465,9 +474,8 @@ const TableViewDeclaration = (props) => {
       'Please fill out any of the following announcements that apply.',
   };
 
-  const [modalVisibleAnnouncement, setModalVisibleAnnouncement] = useState(
-    false,
-  );
+  const [modalVisibleAnnouncement, setModalVisibleAnnouncement] =
+    useState(false);
 
   function getModeData(mode) {
     switch (mode) {
@@ -477,7 +485,16 @@ const TableViewDeclaration = (props) => {
             sessionID={sessionID}
             data={dataDisclosure}
             onSkipOrSubmit={() => {
-              setModalVisibleAnnouncement(true);
+              // setModalVisibleAnnouncement(true);
+              const uploadChecker =
+                SessionUploadManager.getInstance().getSessionUpload(sessionID);
+              uploadChecker.setCheckDeclare(true);
+
+              EventBus.getInstance().fireEvent(
+                'SESSION_UPLOAD_PHOTO',
+                uploadChecker,
+              );
+              onDoneDeclaration();
             }}
             title={modeShow.DISCLOSURES}
             description={description.DISCLOSURES}
@@ -493,17 +510,14 @@ const TableViewDeclaration = (props) => {
             description={description.ANNOUNCEMENTS}
             onSkipOrSubmit={() => {
               // setModalVisibleAnnouncement(true);
-
-              const uploadChecker = SessionUploadManager.getInstance().getSessionUpload(
-                sessionID,
-              );
-              uploadChecker.setCheckDeclare(true);
-
-              EventBus.getInstance().fireEvent(
-                'SESSION_UPLOAD_PHOTO',
-                uploadChecker,
-              );
-              onDoneDeclaration();
+              // const uploadChecker =
+              //   SessionUploadManager.getInstance().getSessionUpload(sessionID);
+              // uploadChecker.setCheckDeclare(true);
+              // EventBus.getInstance().fireEvent(
+              //   'SESSION_UPLOAD_PHOTO',
+              //   uploadChecker,
+              // );
+              // onDoneDeclaration();
             }}
           />
         );

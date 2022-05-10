@@ -202,42 +202,6 @@ const ProcessingInspectionCountDownView = (props) => {
           position: 'absolute',
           bottom: screenData.isLandscape ? -44 : 6,
         }}>
-        {/* <TouchableOpacity
-          onPress={() => {
-            props.cancelled();
-          }}
-          style={{marginRight: 10}}>
-          <View
-            style={{
-              height: 50, 
-              width: 100,
-              borderRadius: 25,
-              backgroundColor: colors.purpleButton,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text style={{color: 'white'}}>CANCEL</Text>
-          </View>
-        </TouchableOpacity> */}
-        {/* <TouchableOpacity
-          onPress={() => {
-            setIsInputPhoneNumberVisible(true);
-            setIsPause(true);
-            setIsContinue(false);
-          }}
-          style={{marginRight: 10}}>
-          <View
-            style={{
-              height: 50,
-              width: 100,
-              borderRadius: 25,
-              backgroundColor: colors.greenButton,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text style={{color: 'white'}}>NOTIFY ME</Text>
-          </View>
-        </TouchableOpacity> */}
         <TouchableOpacity
           onPress={() => {
             setIsUploadPhotoOptionalVisible(true);

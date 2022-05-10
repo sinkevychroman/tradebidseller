@@ -1,141 +1,47 @@
 {
   "VEHICLE_DISCLOSURES": [
-    {
-      "label": "Stolen and Recovered",
-      "description": "The Seller must disclose if a vehicle was recovered after being reported stolen.",
-      "arbitration": "extended",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Total Loss",
-      "description": "The Seller must declare if an insurer determined the vehicle was a total loss.",
-      "arbitration": "extended",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Outstanding Finance",
-      "description": "",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    }
-  ],
-  "ODOMETER": [
-    {
-      "label": "Odometer Broken/Faulty",
-      "description": "The Seller must disclose if the odometer of the vehicle is broken or faulty, i.e. not accurately tracking distance driven.",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Odometer Replaced",
-      "description": "The Seller must disclose if the odometer has been replaced.",
-      "arbitration": "extended",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Odometer Unreadable",
-      "description": "The Seller must declare the odometer to be unreadable if it is accurately tracking distance driven but cannot be read due to  pixel damage, because the vehicle cannot be started to obtain an odometer reading or similar reasons.",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Recent Miles Unknown",
-      "description": "If the total distance driven is unknown, but based on reliable records, the distance driven as of a certain date is known, the Seller must declare the last known distance and provide the date.",
-      "arbitration": "extended",
-      "input_type": "date-number",
-      "list": "null"
-    }
-  ],
-  "DAMAGE": [
-    {
-      "label": "Accident Repair",
-      "description": "The Seller must declare a Vehicle to be Accident Repaired if the total cost to fix damage caused by a single incident was €3000 or more. The Accident Repair declaration must be made regardless of whether the damage was caused by collision, accident, weather or by some other incident. If the money value of the repair is known, it must be declared. If the Accident Repair information comes from a vehicle history report and the Seller believes that the Vehicle History Report is incorrect, it is the Seller’s obligation to get the report corrected within the Arbitration period or risk having the sale cancelled. Although not required, if the Seller chooses to declare an Accident Repair under €3000, it may do so separately as an additional disclosure. Arbitration  is  not  allowed  for  repairs  under  €3000.",
-      "arbitration": "regular",
-      "input_type": "number",
-      "list": "null"
-    },
-    {
-      "label": "Adjacent Panels Replaced",
-      "description": "The Seller must declare if two or more adjacent panels (excluding bumper panels) have been replaced on a vehicle. Please note: If the panels were replaced due to an accident or another incident, depending on the cost of the repairs, it may also be necessary for the Seller to make the Accident Repair declaration.",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Excessive Rust",
-      "description": "The Seller must disclose if the vehicle suffers from excessive rust. Rust is considered to be excessive when the location or quantity of the rust affects the structural integrity of the vehicle, e.g. the frame or any structural component is perforated by rust.",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Air Bags Missing/Defective",
-      "description": "The Seller must disclose if the vehicle’s airbags are missing or not operational.",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Alternate Fuel or Conversion",
-      "description": "The Seller must disclose if the vehicle uses propane or natural gas, or at any time had a propane or natural gas fuel system.",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Major Repair Needed",
-      "description": "The Seller must disclose if a major component of the vehicle is defective or not operational and the component would cost over €750 (on a non-cumulative basis) to repair or replace. Major components include: Engine, Transmission, Power train, Sub‐frame, Suspension, Computer equipment, Fuel operating system, Electrical system, Emissions system, Air Conditioning. The following items are not subject to arbitration: Upholstery, Glass, Tyres, Visible body damage.",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    },
-    {
-      "label": "Anti-Lock Brakes Inoperable",
+      {
+      "label": "VLC Present",
       "description": "",
       "arbitration": "regular",
       "input_type": "button",
       "list": "null"
     },
     {
-      "label": "Car Won't Start",
+      "label": "All Keys Present",
       "description": "",
       "arbitration": "regular",
       "input_type": "button",
       "list": "null"
     },
-    {
-      "label": "Flood/Fire Damage",
-      "description": "",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    }
-  ],
 
-  "PREVIOUS_USE": [
     {
-      "label": "Previous Daily Rental",
-      "description": "The Seller must disclose if the vehicle was previously used as a daily rental vehicle (unless the vehicle was subsequently owned by a non‐dealer).",
+      "label": "Ex-Rental",
+      "description": "",
       "arbitration": "regular",
       "input_type": "button",
       "list": "null"
     },
+
     {
-      "label": "Previous Police Vehicle",
-      "description": "The Seller must disclose if the vehicle was previously used as a police vehicle.",
+      "label": "Warning Lights On",
+      "description": "",
       "arbitration": "regular",
       "input_type": "button",
       "list": "null"
     },
+
     {
-      "label": "Previous Taxi/Limo",
-      "description": "The Seller must disclose if the vehicle was previously used as a taxi or limousine.",
+      "label": "Fully Operational Clutch",
+      "description": "",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+
+    {
+      "label": "Accident Repair >€3,000",
+      "description": "",
       "arbitration": "regular",
       "input_type": "button",
       "list": "null"

@@ -89,7 +89,6 @@ export function getCages() {
     CAGES.FRONT_VIEW,
     CAGES.FRONT_RIGHT,
     CAGES.WIND_SHIELD,
-    CAGES.TIRE,
   ];
 }
 
@@ -102,7 +101,7 @@ export function getTutorial(cage) {
     case CAGES.INTERIOR.id:
       return "Standing looking through the open driver's door, take a photo of the interior as illustrated by these lines.";
     case CAGES.ODOMETER.id:
-      return 'Start the engine and capture the instrument cluster according to this illustration with the odometer reading displayed. Before exiting the vehicle, please turn the steering wheel as far to the right as it will go.';
+      return 'Please start the vehicle and wait 10 seconds before capturing the instrument cluster according to this illustration with the odometer reading displayed. Before exiting the vehicle, please turn the steering wheel as far to the right as it will go.';
     case CAGES.LEFT_VIEW.id:
       return 'As shown in this illustration, align yourself within the passenger side profile by stepping back about 10 feet to. Please fit the vehicle within these lines.';
     case CAGES.FRONT_LEFT.id:
@@ -110,7 +109,7 @@ export function getTutorial(cage) {
     case CAGES.FRONT_VIEW.id:
       return 'Move to the front of the vehicle, stepping back safely about 10 feet to capture the profile according to this illustration. Please fit the vehicle within these lines.';
     case CAGES.FRONT_RIGHT.id:
-      return 'Next, move closer to the vehicle and fill your camera frame at a 45-degree angle of the front passenger side, as shown in this illustration.';
+      return 'Next, move closer to the vehicle and fill your camera frame at a 45-degree angle of the front driver side, as shown in this illustration.';
     case CAGES.RIGHT_VIEW.id:
       return 'As shown in this illustration, align yourself within the driver side profile by stepping back about 10 feet to. Please fit the vehicle within these lines.';
     case CAGES.REAR_RIGHT.id:
