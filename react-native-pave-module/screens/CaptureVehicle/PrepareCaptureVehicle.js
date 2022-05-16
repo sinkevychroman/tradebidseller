@@ -25,7 +25,7 @@ import GuideRotateView from '../../component/ui/guideRotateView/GuideRotateView'
 import RejectedMessageView from './RejectedMessageView';
 import {Logger} from '../../utils/AppLogger';
 
-const PrepareCaptureVehicle = (props) => {
+const PrepareCaptureVehicle = props => {
   const screenData = useScreenDimensions();
 
   const {cage, callbackTimeOut, sessionID} = props;
@@ -118,7 +118,7 @@ const PrepareCaptureVehicle = (props) => {
           </Text>
           <Image
             style={{
-              height: screenData.isLandscape ? screenData.height - 200 : 300,
+              height: screenData.isLandscape ? screenData.height - 250 : 300,
               width: 300,
               resizeMode: 'contain',
               marginTop: 5,
@@ -175,9 +175,8 @@ const PrepareCaptureVehicle = (props) => {
 
 function _getPhotoBarView(props) {
   const {sessionID} = props;
-  const sessionUpload = SessionUploadManager.getInstance().getSessionUpload(
-    sessionID,
-  );
+  const sessionUpload =
+    SessionUploadManager.getInstance().getSessionUpload(sessionID);
 
   return (
     <ScrollView

@@ -181,51 +181,51 @@ class Sell extends Component {
             // FunctionUtils.showToast(sessioncheckdata.message);
             this.setState({isLoading: false});
 
-            Alert.alert(
-              ConstantUtils.TRADEBID,
-              ConstantUtils.LOGINSESSIONEXPIRE,
-              [
-                {
-                  text: ConstantUtils.LOGINAGAIN,
-                  onPress: () => {
-                    console.log('OK Pressed');
-                    this.cleanData();
-                  },
-                },
-              ],
-            );
+            // Alert.alert(
+            //   ConstantUtils.TRADEBID,
+            //   ConstantUtils.LOGINSESSIONEXPIRE,
+            //   [
+            //     {
+            //       text: ConstantUtils.LOGINAGAIN,
+            //       onPress: () => {
+            //         console.log('OK Pressed');
+            //         this.cleanData();
+            //       },
+            //     },
+            //   ],
+            // );
           }
         })
         .catch(error => {
           console.error(error);
           this.setState({isLoading: false});
 
-          Alert.alert(
-            ConstantUtils.TRADEBID,
-            ConstantUtils.LOGINSESSIONEXPIRE,
-            [
-              {
-                text: ConstantUtils.LOGINAGAIN,
-                onPress: () => {
-                  console.log('OK Pressed');
-                  this.cleanData();
-                  Actions.reset(ConstantUtils.LOGIN);
-                },
-              },
-            ],
-          );
+          // Alert.alert(
+          //   ConstantUtils.TRADEBID,
+          //   ConstantUtils.LOGINSESSIONEXPIRE,
+          //   [
+          //     {
+          //       text: ConstantUtils.LOGINAGAIN,
+          //       onPress: () => {
+          //         console.log('OK Pressed');
+          //         this.cleanData();
+          //         Actions.reset(ConstantUtils.LOGIN);
+          //       },
+          //     },
+          //   ],
+          // );
         });
     } else {
-      Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.LOGINSESSIONEXPIRE, [
-        {
-          text: ConstantUtils.LOGINAGAIN,
-          onPress: () => {
-            console.log('OK Pressed');
-            this.cleanData();
-            Actions.reset(ConstantUtils.LOGIN);
-          },
-        },
-      ]);
+      // Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.LOGINSESSIONEXPIRE, [
+      //   {
+      //     text: ConstantUtils.LOGINAGAIN,
+      //     onPress: () => {
+      //       console.log('OK Pressed');
+      //       this.cleanData();
+      //       Actions.reset(ConstantUtils.LOGIN);
+      //     },
+      //   },
+      // ]);
       FunctionUtils.showToast(strings.internetNotAvail);
     }
   }

@@ -148,20 +148,20 @@ class SellStep3 extends Component {
           console.log('check session 3 step');
         } else {
           // FunctionUtils.showToast(sessioncheckdata.message);
-          Alert.alert(
-            ConstantUtils.TRADEBID,
-            ConstantUtils.LOGINSESSIONEXPIRE,
-            [
-              {
-                text: ConstantUtils.LOGINAGAIN,
-                onPress: () => {
-                  console.log('OK Pressed');
-                  this.cleanData();
-                  Actions.reset(ConstantUtils.LOGIN);
-                },
-              },
-            ],
-          );
+          // Alert.alert(
+          //   ConstantUtils.TRADEBID,
+          //   ConstantUtils.LOGINSESSIONEXPIRE,
+          //   [
+          //     {
+          //       text: ConstantUtils.LOGINAGAIN,
+          //       onPress: () => {
+          //         console.log('OK Pressed');
+          //         this.cleanData();
+          //         Actions.reset(ConstantUtils.LOGIN);
+          //       },
+          //     },
+          //   ],
+          // );
         }
       });
     } else {
