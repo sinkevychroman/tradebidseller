@@ -18,7 +18,7 @@ import {
   Dimensions,
   KeyboardAvoidingView,
   AppState,
-  Keyboard
+  Keyboard,
 } from 'react-native';
 import {colors, images, strings, fonts} from '../../themes';
 import {moderateScale} from '../../utils/ResponsiveUi';
@@ -86,9 +86,9 @@ class Sell extends Component {
   }
 
   async componentDidMount() {
-    this.sessionCheck();
+    //this.sessionCheck();
     Smartlook.setupAndStartRecording(WebService.KEY_SMARTLOOK);
-    
+
     this.didFocusListener = this.props.navigation.addListener(
       'didFocus',
       () => {
@@ -124,7 +124,6 @@ class Sell extends Component {
     // return false;
   };
 
-
   UNSAFE_componentWillUnmount() {
     if (Platform.OS === 'android') {
       this.backHandler.remove();
@@ -159,76 +158,76 @@ class Sell extends Component {
     );
   }
 
-  async sessionCheck() {
-    let token1 = await AsyncStorage.getItem(ConstantUtils.USER_TOKEN);
-    const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (isConnected) {
-      // const token1 = await AsyncStorage.getItem(constantUtils.USER_TOKEN);
-      this.setState({isLoading: true});
-      fetch(`${WebService.BASE_URL}api/tokencheck`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token1}`,
-        },
-        body: null,
-      })
-        .then(response => response.json())
-        .then(json => {
-          console.log('temp api response', json);
-          if (json.status == 'success') {
-            this.setState({isLoading: false});
-          } else {
-            // FunctionUtils.showToast(sessioncheckdata.message);
-            this.setState({isLoading: false});
+  // async sessionCheck() {
+  //   let token1 = await AsyncStorage.getItem(ConstantUtils.USER_TOKEN);
+  //   const isConnected = await NetworkUtils.isNetworkAvailable();
+  //   if (isConnected) {
+  //     // const token1 = await AsyncStorage.getItem(constantUtils.USER_TOKEN);
+  //     this.setState({isLoading: true});
+  //     fetch(`${WebService.BASE_URL}api/tokencheck`, {
+  //       method: 'POST',
+  //       headers: {
+  //         Authorization: `Bearer ${token1}`,
+  //       },
+  //       body: null,
+  //     })
+  //       .then(response => response.json())
+  //       .then(json => {
+  //         console.log('temp api response', json);
+  //         if (json.status == 'success') {
+  //           this.setState({isLoading: false});
+  //         } else {
+  //           // FunctionUtils.showToast(sessioncheckdata.message);
+  //           this.setState({isLoading: false});
 
-            // Alert.alert(
-            //   ConstantUtils.TRADEBID,
-            //   ConstantUtils.LOGINSESSIONEXPIRE,
-            //   [
-            //     {
-            //       text: ConstantUtils.LOGINAGAIN,
-            //       onPress: () => {
-            //         console.log('OK Pressed');
-            //         this.cleanData();
-            //       },
-            //     },
-            //   ],
-            // );
-          }
-        })
-        .catch(error => {
-          console.error(error);
-          this.setState({isLoading: false});
+  //           // Alert.alert(
+  //           //   ConstantUtils.TRADEBID,
+  //           //   ConstantUtils.LOGINSESSIONEXPIRE,
+  //           //   [
+  //           //     {
+  //           //       text: ConstantUtils.LOGINAGAIN,
+  //           //       onPress: () => {
+  //           //         console.log('OK Pressed');
+  //           //         this.cleanData();
+  //           //       },
+  //           //     },
+  //           //   ],
+  //           // );
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //         this.setState({isLoading: false});
 
-          // Alert.alert(
-          //   ConstantUtils.TRADEBID,
-          //   ConstantUtils.LOGINSESSIONEXPIRE,
-          //   [
-          //     {
-          //       text: ConstantUtils.LOGINAGAIN,
-          //       onPress: () => {
-          //         console.log('OK Pressed');
-          //         this.cleanData();
-          //         Actions.reset(ConstantUtils.LOGIN);
-          //       },
-          //     },
-          //   ],
-          // );
-        });
-    } else {
-      // Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.LOGINSESSIONEXPIRE, [
-      //   {
-      //     text: ConstantUtils.LOGINAGAIN,
-      //     onPress: () => {
-      //       console.log('OK Pressed');
-      //       this.cleanData();
-      //       Actions.reset(ConstantUtils.LOGIN);
-      //     },
-      //   },
-      // ]);
-      FunctionUtils.showToast(strings.internetNotAvail);
-    }
-  }
+  //         // Alert.alert(
+  //         //   ConstantUtils.TRADEBID,
+  //         //   ConstantUtils.LOGINSESSIONEXPIRE,
+  //         //   [
+  //         //     {
+  //         //       text: ConstantUtils.LOGINAGAIN,
+  //         //       onPress: () => {
+  //         //         console.log('OK Pressed');
+  //         //         this.cleanData();
+  //         //         Actions.reset(ConstantUtils.LOGIN);
+  //         //       },
+  //         //     },
+  //         //   ],
+  //         // );
+  //       });
+  //   } else {
+  //     // Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.LOGINSESSIONEXPIRE, [
+  //     //   {
+  //     //     text: ConstantUtils.LOGINAGAIN,
+  //     //     onPress: () => {
+  //     //       console.log('OK Pressed');
+  //     //       this.cleanData();
+  //     //       Actions.reset(ConstantUtils.LOGIN);
+  //     //     },
+  //     //   },
+  //     // ]);
+  //     FunctionUtils.showToast(strings.internetNotAvail);
+  //   }
+  // }
   async getRegisterVehicleDetail() {
     console.log(TAG, 'getRegisterVehicleDetail');
     const isConnected = await NetworkUtils.isNetworkAvailable();
@@ -267,14 +266,20 @@ class Sell extends Component {
                 // }
 
                 if (chassisNo !== undefined) {
-                  this.setState({isLoading: false ,isVehicleVerifyed: true, showVehicleVerifyed: true});
+                  this.setState({
+                    isLoading: false,
+                    isVehicleVerifyed: true,
+                    showVehicleVerifyed: true,
+                  });
                   // this.getFullChasisNumber();
-                  
                 } else {
-                  this.setState({isLoading: false, isVehicleVerifyed: false,showVehicleVerifyed: true});
+                  this.setState({
+                    isLoading: false,
+                    isVehicleVerifyed: false,
+                    showVehicleVerifyed: true,
+                  });
                   FunctionUtils.showToast(strings.vehical_error);
                 }
-
               } else {
                 await this.showInvalidRegistration();
               }
@@ -338,7 +343,6 @@ class Sell extends Component {
     global.sessionKey = props.session_key;
     Actions.push(ConstantUtils.SELLSTEP2, {sessionData: props});
     // Actions.push(ConstantUtils.SELLSTEP3);
-
   }
 
   sessionValidation() {
@@ -491,7 +495,7 @@ class Sell extends Component {
   }
 
   _dropdown_6_onSelect(idx, value) {
-    this.sessionCheck();
+    // this.sessionCheck();
     this.setState({
       auctionType: value,
     });
@@ -530,7 +534,7 @@ class Sell extends Component {
       dateSelectedStr,
       showDate,
       emailid,
-      isActivityIndicator
+      isActivityIndicator,
     } = this.state;
     return (
       <SafeAreaView style={styles.safeAreaStyle}>
@@ -640,7 +644,7 @@ class Sell extends Component {
                   icon={images.email_logo}
                   height={moderateScale(55)}
                   value={registrationNumber}
-                  maxLength={10}
+                  maxLength={35}
                   returnKeyType="search"
                   isActivityIndicatorShow={isActivityIndicator}
                   isCarNumber={showVehicleVerifyed}
@@ -772,16 +776,20 @@ class Sell extends Component {
                   value={discription}
                   returnKeyType="default"
                   onBlur={e => {
-                    Keyboard.dismiss()
+                    Keyboard.dismiss();
                   }}
-                  onSubmitEditing={() => {
-                
-                  }}
+                  onSubmitEditing={() => {}}
                   blurOnSubmit={false}
                   _multiline={true}
                 />
                 {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
-                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', top: moderateScale(7)}}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      top: moderateScale(7),
+                    }}>
                     <Button
                       title={strings.sell_vehicle_checkbox}
                       titleStyle={styles.tvSellVehicleCheckStyle}
@@ -928,9 +936,6 @@ const styles = StyleSheet.create({
     width: '64%',
     // backgroundColor: 'red',
     backgroundColor: colors.trasparent,
-
-
-
   },
   tvSellVehicleCheckStyle: {
     color: colors.redColor,

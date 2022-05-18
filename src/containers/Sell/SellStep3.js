@@ -17,7 +17,7 @@ import {
   BackHandler,
   Dimensions,
   KeyboardAvoidingView,
-  AppState
+  AppState,
 } from 'react-native';
 import {colors, images, strings, fonts} from '../../themes';
 import {moderateScale} from '../../utils/ResponsiveUi';
@@ -88,12 +88,12 @@ class SellStep3 extends Component {
       session_id_state: '',
       is_asis: 0,
       emailid: '',
-      appState: AppState.currentState
-
+      appState: AppState.currentState,
     };
   }
   onSubmitData() {
-    const { registrationNumber,
+    const {
+      registrationNumber,
       milageKM,
       isVehicleVerifyed,
       auctionType,
@@ -110,7 +110,8 @@ class SellStep3 extends Component {
       engineSize,
       dateSelectedStr,
       dateSelected,
-      showDate, } = this.state;
+      showDate,
+    } = this.state;
     if (registrationNumber.trim().length === 0) {
       FunctionUtils.showToast('Please enter the vehicle registartion number');
     } else if (milageKM.length === 0 || milageKM.trim().length === 0) {
@@ -124,7 +125,9 @@ class SellStep3 extends Component {
     else if (reservedPrice.length === 0 && reservedPrice < 1) {
       FunctionUtils.showToast('Please enter Reserved Price');
     } else if (parseInt(startPrice) >= parseInt(reservedPrice)) {
-      FunctionUtils.showToast('Please enter start price less than reserved price');
+      FunctionUtils.showToast(
+        'Please enter start price less than reserved price',
+      );
     } else if (discription.length === 0) {
       FunctionUtils.showToast('Please enter Discription');
     } else {
@@ -139,35 +142,35 @@ class SellStep3 extends Component {
       console.log(e);
     }
   }
-  async sessionCheck() {
-    const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (isConnected) {
-      this.props.checkSession(null).then(async () => {
-        const {sessioncheckdata, msgError, error} = this.props;
-        if (sessioncheckdata && sessioncheckdata.status === 'success') {
-          console.log('check session 3 step');
-        } else {
-          // FunctionUtils.showToast(sessioncheckdata.message);
-          // Alert.alert(
-          //   ConstantUtils.TRADEBID,
-          //   ConstantUtils.LOGINSESSIONEXPIRE,
-          //   [
-          //     {
-          //       text: ConstantUtils.LOGINAGAIN,
-          //       onPress: () => {
-          //         console.log('OK Pressed');
-          //         this.cleanData();
-          //         Actions.reset(ConstantUtils.LOGIN);
-          //       },
-          //     },
-          //   ],
-          // );
-        }
-      });
-    } else {
-      FunctionUtils.showToast(strings.internetNotAvail);
-    }
-  }
+  // async sessionCheck() {
+  //   const isConnected = await NetworkUtils.isNetworkAvailable();
+  //   if (isConnected) {
+  //     this.props.checkSession(null).then(async () => {
+  //       const {sessioncheckdata, msgError, error} = this.props;
+  //       if (sessioncheckdata && sessioncheckdata.status === 'success') {
+  //         console.log('check session 3 step');
+  //       } else {
+  //         // FunctionUtils.showToast(sessioncheckdata.message);
+  //         // Alert.alert(
+  //         //   ConstantUtils.TRADEBID,
+  //         //   ConstantUtils.LOGINSESSIONEXPIRE,
+  //         //   [
+  //         //     {
+  //         //       text: ConstantUtils.LOGINAGAIN,
+  //         //       onPress: () => {
+  //         //         console.log('OK Pressed');
+  //         //         this.cleanData();
+  //         //         Actions.reset(ConstantUtils.LOGIN);
+  //         //       },
+  //         //     },
+  //         //   ],
+  //         // );
+  //       }
+  //     });
+  //   } else {
+  //     FunctionUtils.showToast(strings.internetNotAvail);
+  //   }
+  // }
   dataStore = async () => {
     const {
       registrationNumber,
@@ -201,7 +204,10 @@ class SellStep3 extends Component {
       formData.append('sprice', `${startPrice}`);
       formData.append('rprice', `${reservedPrice}`);
       formData.append('session_id', session_id_state);
-      formData.append('auction_type', (auctionType == 'Auction') ? 'auction' : 'buynow');
+      formData.append(
+        'auction_type',
+        auctionType == 'Auction' ? 'auction' : 'buynow',
+      );
       formData.append('is_asis', `${is_asis}`);
       formData.append('gi_mileage', `${milageKM}`);
 
@@ -254,11 +260,9 @@ class SellStep3 extends Component {
     }
   };
 
-
-
   componentDidMount = async () => {
     // Smartlook.setupAndStartRecording(WebService.KEY_SMARTLOOK);
-    this.sessionCheck();
+    //  this.sessionCheck();
     this.didFocusListener = this.props.navigation.addListener(
       'didFocus',
       () => {
@@ -269,18 +273,13 @@ class SellStep3 extends Component {
       },
     );
 
-    
-
     let email_id = await AsyncStorage.getItem(ConstantUtils.USER_EMAIL);
     this.setState({
       emailid: email_id,
     });
 
-    const {
-      vehicleDetailData,
-      vehicleChasisData,
-      sessionCreatedData,
-    } = this.props;
+    const {vehicleDetailData, vehicleChasisData, sessionCreatedData} =
+      this.props;
     if (vehicleDetailData == null) {
       Actions.push(ConstantUtils.SELL);
     }
@@ -350,20 +349,22 @@ class SellStep3 extends Component {
   componentWillUnmount() {
     if (Platform.OS == 'android') {
       console.log(TAG, 'componentWillUnmount', 'Remove Back Action');
-      
+
       // this.backHandler.remove();
     }
     this.didFocusListener.remove();
     AppState.removeEventListener('change', this._handleAppStateChange);
-
   }
 
-  _handleAppStateChange = (nextAppState) => {
-    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
-      console.log('App has come to the foreground!')
+  _handleAppStateChange = nextAppState => {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      console.log('App has come to the foreground!');
     }
     this.setState({appState: nextAppState});
-  }
+  };
 
   hideShowPassword() {
     this.setState({hideShowPass: !this.state.hideShowPass});
@@ -421,217 +422,219 @@ class SellStep3 extends Component {
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : null}
             keyboardVerticalOffset={Platform.OS === 'ios' ? 30 : 0}>
-          <ScrollView>
-            <View
-              style={{
-                height: moderateScale(60),
-                width: '100%',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderBottomColor: colors.grayColor_check_box,
-                borderBottomWidth: moderateScale(0.8),
-              }}>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  fontFamily: fonts.Poppins_SemiBold,
-                  fontSize: moderateScale(17),
-                }}>
-                {'Submit Your Vehicle'}
-              </Text>
-            </View>
-            <View
-              style={{
-                height: moderateScale(120),
-                width: width,
-              }}>
+            <ScrollView>
               <View
                 style={{
-                  height: '100%',
+                  height: moderateScale(60),
                   width: '100%',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
+                  justifyContent: 'center',
                   alignItems: 'center',
+                  borderBottomColor: colors.grayColor_check_box,
+                  borderBottomWidth: moderateScale(0.8),
                 }}>
-                {FunctionHelper.tabView('01', 'Vehicle Details', true, false)}
-                {FunctionHelper.doubleArrow()}
-                {FunctionHelper.tabView(
-                  '02',
-                  'Vehicle Inspection',
-                  true,
-                  false,
-                )}
-                {FunctionHelper.doubleArrow()}
-                {FunctionHelper.tabView('03', 'Vehicle Review', false, true)}
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontFamily: fonts.Poppins_SemiBold,
+                    fontSize: moderateScale(17),
+                  }}>
+                  {'Submit Your Vehicle'}
+                </Text>
               </View>
-            </View>
-            <View
-              style={{
-                width: width,
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingBottom: moderateScale(20),
-              }}>
-              <Text style={styles.titletext}>Vehicle Registration</Text>
-              <TextField
-                onChangeText={text => this.setState({registrationNumber: text})}
-                placeHolder={'Vehicle Registration'}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                availToEdit={false}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={registrationNumber}
-                returnKeyType="next"
-                // onSubmitEditing={() => {
-                //   this.focusTextInput();
-                // }}
-                blurOnSubmit={false}
-                // marginBottom={moderateScale(16)}
-              />
-              <Text style={styles.titletext}>Mileage (KM)</Text>
-              <TextField
-                onChangeText={text => this.setState({milageKM: text})}
-                placeHolder={'Mileage (KM)'}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={`${milageKM
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')} KM`}
-                availToEdit={false}
-                returnKeyType="next"
-                // onSubmitEditing={() => {
-                //   this.focusTextInput();
-                // }}
-                blurOnSubmit={false}
-                marginBottom={moderateScale(16)}
-              />
-              <Text style={styles.titletext}>Make</Text>
-              <TextField
-                onChangeText={text => this.setState({make: text})}
-                placeHolder={'Make'}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                availToEdit={false}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={make}
-                returnKeyType="next"
-                // onSubmitEditing={() => {
-                //   this.focusTextInput();
-                // }}
-                blurOnSubmit={false}
-                marginBottom={moderateScale(16)}
-              />
-              <Text style={styles.titletext}>Model</Text>
-              <TextField
-                onChangeText={text => this.setState({model: text})}
-                placeHolder={'Modal'}
-                availToEdit={false}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                _multiline={true}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={model}
-                returnKeyType="next"
-                // onSubmitEditing={() => {
-                //   this.focusTextInput();
-                // }}
-                blurOnSubmit={false}
-                marginBottom={moderateScale(16)}
-              />
-              <Text style={styles.titletext}>Year</Text>
-              <TextField
-                onChangeText={text => this.setState({year: text})}
-                placeHolder={'Year'}
-                availToEdit={false}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={year}
-                returnKeyType="next"
-                blurOnSubmit={false}
-                marginBottom={moderateScale(16)}
-              />
-              <Text style={styles.titletext}>Transmission</Text>
-              <TextField
-                onChangeText={text => this.setState({transmission: text})}
-                placeHolder={'Transmission'}
-                availToEdit={false}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={transmission}
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  this.focusTextInput();
-                }}
-                blurOnSubmit={false}
-                marginBottom={moderateScale(16)}
-              />
-              <Text style={styles.titletext}>Fuel Type</Text>
-              <TextField
-                onChangeText={text => this.setState({fuelType: text})}
-                placeHolder={'Fuel Type'}
-                availToEdit={false}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={fuelType}
-                returnKeyType="done"
-                blurOnSubmit={false}
-                marginBottom={moderateScale(16)}
-              />
-              <Text style={styles.titletext}>Engine Size</Text>
-              <TextField
-                onChangeText={text => this.setState({engineSize: text})}
-                placeHolder={'Engine Size'}
-                availToEdit={false}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={engineSize}
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  this.focusTextInput();
-                }}
-                blurOnSubmit={false}
-                marginBottom={moderateScale(16)}
-              />
-              {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
-                <>
-                  <Text style={styles.titletext}>Auction Type</Text>
-                  <View>
-                    <ModalDropdown
-                      ref="dropdown_2"
-                      defaultValue=""
-                      textStyle={{fontSize: 0, color: 'transparent'}}
-                      style={styles.dropdown_6}
-                      options={DEMO_OPTIONS_1}
-                      dropdownStyle={styles.dropdown_2_dropdown}
-                      disabled={true}
-                      onSelect={(idx, value) =>
-                        this._dropdown_6_onSelect(idx, value)
-                      }></ModalDropdown>
-                    <ButtonDropdown
-                      height={moderateScale(45)}
-                      width={'100%'}
-                      marginBottom={moderateScale(16)}
-                      title={auctionType}
-                      position="absolute"
-                      onclick={() => null}
-                    />
-                  </View>
-                </>
-              )}
-              {/* {
+              <View
+                style={{
+                  height: moderateScale(120),
+                  width: width,
+                }}>
+                <View
+                  style={{
+                    height: '100%',
+                    width: '100%',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}>
+                  {FunctionHelper.tabView('01', 'Vehicle Details', true, false)}
+                  {FunctionHelper.doubleArrow()}
+                  {FunctionHelper.tabView(
+                    '02',
+                    'Vehicle Inspection',
+                    true,
+                    false,
+                  )}
+                  {FunctionHelper.doubleArrow()}
+                  {FunctionHelper.tabView('03', 'Vehicle Review', false, true)}
+                </View>
+              </View>
+              <View
+                style={{
+                  width: width,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  paddingBottom: moderateScale(20),
+                }}>
+                <Text style={styles.titletext}>Vehicle Registration</Text>
+                <TextField
+                  onChangeText={text =>
+                    this.setState({registrationNumber: text})
+                  }
+                  placeHolder={'Vehicle Registration'}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  availToEdit={false}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={registrationNumber}
+                  returnKeyType="next"
+                  // onSubmitEditing={() => {
+                  //   this.focusTextInput();
+                  // }}
+                  blurOnSubmit={false}
+                  // marginBottom={moderateScale(16)}
+                />
+                <Text style={styles.titletext}>Mileage (KM)</Text>
+                <TextField
+                  onChangeText={text => this.setState({milageKM: text})}
+                  placeHolder={'Mileage (KM)'}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={`${milageKM
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')} KM`}
+                  availToEdit={false}
+                  returnKeyType="next"
+                  // onSubmitEditing={() => {
+                  //   this.focusTextInput();
+                  // }}
+                  blurOnSubmit={false}
+                  marginBottom={moderateScale(16)}
+                />
+                <Text style={styles.titletext}>Make</Text>
+                <TextField
+                  onChangeText={text => this.setState({make: text})}
+                  placeHolder={'Make'}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  availToEdit={false}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={make}
+                  returnKeyType="next"
+                  // onSubmitEditing={() => {
+                  //   this.focusTextInput();
+                  // }}
+                  blurOnSubmit={false}
+                  marginBottom={moderateScale(16)}
+                />
+                <Text style={styles.titletext}>Model</Text>
+                <TextField
+                  onChangeText={text => this.setState({model: text})}
+                  placeHolder={'Modal'}
+                  availToEdit={false}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  _multiline={true}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={model}
+                  returnKeyType="next"
+                  // onSubmitEditing={() => {
+                  //   this.focusTextInput();
+                  // }}
+                  blurOnSubmit={false}
+                  marginBottom={moderateScale(16)}
+                />
+                <Text style={styles.titletext}>Year</Text>
+                <TextField
+                  onChangeText={text => this.setState({year: text})}
+                  placeHolder={'Year'}
+                  availToEdit={false}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={year}
+                  returnKeyType="next"
+                  blurOnSubmit={false}
+                  marginBottom={moderateScale(16)}
+                />
+                <Text style={styles.titletext}>Transmission</Text>
+                <TextField
+                  onChangeText={text => this.setState({transmission: text})}
+                  placeHolder={'Transmission'}
+                  availToEdit={false}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={transmission}
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    this.focusTextInput();
+                  }}
+                  blurOnSubmit={false}
+                  marginBottom={moderateScale(16)}
+                />
+                <Text style={styles.titletext}>Fuel Type</Text>
+                <TextField
+                  onChangeText={text => this.setState({fuelType: text})}
+                  placeHolder={'Fuel Type'}
+                  availToEdit={false}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={fuelType}
+                  returnKeyType="done"
+                  blurOnSubmit={false}
+                  marginBottom={moderateScale(16)}
+                />
+                <Text style={styles.titletext}>Engine Size</Text>
+                <TextField
+                  onChangeText={text => this.setState({engineSize: text})}
+                  placeHolder={'Engine Size'}
+                  availToEdit={false}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={engineSize}
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    this.focusTextInput();
+                  }}
+                  blurOnSubmit={false}
+                  marginBottom={moderateScale(16)}
+                />
+                {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
+                  <>
+                    <Text style={styles.titletext}>Auction Type</Text>
+                    <View>
+                      <ModalDropdown
+                        ref="dropdown_2"
+                        defaultValue=""
+                        textStyle={{fontSize: 0, color: 'transparent'}}
+                        style={styles.dropdown_6}
+                        options={DEMO_OPTIONS_1}
+                        dropdownStyle={styles.dropdown_2_dropdown}
+                        disabled={true}
+                        onSelect={(idx, value) =>
+                          this._dropdown_6_onSelect(idx, value)
+                        }></ModalDropdown>
+                      <ButtonDropdown
+                        height={moderateScale(45)}
+                        width={'100%'}
+                        marginBottom={moderateScale(16)}
+                        title={auctionType}
+                        position="absolute"
+                        onclick={() => null}
+                      />
+                    </View>
+                  </>
+                )}
+                {/* {
                   (emailid.includes(ConstantUtils.EMAIL_EXTENSION))?  null :
                       <ButtonDropdown
                         height={moderateScale(45)}
@@ -641,7 +644,7 @@ class SellStep3 extends Component {
                         onclick={() => this.setState({ showDate: true })}
                       />
                 } */}
-              {/* <TextField
+                {/* <TextField
                 placeHolder={'Start Price'}
                 placeHolderTextColor={colors.darkGray}
                 onChangeText={text =>
@@ -657,99 +660,99 @@ class SellStep3 extends Component {
                 blurOnSubmit={false}
                 marginBottom={moderateScale(12)}
               /> */}
-              {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
-                <>
-                  <Text style={styles.titletext}>
-                    Reserve Price / Buy Now Price
-                  </Text>
-                  <TextField
-                    placeHolder={'Reserve Price'}
-                    placeHolderTextColor={colors.darkGray}
-                    onChangeText={text =>
-                      this.setState({
-                        reservedPrice: text.replace(/[^0-9]/g, ''),
-                      })
-                    }
-                    isPassword={false}
-                    icon={images.email_logo}
-                    height={moderateScale(55)}
-                    maxLength={12}
-                    numberpad={true}
-                    value={`€ ${reservedPrice
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
-                    returnKeyType="done"
-                    onSubmitEditing={() => {
-                      // this.focusTextInput();
-                    }}
-                    blurOnSubmit={false}
-                    marginBottom={moderateScale(16)}
-                  />
-                </>
-              )}
-              <Text style={styles.titletext}>Description</Text>
-              <TextField
-                onChangeText={text => this.setState({discription: text})}
-                placeHolder={'Description'}
-                placeHolderTextColor={colors.darkGray}
-                isPassword={false}
-                icon={images.email_logo}
-                height={moderateScale(55)}
-                value={discription}
-                _multiline={true}
-                returnKeyType="next"
-                // onSubmitEditing={() => {
-                //   this.focusTextInput();
-                // }}
-                blurOnSubmit={false}
-              />
-              <ScrollView horizontal={true}>
-                {this.state.sdkobject != null
-                  ? this.state.sdkobject.damageAreas?.map(res => {
-                      return (
-                        <View
-                          style={{
-                            flexDirection: 'column',
-                            alignContent: 'center',
-                            justifyContent: 'center',
-                            marginTop: moderateScale(20),
-                            marginLeft: moderateScale(13),
-                          }}>
-                          <Image
-                            source={
-                              res.photoUrl != ''
-                                ? {uri: res.photoUrl}
-                                : images.placeHolder
-                            }
+                {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
+                  <>
+                    <Text style={styles.titletext}>
+                      Reserve Price / Buy Now Price
+                    </Text>
+                    <TextField
+                      placeHolder={'Reserve Price'}
+                      placeHolderTextColor={colors.darkGray}
+                      onChangeText={text =>
+                        this.setState({
+                          reservedPrice: text.replace(/[^0-9]/g, ''),
+                        })
+                      }
+                      isPassword={false}
+                      icon={images.email_logo}
+                      height={moderateScale(55)}
+                      maxLength={12}
+                      numberpad={true}
+                      value={`€ ${reservedPrice
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}
+                      returnKeyType="done"
+                      onSubmitEditing={() => {
+                        // this.focusTextInput();
+                      }}
+                      blurOnSubmit={false}
+                      marginBottom={moderateScale(16)}
+                    />
+                  </>
+                )}
+                <Text style={styles.titletext}>Description</Text>
+                <TextField
+                  onChangeText={text => this.setState({discription: text})}
+                  placeHolder={'Description'}
+                  placeHolderTextColor={colors.darkGray}
+                  isPassword={false}
+                  icon={images.email_logo}
+                  height={moderateScale(55)}
+                  value={discription}
+                  _multiline={true}
+                  returnKeyType="default"
+                  // onSubmitEditing={() => {
+                  //   this.focusTextInput();
+                  // }}
+                  blurOnSubmit={false}
+                />
+                <ScrollView horizontal={true}>
+                  {this.state.sdkobject != null
+                    ? this.state.sdkobject.damageAreas?.map(res => {
+                        return (
+                          <View
                             style={{
-                              width: moderateScale(100),
-                              height: moderateScale(100),
-                              borderRadius: moderateScale(10),
-                            }}
-                          />
-                          <Text
-                            style={{
-                              fontSize: moderateScale(6),
-                              alignSelf: 'center',
-                              marginTop: moderateScale(5),
+                              flexDirection: 'column',
+                              alignContent: 'center',
+                              justifyContent: 'center',
+                              marginTop: moderateScale(20),
+                              marginLeft: moderateScale(13),
                             }}>
-                            {res.view}
-                          </Text>
-                        </View>
-                      );
-                    })
-                  : null}
-              </ScrollView>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  width: '92%',
-                  height: 50,
-                  justifyContent: 'center',
-                  marginTop: moderateScale(20),
-                  alignItems: 'center',
-                }}>
-                {/* <Button
+                            <Image
+                              source={
+                                res.photoUrl != ''
+                                  ? {uri: res.photoUrl}
+                                  : images.placeHolder
+                              }
+                              style={{
+                                width: moderateScale(100),
+                                height: moderateScale(100),
+                                borderRadius: moderateScale(10),
+                              }}
+                            />
+                            <Text
+                              style={{
+                                fontSize: moderateScale(6),
+                                alignSelf: 'center',
+                                marginTop: moderateScale(5),
+                              }}>
+                              {res.view}
+                            </Text>
+                          </View>
+                        );
+                      })
+                    : null}
+                </ScrollView>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    width: '92%',
+                    height: 50,
+                    justifyContent: 'center',
+                    marginTop: moderateScale(20),
+                    alignItems: 'center',
+                  }}>
+                  {/* <Button
                   buttonTitle={'Edit'}
                   height={moderateScale(42)}
                   borderWidth={moderateScale(1)}
@@ -766,16 +769,16 @@ class SellStep3 extends Component {
                   }}
                 /> */}
 
-                <Button
-                  title={'Submit'}
-                  titleStyle={styles.tvSubmitStyle}
-                  style={styles.btnSubmitStyle}
-                  onPress={() => {
-                    this.onSubmitData();
-                  }}
-                />
+                  <Button
+                    title={'Submit'}
+                    titleStyle={styles.tvSubmitStyle}
+                    style={styles.btnSubmitStyle}
+                    onPress={() => {
+                      this.onSubmitData();
+                    }}
+                  />
 
-                {/* <Button
+                  {/* <Button
                   buttonTitle={'Submit'}
                   height={moderateScale(42)}
                   width={width / 2}
@@ -789,9 +792,9 @@ class SellStep3 extends Component {
                     alignSelf: 'center',
                   }}
                 /> */}
+                </View>
               </View>
-            </View>
-          </ScrollView>
+            </ScrollView>
           </KeyboardAvoidingView>
         </View>
         <Toast
@@ -799,7 +802,7 @@ class SellStep3 extends Component {
           position="center"
           style={{backgroundColor: 'black', borderRadius: 5, padding: 10}}
         />
-        
+
         {showDate && (
           <DateTimePicker
             testID="dateTimePicker"
