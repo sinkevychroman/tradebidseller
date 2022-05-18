@@ -34,12 +34,12 @@ import ProgressiveImage from '../ui/progressiveImage/ProgressiveImage';
 
 const MAX_OPTIONAL_PHOTO = 17;
 
-const UploadPhotoOptionalView = (props) => {
+const UploadPhotoOptionalView = props => {
   const {sessionID, isVisible} = props;
 
   const screenData = useScreenDimensions();
 
-  const showImagePicker = (callback) => {
+  const showImagePicker = callback => {
     const options = {
       title: 'Select Avatar',
       storageOptions: {
@@ -47,7 +47,7 @@ const UploadPhotoOptionalView = (props) => {
         path: 'images',
       },
     };
-    launchImageLibrary(options, (response) => {
+    launchImageLibrary(options, response => {
       if (response.didCancel) {
         Logger('User cancelled image picker');
       } else if (response.error) {
@@ -62,7 +62,7 @@ const UploadPhotoOptionalView = (props) => {
     });
   };
 
-  const showCameraImagePicker = (callback) => {
+  const showCameraImagePicker = callback => {
     const options = {
       title: 'Select Avatar',
       storageOptions: {
@@ -70,7 +70,7 @@ const UploadPhotoOptionalView = (props) => {
         path: 'images',
       },
     };
-    launchCamera(options, (response) => {
+    launchCamera(options, response => {
       if (response.didCancel) {
         Logger('User cancelled image picker');
       } else if (response.error) {
@@ -102,7 +102,7 @@ const UploadPhotoOptionalView = (props) => {
     },
   ]; // include optional cage
 
-  const onPressItem = (item) => {
+  const onPressItem = item => {
     showImagePickerOptionAlertHandler(item);
   };
 
@@ -150,16 +150,16 @@ const UploadPhotoOptionalView = (props) => {
     );
   };
 
-  const cancelPhoto = (index) => {
+  const cancelPhoto = index => {
     ItemList[index].src = '';
     setItemList([...ItemList]);
   };
 
-  const showImagePickerOptionAlertHandler = (item) => {
-    const _callBackImagePicker = (source) => {
+  const showImagePickerOptionAlertHandler = item => {
+    const _callBackImagePicker = source => {
       let itemList = [...ItemList];
       var count = 0;
-      itemList.forEach((value) => {
+      itemList.forEach(value => {
         if (value.id === item.id) {
           value.src = source.uri;
         }
@@ -203,7 +203,7 @@ const UploadPhotoOptionalView = (props) => {
   };
 
   const uploadAllPhoto = () => {
-    ItemList.filter((item) => item.src && !item.isUploaded).forEach((item) => {
+    ItemList.filter(item => item.src && !item.isUploaded).forEach(item => {
       item.isUploading = true;
       setItemList([...ItemList]);
 
@@ -224,17 +224,17 @@ const UploadPhotoOptionalView = (props) => {
       };
 
       fetch(REACT_APP_IMG_URL_UPLOAD_USER.replace(/\/$/, ''), requestOptions)
-        .then((response) => {
+        .then(response => {
           if (response.status === 200) {
             return response.json();
           }
         })
-        .then((result) => {
+        .then(result => {
           item.isUploading = false;
           item.isUploaded = true;
           setItemList([...ItemList]);
         })
-        .catch((error) => {
+        .catch(error => {
           Logger('error', error);
           item.isUploading = false;
           setItemList([...ItemList]);
@@ -269,7 +269,7 @@ const UploadPhotoOptionalView = (props) => {
     const itemPhoto = [];
     isVisible &&
       NativeCall.getInspectionProgress(sessionID)
-        .then((res) => {
+        .then(res => {
           Logger('UPLOAD', res);
           [...res.userPhotos].forEach((item, index) => {
             Logger(item);
@@ -292,7 +292,7 @@ const UploadPhotoOptionalView = (props) => {
 
           setItemList([...itemPhoto]);
         })
-        .catch((err) => {
+        .catch(err => {
           Logger(err);
         });
   }, [isVisible]);
