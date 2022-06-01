@@ -1,16 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {
-  FlatList,
-  View,
-  StyleSheet,
-  Text,
-  Dimensions,
-  Image,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  ScrollView,
-} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 const ButtonTypeView = (key, callback, isReverse) => {
   // const {key = 'NOT_FOUND'} = props;
@@ -18,12 +8,12 @@ const ButtonTypeView = (key, callback, isReverse) => {
   const height = 40;
   const colorDefaultText = '#858585';
 
-  var YES_COLOR = '#F50702';
+  var YES_COLOR = '#3ECE8A';
   var NO_COLOR = '#3ECE8A';
 
   if (isReverse) {
     YES_COLOR = '#3ECE8A';
-    NO_COLOR = '#F50702';
+    NO_COLOR = '#3ECE8A';
   }
 
   const styles = StyleSheet.create({
@@ -37,6 +27,7 @@ const ButtonTypeView = (key, callback, isReverse) => {
       flex: 1,
       height: height,
       borderRadius: borderRadius,
+      backgroundColor: '#F2F3F4',
     },
   });
 
@@ -51,7 +42,7 @@ const ButtonTypeView = (key, callback, isReverse) => {
       style={{
         flexDirection: 'row',
         flex: 3,
-        backgroundColor: '#F2F3F4',
+        // backgroundColor: '#F2F3F4',
         borderRadius: borderRadius,
         width: 300,
       }}>
@@ -69,7 +60,10 @@ const ButtonTypeView = (key, callback, isReverse) => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
+      <View style={{height: height, width: 5, backgroundColor: 'white'}} />
+
+      {/* <TouchableOpacity
+        visible={true}
         style={styles.container}
         onPress={() => setStateButton(null)}>
         <View
@@ -79,7 +73,7 @@ const ButtonTypeView = (key, callback, isReverse) => {
           ]}>
           <Text style={{color: colorDefaultText}}>N/A</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <TouchableOpacity
         style={styles.container}

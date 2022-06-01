@@ -4,18 +4,16 @@ import React, {useRef} from 'react';
 import {
   StyleSheet,
   View,
-  Button,
-  Platform,
   Dimensions,
   Image,
   TouchableOpacity,
   Text,
+  Alert,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 import PaveGirdPhoto from './PhotoGridVIew';
 
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 import {Logger} from '../../utils/AppLogger';
 const screenWidth = Math.round(Dimensions.get('window').width);
@@ -117,7 +115,25 @@ const UploadPhotoOptional = (props) => {
         <TouchableOpacity
           style={[styles.btnUpload, {backgroundColor: '#646465'}]}
           onPress={() => {
-            props.cancelled();
+            Alert.alert(
+              //title
+              'Are you sure?',
+              //body
+              'Make sure all your photos must finish uploading.\nDo you wish to leave?',
+              [
+                {
+                  text: 'Leave',
+                  onPress: () => {
+                    props.cancelled();
+                  },
+                },
+                {
+                  text: 'Stay',
+                  onPress: () => {},
+                },
+              ],
+              {cancelable: true},
+            );
           }}>
           <Text style={styles.textButton}>Cancel</Text>
         </TouchableOpacity>

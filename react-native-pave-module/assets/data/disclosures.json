@@ -1,7 +1,7 @@
 {
   "VEHICLE_DISCLOSURES": [
-      {
-      "label": "VLC Present",
+    {
+      "label": "Accident Repair >€3,000",
       "description": "",
       "arbitration": "regular",
       "input_type": "button",
@@ -14,23 +14,13 @@
       "input_type": "button",
       "list": "null"
     },
-
     {
-      "label": "Ex-Rental",
+      "label": "Ex-Rental / Taxi",
       "description": "",
       "arbitration": "regular",
       "input_type": "button",
       "list": "null"
     },
-
-    {
-      "label": "Warning Lights On",
-      "description": "",
-      "arbitration": "regular",
-      "input_type": "button",
-      "list": "null"
-    },
-
     {
       "label": "Fully Operational Clutch",
       "description": "",
@@ -38,9 +28,22 @@
       "input_type": "button",
       "list": "null"
     },
-
     {
-      "label": "Accident Repair >€3,000",
+      "label": "Full Service History",
+      "description": "",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "VLC Present",
+      "description": "",
+      "arbitration": "regular",
+      "input_type": "button",
+      "list": "null"
+    },
+    {
+      "label": "Warning Lights On",
       "description": "",
       "arbitration": "regular",
       "input_type": "button",

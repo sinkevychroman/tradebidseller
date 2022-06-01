@@ -119,7 +119,7 @@ export function getTutorial(cage) {
     case CAGES.REAR_LEFT.id:
       return 'Next, move closer to the vehicle and fill your camera frame at a 45-degree angle of the rear passenger side, as shown in this illustration.';
     case CAGES.WIND_SHIELD.id:
-      return 'Move to the front of the vehicle and capture the profile according to this illustration. Please fit the vehicle within these lines.';
+      return 'Move close to the windshield and capture it according to this illustration. Please fit the windshield within these lines.';
     case CAGES.TIRE.id:
       return "Move to the front driver tire and capture the tire's profile according to this illustration.";
     default:

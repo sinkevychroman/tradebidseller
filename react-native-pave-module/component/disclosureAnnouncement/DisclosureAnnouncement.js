@@ -10,7 +10,6 @@ import {
   Platform,
   Modal,
 } from 'react-native';
-import PropTypes, {func} from 'prop-types';
 
 import ButtonTypeView from '../ui/radioButtonType/RadioButtonType';
 
@@ -23,6 +22,8 @@ import TextInputView from '../ui/textInputType/TextInputType';
 import useScreenDimensions from '../../hook/UseScreenDimensions';
 
 import SessionUploadManager from '../../model/SessionUpload';
+
+import UploadPhotoOptionalView from '../../component/uploadPhotoOptional/UploadPhotoOptional';
 
 import EventBus from '../../model/EventBus';
 import {Logger} from '../../utils/AppLogger';
@@ -176,6 +177,9 @@ function TableView(props) {
     // Logger(dataTable);
   }, [dataTable]);
 
+  const [isUploadPhotoOptionalVisible, setIsUploadPhotoOptionalVisible] =
+    useState(false);
+
   const MainTitleView = (text) => {
     const styles = StyleSheet.create({
       MainTitle: {
@@ -253,13 +257,13 @@ function TableView(props) {
     const key = `${value.label}`
       .toUpperCase()
       .replace(/ /g, '_')
-      .replace(/'/g, '')
-      .replace(/\//g, '_')
-      .replace(/-/g, '')
-      .replace(/,/g, '')
-      .replace(/>/g, '')
-      .replace(/€/g, '');
-    // Logger(key);
+      .replace(/'/g, '');
+    // .replace(/\//g, '_')
+    // .replace(/-/g, '');
+    // .replace(/,/g, '')
+    // .replace(/>/g, '')
+    // .replace(/€/g, '');
+    Logger(key);
 
     function onValueChange(keyDeclaration, val) {
       dataTable[keyDeclaration] = val;
@@ -356,6 +360,15 @@ function TableView(props) {
           : 10,
         paddingHorizontal: 22,
       }}>
+      <UploadPhotoOptionalView
+        sessionID={sessionID}
+        isVisible={isUploadPhotoOptionalVisible}
+        hideModal={() => {
+          setIsUploadPhotoOptionalVisible(false);
+          // setIsPause(false);
+          // setIsContinue(true);
+        }}
+      />
       <Header
         style={{left: marginLeftRight}}
         title={title}
@@ -399,29 +412,38 @@ function TableView(props) {
           {_rendingTable(data)}
         </ScrollView>
       </View>
-      <FooterButton
-        style={{position: 'absolute'}}
-        _onCLickSubmitOrSkipButton={(isSubmit) => {
-          _callApiUpdateDisclosureAnnouncement(isSubmit);
-          onSkipOrSubmit();
-        }}
-      />
+      <View
+        style={{
+          position: 'absolute',
+          bottom: -45,
+          flexDirection: 'row',
+          alignSelf: 'center',
+        }}>
+        <FooterButton
+          _onCLickSubmitOrSkipButton={(isSubmit) => {
+            _callApiUpdateDisclosureAnnouncement(isSubmit);
+            onSkipOrSubmit();
+          }}
+        />
+        <TextButton
+          style={{right: -12}}
+          backgroundColor={colors.greenButton}
+          title={'ADD IMAGE'}
+          onPress={() => {
+            setIsUploadPhotoOptionalVisible(true);
+          }}
+        />
+      </View>
     </View>
   );
 }
 
 const TableViewDeclaration = (props) => {
-  // const [screenData, setsScreenData] = useState(useScreenDimensions());
-
-  // const screenWidth = screenData.width;
-  // const screenHeight = screenData.height;
-
   const {onDoneDeclaration, sessionID} = props;
 
   const sessionUpload =
     SessionUploadManager.getInstance().getSessionUpload(sessionID);
   sessionUpload.setCheckDeclare(false);
-  // console.log(sessionUpload);
 
   const dataDisclosure = require('../../assets/data/disclosures.json');
 
@@ -558,8 +580,26 @@ const TableViewDeclaration = (props) => {
 function TextButton(props) {
   const {title, backgroundColor} = props;
 
+  const TitleText = (
+    <Text style={{fontSize: 13, fontWeight: '400', color: 'white'}}>
+      {title}
+    </Text>
+  );
+
+  const getView = (title) => {
+    switch (title) {
+      case 'ADD IMAGE':
+        return (
+          <Image
+            source={require('../../assets/icon-add.png')}
+            style={{height: 30, width: 30, tintColor: 'white'}}></Image>
+        );
+      default:
+        return TitleText;
+    }
+  };
   return (
-    <TouchableOpacity {...props} style={{}}>
+    <TouchableOpacity {...props}>
       <View
         {...props}
         style={{
@@ -571,9 +611,7 @@ function TextButton(props) {
           backgroundColor: backgroundColor,
           // flex: 2,
         }}>
-        <Text style={{fontSize: 13, fontWeight: '400', color: 'white'}}>
-          {title}
-        </Text>
+        {getView(title)}
       </View>
     </TouchableOpacity>
   );

@@ -1,12 +1,13 @@
 export const DataSubmitDisclosure = (type) => {
   return {
     VEHICLE_DISCLOSURES: {
-      ACCIDENT_REPAIR_3000: type['ACCIDENT_REPAIR_3000'],
+      'ACCIDENT_REPAIR_>€3,000': type[`ACCIDENT_REPAIR_>€3,000`],
       ALL_KEYS_PRESENT: type['ALL_KEYS_PRESENT'],
-      EXRENTAL: type['EXRENTAL'],
+      'EX-RENTAL_/_TAXI': type['EX-RENTAL_/_TAXI'],
       FULLY_OPERATIONAL_CLUTCH: type['FULLY_OPERATIONAL_CLUTCH'],
       VLC_PRESENT: type['VLC_PRESENT'],
       WARNING_LIGHTS_ON: type['WARNING_LIGHTS_ON'],
+      FULL_SERVICE_HISTORY: type['FULL_SERVICE_HISTORY'],
     },
   };
 };

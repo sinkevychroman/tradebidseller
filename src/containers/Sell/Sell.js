@@ -666,9 +666,17 @@ class Sell extends Component {
                 />
 
                 <TextField
-                  onChangeText={text =>
-                    this.setState({milageKM: text.replace(/[^0-9]/g, '')})
-                  }
+                  onChangeText={text => {
+                    let replacedText = text.replace(/[^0-9]/g, '');
+                    if (
+                      replacedText.charAt(0) === '0' &&
+                      replacedText.length > 0
+                    ) {
+                      replacedText = '0';
+                    }
+
+                    this.setState({milageKM: replacedText});
+                  }}
                   placeHolder={'Mileage (KM)'}
                   numberpad={true}
                   placeHolderTextColor={colors.darkGray}
