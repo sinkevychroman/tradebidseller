@@ -122,8 +122,8 @@ class SellStep3 extends Component {
     // else if (startPrice.length === 0 && startPrice < 1) {
     //   FunctionUtils.showToast('Please enter Start Price');
     // }
-    else if (reservedPrice.length === 0 && reservedPrice < 1) {
-      FunctionUtils.showToast('Please enter Reserved Price');
+    else if (reservedPrice.length === 0 && reservedPrice <= 1) {
+      FunctionUtils.showToast('Reserve price Must be greater than 1');
     } else if (parseInt(startPrice) >= parseInt(reservedPrice)) {
       FunctionUtils.showToast(
         'Please enter start price less than reserved price',

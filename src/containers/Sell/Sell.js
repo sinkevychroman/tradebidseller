@@ -234,7 +234,7 @@ class Sell extends Component {
     if (isConnected) {
       this.setState({
         isLoading: false,
-        isVehicleVerifyed: false,
+        //isVehicleVerifyed: false,
         showVehicleVerifyed: false,
         isActivityIndicator: true,
       });
@@ -377,8 +377,8 @@ class Sell extends Component {
     // else if (startPrice.length === 0 && startPrice < 1) {
     //   FunctionUtils.showToast('Please enter Start Price');
     // }
-    else if (reservedPrice.length === 0 || reservedPrice < 1) {
-      FunctionUtils.showToast('Please enter reserved price');
+    else if (reservedPrice.length === 0 || reservedPrice <= 1) {
+      FunctionUtils.showToast('Reserve price Must be greater than 1');
     } else if (discription.length === 0) {
       FunctionUtils.showToast('Please enter Description');
     } else {
