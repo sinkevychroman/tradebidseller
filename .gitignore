@@ -57,3 +57,6 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+*.aab
+*.apk
+output-metadata.json
