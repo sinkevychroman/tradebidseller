@@ -26,7 +26,7 @@ import {Logger} from '../../utils/AppLogger';
 import ProgressiveImage from '../ui/progressiveImage/ProgressiveImage';
 import GuideRotateView from '../../component/ui/guideRotateView/GuideRotateView.js';
 
-const UserAddedDamagesView = (props) => {
+const UserAddedDamagesView = props => {
   const [exteriorsAnnotatedData, setExteriorsAnnotatedData] = useState(null);
   const [isLandscapeState, setLandscapeState] = useState(isLandscape());
   const [addDamagesViewVisible, setAddDamagesViewVisible] = useState(false);
@@ -62,8 +62,8 @@ const UserAddedDamagesView = (props) => {
     };
 
     fetch(GET_EXTERIORS_ANNOTATED_URL + props.sessionKey, requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
+      .then(response => response.text())
+      .then(result => {
         Logger('UserAddedDamages response', JSON.parse(result));
         const resData = JSON.parse(result);
 
@@ -71,7 +71,11 @@ const UserAddedDamagesView = (props) => {
         var frontItem = null;
         var passengerSideItem = null;
         var rearItem = null;
-        resData.annotatedImages.forEach((element) => {
+        var odometer = null;
+        resData.annotatedImages.forEach(element => {
+          if (element.photoCode === '03') {
+            odometer = element;
+          }
           if (element.photoCode === '04') {
             driverSideItem = element;
           }
@@ -90,12 +94,13 @@ const UserAddedDamagesView = (props) => {
           frontItem,
           passengerSideItem,
           rearItem,
+          odometer,
         ];
         resData.annotatedImages = sortedArray;
 
         setExteriorsAnnotatedData(resData);
       })
-      .catch((error) => Logger('error', error));
+      .catch(error => Logger('error', error));
   }
 
   Logger('UserAddedDamagesView props', props);

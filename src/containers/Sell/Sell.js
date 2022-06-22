@@ -234,7 +234,7 @@ class Sell extends Component {
     if (isConnected) {
       this.setState({
         isLoading: false,
-        //isVehicleVerifyed: false,
+        isVehicleVerifyed: false,
         showVehicleVerifyed: false,
         isActivityIndicator: true,
       });
@@ -257,13 +257,6 @@ class Sell extends Component {
                 VehicleDetailsResult != null
               ) {
                 let {chassisNo} = VehicleDetailsResult;
-                // if (chassisNo !== undefined) {
-                //   this.setState({isLoading: false});
-                //   // this.getFullChasisNumber();
-                // } else {
-                //   this.setState({isLoading: false, showVehicleVerifyed: true});
-                //   FunctionUtils.showToast(strings.vehical_error);
-                // }
 
                 if (chassisNo !== undefined) {
                   this.setState({
