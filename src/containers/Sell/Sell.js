@@ -83,6 +83,7 @@ class Sell extends Component {
       showDate: false,
       emailid: '',
       isActivityIndicator: false,
+      appState: AppState.currentState,
     };
   }
 
@@ -90,24 +91,8 @@ class Sell extends Component {
     //this.sessionCheck();
     Smartlook.setupAndStartRecording(WebService.KEY_SMARTLOOK);
 
-    switch (Platform.OS) {
-      case 'ios':
-        requestMultiple([PERMISSIONS.IOS.CAMERA, PERMISSIONS.IOS.MICROPHONE]).then((statuses) => {
-          console.log('Camera', statuses[PERMISSIONS.IOS.CAMERA]);
-          console.log('MICROPHONE', statuses[PERMISSIONS.IOS.MICROPHONE]);
-        });
-        break;
-
-      case 'android':
-        requestMultiple([PERMISSIONS.ANDROID.CAMERA, PERMISSIONS.ANDROID.RECORD_AUDIO]).then((statuses) => {
-          console.log('Camera', statuses[PERMISSIONS.ANDROID.CAMERA]);
-          console.log('MICROPHONE', statuses[PERMISSIONS.ANDROID.RECORD_AUDIO]);
-        });
-        break;
-
-      default: break;
-
-    }
+    this.configureAppState();
+    this.requestPermissions();
 
     this.didFocusListener = this.props.navigation.addListener(
       'didFocus',
@@ -130,6 +115,50 @@ class Sell extends Component {
     }
   }
 
+  requestPermissions() {
+    switch (Platform.OS) {
+      case 'ios':
+        requestMultiple([
+          PERMISSIONS.IOS.CAMERA,
+          PERMISSIONS.IOS.MICROPHONE,
+        ]).then(statuses => {
+          console.log('Camera', statuses[PERMISSIONS.IOS.CAMERA]);
+          console.log('MICROPHONE', statuses[PERMISSIONS.IOS.MICROPHONE]);
+        });
+        break;
+
+      case 'android':
+        requestMultiple([
+          PERMISSIONS.ANDROID.CAMERA,
+          PERMISSIONS.ANDROID.RECORD_AUDIO,
+        ]).then(statuses => {
+          console.log('Camera', statuses[PERMISSIONS.ANDROID.CAMERA]);
+          console.log('MICROPHONE', statuses[PERMISSIONS.ANDROID.RECORD_AUDIO]);
+        });
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  configureAppState() {
+    this.appStateSubscription = AppState.addEventListener(
+      'change',
+      nextAppState => {
+        if (
+          this.state.appState.match(/inactive|background/) &&
+          nextAppState === 'active'
+        ) {
+          console.log('App has come to the foreground!');
+
+          this.sessionCheck();
+        }
+        this.setState({appState: nextAppState});
+      },
+    );
+  }
+
   setBackListener() {
     this.backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
@@ -148,7 +177,8 @@ class Sell extends Component {
     if (Platform.OS === 'android') {
       this.backHandler.remove();
     }
-    // this.appStateSubscription.remove();
+
+    this.appStateSubscription.remove();
   }
   handleBackButtonClick() {
     if (Actions.currentScene === ConstantUtils.SELL) {
@@ -178,76 +208,6 @@ class Sell extends Component {
     );
   }
 
-  // async sessionCheck() {
-  //   let token1 = await AsyncStorage.getItem(ConstantUtils.USER_TOKEN);
-  //   const isConnected = await NetworkUtils.isNetworkAvailable();
-  //   if (isConnected) {
-  //     // const token1 = await AsyncStorage.getItem(constantUtils.USER_TOKEN);
-  //     this.setState({isLoading: true});
-  //     fetch(`${WebService.BASE_URL}api/tokencheck`, {
-  //       method: 'POST',
-  //       headers: {
-  //         Authorization: `Bearer ${token1}`,
-  //       },
-  //       body: null,
-  //     })
-  //       .then(response => response.json())
-  //       .then(json => {
-  //         console.log('temp api response', json);
-  //         if (json.status == 'success') {
-  //           this.setState({isLoading: false});
-  //         } else {
-  //           // FunctionUtils.showToast(sessioncheckdata.message);
-  //           this.setState({isLoading: false});
-
-  //           // Alert.alert(
-  //           //   ConstantUtils.TRADEBID,
-  //           //   ConstantUtils.LOGINSESSIONEXPIRE,
-  //           //   [
-  //           //     {
-  //           //       text: ConstantUtils.LOGINAGAIN,
-  //           //       onPress: () => {
-  //           //         console.log('OK Pressed');
-  //           //         this.cleanData();
-  //           //       },
-  //           //     },
-  //           //   ],
-  //           // );
-  //         }
-  //       })
-  //       .catch(error => {
-  //         console.error(error);
-  //         this.setState({isLoading: false});
-
-  //         // Alert.alert(
-  //         //   ConstantUtils.TRADEBID,
-  //         //   ConstantUtils.LOGINSESSIONEXPIRE,
-  //         //   [
-  //         //     {
-  //         //       text: ConstantUtils.LOGINAGAIN,
-  //         //       onPress: () => {
-  //         //         console.log('OK Pressed');
-  //         //         this.cleanData();
-  //         //         Actions.reset(ConstantUtils.LOGIN);
-  //         //       },
-  //         //     },
-  //         //   ],
-  //         // );
-  //       });
-  //   } else {
-  //     // Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.LOGINSESSIONEXPIRE, [
-  //     //   {
-  //     //     text: ConstantUtils.LOGINAGAIN,
-  //     //     onPress: () => {
-  //     //       console.log('OK Pressed');
-  //     //       this.cleanData();
-  //     //       Actions.reset(ConstantUtils.LOGIN);
-  //     //     },
-  //     //   },
-  //     // ]);
-  //     FunctionUtils.showToast(strings.internetNotAvail);
-  //   }
-  // }
   async getRegisterVehicleDetail() {
     console.log(TAG, 'getRegisterVehicleDetail');
     const isConnected = await NetworkUtils.isNetworkAvailable();
@@ -526,6 +486,29 @@ class Sell extends Component {
       });
     }
   };
+
+  async sessionCheck() {
+    this.props.checkSession(null).then(async () => {
+      const {sessioncheckdata, msgError, error} = this.props;
+      if (sessioncheckdata && sessioncheckdata.status === 'success') {
+        console.log(
+          'TOKEN IS VALID, SUCCESS #################################################################',
+        );
+      } else {
+        FunctionUtils.showToast(sessioncheckdata.message);
+        Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.LOGINSESSIONEXPIRE, [
+          {
+            text: ConstantUtils.LOGINAGAIN,
+            onPress: () => {
+              console.log('OK Pressed');
+              this.cleanData();
+              Actions.reset(ConstantUtils.LOGIN);
+            },
+          },
+        ]);
+      }
+    });
+  }
 
   render() {
     const colorScheme = Appearance.getColorScheme();
