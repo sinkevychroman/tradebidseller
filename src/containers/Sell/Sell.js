@@ -54,6 +54,7 @@ import {isTesting} from '../../utils/globals';
 import WebService from '../../utils/WebService';
 import * as globals from '../../utils/globals';
 import Smartlook from 'smartlook-react-native-wrapper';
+import {request, requestMultiple, PERMISSIONS} from 'react-native-permissions';
 
 const DEMO_OPTIONS_1 = ['Buy Now', 'Auction'];
 
@@ -88,6 +89,25 @@ class Sell extends Component {
   async componentDidMount() {
     //this.sessionCheck();
     Smartlook.setupAndStartRecording(WebService.KEY_SMARTLOOK);
+
+    switch (Platform.OS) {
+      case 'ios':
+        requestMultiple([PERMISSIONS.IOS.CAMERA, PERMISSIONS.IOS.MICROPHONE]).then((statuses) => {
+          console.log('Camera', statuses[PERMISSIONS.IOS.CAMERA]);
+          console.log('MICROPHONE', statuses[PERMISSIONS.IOS.MICROPHONE]);
+        });
+        break;
+
+      case 'android':
+        requestMultiple([PERMISSIONS.ANDROID.CAMERA, PERMISSIONS.ANDROID.RECORD_AUDIO]).then((statuses) => {
+          console.log('Camera', statuses[PERMISSIONS.ANDROID.CAMERA]);
+          console.log('MICROPHONE', statuses[PERMISSIONS.ANDROID.RECORD_AUDIO]);
+        });
+        break;
+
+      default: break;
+
+    }
 
     this.didFocusListener = this.props.navigation.addListener(
       'didFocus',
