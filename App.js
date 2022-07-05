@@ -15,6 +15,17 @@ import {
   PreferenceKey,
 } from './src/utils';
 
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn: 'https://90478d7b10244b948c11e7ad3ecb29da@o1210681.ingest.sentry.io/6549198',
+  // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+  // We recommend adjusting this value in production.
+  tracesSampleRate: 1.0,
+  enableAutoSessionTracking: true,
+  sessionTrackingIntervalMillis: 5000,
+});
+
 //Bellow shows you logs in console in  the development mode
 const loggerMiddleware = createLogger({
   predicate: (getState, action) => __DEV__,
@@ -26,7 +37,7 @@ function configureStore(initialState) {
 }
 const store = configureStore({}); //passing the store of the redux using provider to entire app
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,3 +83,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default Sentry.wrap(App);

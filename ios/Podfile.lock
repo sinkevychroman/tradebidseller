@@ -404,8 +404,14 @@ PODS:
   - RNScreens (3.10.2):
     - React-Core
     - React-RCTImage
+  - RNSentry (4.1.0):
+    - React-Core
+    - Sentry (= 7.18.1)
   - RNSVG (12.1.1):
     - React
+  - Sentry (7.18.1):
+    - Sentry/Core (= 7.18.1)
+  - Sentry/Core (7.18.1)
   - Smartlook (1.8.6)
   - smartlook-react-native-bridge (1.2.5):
     - React
@@ -470,6 +476,7 @@ DEPENDENCIES:
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNSVG (from `../node_modules/react-native-svg`)
   - smartlook-react-native-bridge (from `../node_modules/smartlook-react-native-wrapper`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -488,6 +495,7 @@ SPEC REPOS:
     - JWT
     - nanopb
     - PromisesObjC
+    - Sentry
     - Smartlook
     - SQLite.swift
     - SSZipArchive
@@ -593,6 +601,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   smartlook-react-native-bridge:
@@ -662,7 +672,9 @@ SPEC CHECKSUMS:
   RNPermissions: 34d678157c800b25b22a488e4d8babb57456e796
   RNReanimated: 7338a9a385dac045c9ee575a502a86d61ae8ba5d
   RNScreens: d6da2b9e29cf523832c2542f47bf1287318b1868
+  RNSentry: d27112c8fcb77c52a42c3fffb796193c333ee562
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
+  Sentry: 2d70348d6247a29702a8317e710c5ba890672df5
   Smartlook: e6da069a724e301d3ddb2688b8d23c0fffab1c7f
   smartlook-react-native-bridge: dfdaca7503e637f3e6cf7fb6d0b849dac7385eca
   SQLite.swift: 903bfa3bc9ab06345fdfbb578e34f47cfcf417da

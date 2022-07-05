@@ -14,4 +14,6 @@ export default WebService = {
   TOKEN_CHECK: 'api/tokencheck',
   KEY_SMARTLOOK: '4e109648e1441c1145e6afda96457ecc3cc7a682',
   // KEY_SMARTLOOK: "dcaee3e9dff723a6fad7a7bf9e5568763c67641d",  // Test Vishal Account
+  SENTRY_DNS:
+    'https://3a57e892727f42058d93be5dc80016ea@o1210681.ingest.sentry.io/6346488',
 };
