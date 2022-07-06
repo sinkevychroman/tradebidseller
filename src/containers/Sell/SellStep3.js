@@ -168,7 +168,7 @@ class SellStep3 extends Component {
   //       }
   //     });
   //   } else {
-  //     FunctionUtils.showToast(strings.internetNotAvail);
+  //     FunctionUtils.showToast(strings.INTERNET_CONNECTION);
   //   }
   // }
   dataStore = async () => {
@@ -256,7 +256,7 @@ class SellStep3 extends Component {
       });
     } else {
       this.setState({isLoading: false});
-      FunctionUtils.showToast(strings.internetNotAvail);
+      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
     }
   };
 

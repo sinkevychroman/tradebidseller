@@ -1,6 +1,6 @@
 export default (AppString = {
   //Common
-  INTERNET_CONNECTION: 'Please Checked Your Internet Connections.',
+  INTERNET_CONNECTION: 'Please Check Your Internet Connections.',
   no_connection: 'Please Checked Your Internet Connections.',
   APP_NAME: 'Tradebid',
   appLogoutMsg: 'Are you sure want to logout Tradebid app?',

@@ -55,10 +55,10 @@ class Login extends Component {
       isLoading: false,
       latitude: 0,
       longitude: 0,
-      email: 'test17.auctionsoftware+04@gmail.com',
-      password: '123456789',
-      //email: '',
-      //password: '',
+      //email: 'test17.auctionsoftware+04@gmail.com',
+      //password: '123456789',
+      email: '',
+      password: '',
       hideShowPass: true,
       isRemember: false,
     };
@@ -195,7 +195,7 @@ class Login extends Component {
       });
     } else {
       this.setState({isLoading: false});
-      FunctionUtils.showToast(strings.internetNotAvail);
+      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
     }
   }
 
