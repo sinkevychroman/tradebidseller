@@ -8,13 +8,8 @@ import {Provider} from 'react-redux';
 import {createLogger} from 'redux-logger';
 import appReducer from './src/redux/reducers/index';
 import * as globals from './src/utils/globals';
-import {
-  FunctionUtils,
-  NetworkUtils,
-  PreferenceManager,
-  PreferenceKey,
-} from './src/utils';
-
+import {FunctionUtils, NetworkUtils, PreferenceKey} from './src/utils';
+import PreferenceManager from './src/utils/PreferenceManager';
 import * as Sentry from '@sentry/react-native';
 
 Sentry.init({
@@ -56,6 +51,7 @@ class App extends Component {
     var user_token = await PreferenceManager.getPreferenceValue(
       PreferenceKey.USER_TOKEN,
     );
+
     console.log('token====>', user_token);
     if (user_token == null || user_token == '' || user_token == undefined) {
       globals.isLoggedIn = false;

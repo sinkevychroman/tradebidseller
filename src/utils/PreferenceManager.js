@@ -7,14 +7,19 @@ class PreferenceManager {
   }
 
   static async getPreferenceValue(key) {
-    return await AsyncStorage.getItem(key);
+    try {
+      return await AsyncStorage.getItem(key);
+    } catch (e) {
+      console.log('qqweqwq', e.message);
+      return '';
+    }
   }
 
   static async getPreference(key) {
     try {
-      return await AsyncStorage.getItem(key)
+      return await AsyncStorage.getItem(key);
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   }
 

@@ -1,7 +1,7 @@
 export default WebService = {
   // Live
   //BASE_URL: 'https://trade-bid.ie/',
-  // SWEEP_URL: 'https://sweep-api-dev.herokuapp.com/history-check?',
+  //SWEEP_URL: 'https://sweep-api-dev.herokuapp.com/history-check?',
   // QA
   BASE_URL: 'https://tradebid.ecommerce.auction/',
   SWEEP_URL: 'https://tradebid-historycheck-dev.herokuapp.com/history-check?',

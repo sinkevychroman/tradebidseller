@@ -56,7 +56,7 @@ class Login extends Component {
       latitude: 0,
       longitude: 0,
       //email: 'test17.auctionsoftware+04@gmail.com',
-      //password: '123456789',
+      // password: '123456789',
       email: '',
       password: '',
       hideShowPass: true,

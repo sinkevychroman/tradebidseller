@@ -59,6 +59,10 @@ import {request, requestMultiple, PERMISSIONS} from 'react-native-permissions';
 const DEMO_OPTIONS_1 = ['Buy Now', 'Auction'];
 
 const TAG = '==:== Sell :';
+
+function isValidFunction(func) {
+  return func && typeof func === 'function';
+}
 class Sell extends Component {
   constructor(props) {
     super(props);
@@ -85,6 +89,8 @@ class Sell extends Component {
       isActivityIndicator: false,
       appState: AppState.currentState,
     };
+
+    this.handleAppStateChange = this.handleAppStateChange.bind(this);
   }
 
   async componentDidMount() {
@@ -113,6 +119,19 @@ class Sell extends Component {
         reservedPrice: '2',
       });
     }
+  }
+
+  handleAppStateChange(nextAppState) {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === 'active' &&
+      this.state.appState !== 'active'
+    ) {
+      console.log('App has come to the foreground!');
+
+      this.sessionCheck();
+    }
+    this.setState({appState: nextAppState});
   }
 
   requestPermissions() {
@@ -145,17 +164,7 @@ class Sell extends Component {
   configureAppState() {
     this.appStateSubscription = AppState.addEventListener(
       'change',
-      nextAppState => {
-        if (
-          this.state.appState.match(/inactive|background/) &&
-          nextAppState === 'active'
-        ) {
-          console.log('App has come to the foreground!');
-
-          this.sessionCheck();
-        }
-        this.setState({appState: nextAppState});
-      },
+      this.handleAppStateChange,
     );
   }
 
@@ -173,13 +182,14 @@ class Sell extends Component {
     // return false;
   };
 
-  UNSAFE_componentWillUnmount() {
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange);
+
     if (Platform.OS === 'android') {
       this.backHandler.remove();
     }
-
-    this.appStateSubscription.remove();
   }
+
   handleBackButtonClick() {
     if (Actions.currentScene === ConstantUtils.SELL) {
       BackHandler.exitApp();
