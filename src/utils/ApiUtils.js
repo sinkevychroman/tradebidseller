@@ -1,77 +1,85 @@
-import constantUtils from "./ConstantUtils";
-import WebService from "./WebService";
-import functionUtils from "./FunctionUtils";
+import constantUtils from './ConstantUtils';
+import WebService from './WebService';
+import functionUtils from './FunctionUtils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const TAG = "ApiUtils";
+const TAG = 'ApiUtils';
 
 class ApiUtils {
   static headers() {
     return {
-      "Content-Type": "multipart/form-data",
+      'Content-Type': 'multipart/form-data',
     };
   }
 
   static headersForPav() {
     return {
-      "API-KEY": "799c70fd-9be0-465d-89e3-7230de7ec9d3",
-      "Content-Type": "application/json",
+      'API-KEY': '799c70fd-9be0-465d-89e3-7230de7ec9d3',
+      'Content-Type': 'application/json',
     };
   }
 
   static XDomain(domain) {
     return {
-      Accept: "application/json",
-      "Content-Type": "multipart/form-data",
-      "X-DOMAIN": domain,
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+      'X-DOMAIN': domain,
     };
   }
 
   static headertoken = async () => {
     const token = await AsyncStorage.getItem(constantUtils.USER_TOKEN);
     return {
-      "Content-Type": "multipart/form-data",
-      "Authorization": `Bearer ${token}`
-    }
-  }
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`,
+    };
+  };
+
+  static headerTokenAuth = async () => {
+    const token = await AsyncStorage.getItem(constantUtils.USER_TOKEN);
+    return {
+      'Content-Type': 'multipart/form-data',
+      authorization: `Bearer ${token}`,
+    };
+  };
 
   static get(route) {
-    return this.webserviceExplorer(route, null, "GET");
+    return this.webserviceExplorer(route, null, 'GET');
   }
 
   static getExAPIData(fullUrl) {
-    return this.webserviceExplorerExApi(fullUrl, null, "GET");
+    return this.webserviceExplorerExApi(fullUrl, null, 'GET');
   }
 
   static postExAPIData(params) {
-    return this.webserviceExplorerPAVExApi(params, null, "POST");
+    return this.webserviceExplorerPAVExApi(params, null, 'POST');
   }
 
   static getWithToken(route, token) {
-    return this.webserviceWithToken(route, null, token, "GET");
+    return this.webserviceWithToken(route, null, token, 'GET');
   }
 
   static getWithTokenPaginationList(route, token) {
-    return this.webserviceWithTokenForPagination(route, null, token, "GET");
+    return this.webserviceWithTokenForPagination(route, null, token, 'GET');
   }
 
   static put(route, params) {
-    return this.webserviceExplorer(route, params, "PUT");
+    return this.webserviceExplorer(route, params, 'PUT');
   }
 
   static post(route, params) {
-    return this.webserviceExplorer(route, params, "POST");
+    return this.webserviceExplorer(route, params, 'POST');
   }
 
   static postwithtoken(route, params) {
-    return this.webserviceExplorerwithToken(route, params, "POST");
+    return this.webserviceExplorerwithToken(route, params, 'POST');
   }
   static postWithXdomin(route, params) {
-    return this.webserviceExplorer(route, params, "POST", true);
+    return this.webserviceExplorer(route, params, 'POST', true);
   }
 
   static postWithToken(route, params, token) {
-    return this.webserviceWithToken(route, params, token, "POST");
+    return this.webserviceWithToken(route, params, token, 'POST');
   }
 
   // static postImageWithToken(route, params, token) {
@@ -79,7 +87,7 @@ class ApiUtils {
   // }
 
   static delete(route, params) {
-    return this.webserviceExplorer(route, params, "DELETE");
+    return this.webserviceExplorer(route, params, 'DELETE');
   }
 
   static async webserviceExplorerExApi(route, params, verb, isExDomain) {
@@ -89,20 +97,20 @@ class ApiUtils {
       body: params,
     };
     return fetch(route, options)
-      .then((resp) => {
+      .then(resp => {
         let json = resp.json();
         if (resp.ok) {
           return json;
         }
-        return json.then((err) => {
-          console.log("error :", err);
+        return json.then(err => {
+          console.log('error :', err);
           if (err.status == 401) {
             functionUtils.clearData();
           }
           throw err;
         });
       })
-      .then((json) => json);
+      .then(json => json);
   }
 
   static async webserviceExplorerPAVExApi(params, type, verb, isExDomain) {
@@ -113,20 +121,20 @@ class ApiUtils {
       body: params,
     };
     return fetch(baseUrl, options)
-      .then((resp) => {
+      .then(resp => {
         let json = resp.json();
         if (resp.ok) {
           return json;
         }
-        return json.then((err) => {
-          console.log("error :", err);
+        return json.then(err => {
+          console.log('error :', err);
           if (err.status == 401) {
             functionUtils.clearData();
           }
           throw err;
         });
       })
-      .then((json) => json);
+      .then(json => json);
   }
 
   static async webserviceExplorer(route, params, verb, isExDomain) {
@@ -137,30 +145,29 @@ class ApiUtils {
       headers: ApiUtils.headers(),
       body: params,
     };
-    console.log(TAG, "url : ", url);
-    console.log(TAG, "options================== :", options);
+    console.log(TAG, 'url : ', url);
+    console.log(TAG, 'options================== :', options);
     return fetch(url, options)
-      .then((resp) => {
+      .then(resp => {
         let json = resp.json();
-        console.log(TAG, "json=============== : ", json);
+        console.log(TAG, 'json=============== : ', json);
 
         if (resp.ok) {
-          console.log(TAG, "json2=============== : ", json);
+          console.log(TAG, 'json2=============== : ', json);
           return json;
         }
-        return json.then((err) => {
-          console.log("error :", err);
+        return json.then(err => {
+          console.log('error :', err);
           if (err.status == 401) {
             functionUtils.clearData();
           }
           throw err;
         });
       })
-      .then((json) => json);
+      .then(json => json);
   }
 
   static async webserviceExplorerwithToken(route, params, verb) {
-   
     const host = WebService.BASE_URL;
     const url = `${host}${route}`;
 
@@ -168,15 +175,15 @@ class ApiUtils {
       method: verb,
       headers: await ApiUtils.headertoken(),
       body: params,
-    }
-    
+    };
+
     return fetch(url, options)
-    .then(response => response.json())  // promise
-    .then(json => {
-      return json
-    })
+      .then(response => response.json()) // promise
+      .then(json => {
+        return json;
+      });
   }
-  
+
   // static async imageWebServiceWithToken(route, params, token, verb) {
   //   var user_token = await PreferenceManager.getPreferenceValue(
   //     PreferenceKey.USER_TOKEN
@@ -225,17 +232,17 @@ class ApiUtils {
     let options = {
       method: verb,
       headers: {
-        Accept: "application/json",
-        "Content-Type": "multipart/form-data",
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       body: params,
     };
-    console.log(TAG, "url : ", url);
-    console.log(TAG, "method : ", options.method);
-    console.log(TAG, "headers : ", JSON.stringify(options.headers));
-    console.log(TAG, "body : ", JSON.stringify(options.body));
+    console.log(TAG, 'url : ', url);
+    console.log(TAG, 'method : ', options.method);
+    console.log(TAG, 'headers : ', JSON.stringify(options.headers));
+    console.log(TAG, 'body : ', JSON.stringify(options.body));
     return await fetch(url, options)
-      .then((resp) => {
+      .then(resp => {
         let json = null;
         if (route == WebService.DOWNLOAD_DATA) {
           json = resp.blob();
@@ -244,39 +251,39 @@ class ApiUtils {
         }
 
         if (resp.ok) {
-          console.log("API utills response 1 -- >", json);
+          console.log('API utills response 1 -- >', json);
 
           return json;
         }
-        return json.then((err) => {
-          console.log("error :", err);
+        return json.then(err => {
+          console.log('error :', err);
           if (err.status == 401) {
             functionUtils.clearData();
           }
           throw err;
         });
       })
-      .then((json) => json);
+      .then(json => json);
   }
 
   static async webserviceWithTokenForPagination(route, params, token, verb) {
-    console.log("user_token :: ", user_token);
+    console.log('user_token :: ', user_token);
     const url = `${route}`;
 
     let options = {
       method: verb,
       headers: {
-        Accept: "application/json",
-        "Content-Type": "multipart/form-data",
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       body: params,
     };
-    console.log(TAG, "application url : ", url);
-    console.log(TAG, "method : ", options.method);
-    console.log(TAG, "headers : ", JSON.stringify(options.headers));
-    console.log(TAG, "body : ", JSON.stringify(options.body));
+    console.log(TAG, 'application url : ', url);
+    console.log(TAG, 'method : ', options.method);
+    console.log(TAG, 'headers : ', JSON.stringify(options.headers));
+    console.log(TAG, 'body : ', JSON.stringify(options.body));
     return await fetch(url, options)
-      .then((resp) => {
+      .then(resp => {
         let json = null;
         if (route == WebService.DOWNLOAD_DATA) {
           json = resp.blob();
@@ -285,19 +292,19 @@ class ApiUtils {
         }
 
         if (resp.ok) {
-          console.log("API utills response 1 -- >", json);
+          console.log('API utills response 1 -- >', json);
 
           return json;
         }
-        return json.then((err) => {
-          console.log("error :", err);
+        return json.then(err => {
+          console.log('error :', err);
           if (err.status == 401) {
             functionUtils.clearData();
           }
           throw err;
         });
       })
-      .then((json) => json);
+      .then(json => json);
   }
 }
 

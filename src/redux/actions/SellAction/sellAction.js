@@ -104,8 +104,8 @@ export function getChasisDetails(registartionNumber) {
   return dispatch => {
     dispatch(actionStartRequest());
     return ApiUtils.getExAPIData(
-      `${WebService.SWEEP_URL}request_type=irish_uk_mileage&registration_number=${registartionNumber}&key=Sp0975127Ghx31d&format=json&vehicle_mileage=0&mileage_type=k&get_valuation=true`
-      )
+      `${WebService.SWEEP_URL}request_type=irish_uk_mileage&registration_number=${registartionNumber}&key=Sp0975127Ghx31d&format=json&vehicle_mileage=0&mileage_type=k&get_valuation=true`,
+    )
       .then(response => {
         dispatch(actionEndRequest());
         dispatch(actionGetChasicDetail(response));
@@ -137,44 +137,41 @@ export function postSessionDetails(params) {
   };
 }
 
-
 //this will dispatch the action accroding to the need
 export function postVahicalData(params) {
- 
   return dispatch => {
-  dispatch(actionStartRequest());
-  return ApiUtils.postwithtoken(WebService.POST_VEHICLE,params)
+    dispatch(actionStartRequest());
+    return ApiUtils.postwithtoken(WebService.POST_VEHICLE, params)
       .then(response => {
-        console.log("postVahicalData res =========",response)
+        console.log('postVahicalData res =========', response);
         dispatch(actionEndRequest());
         dispatch(actionPostDataInsert(response));
       })
       .catch(e => {
-        console.log("error postVahicalData res =========",e)
+        console.log('error postVahicalData res =========', e);
 
         dispatch(actionEndRequest());
         dispatch(actionSetError(JSON.stringify(e.errors)));
         dispatch(actionSetMessageError(JSON.stringify(e.message)));
-      });  
-    };
+      });
+  };
 }
 
 //this will dispatch the action accroding to the check Session
-export function checkSession(params) {
- 
+export function checkSession(endpoint, params) {
   return dispatch => {
-  dispatch(actionStartRequest());
-  return ApiUtils.postwithtoken(WebService.TOKEN_CHECK,params)
+    dispatch(actionStartRequest());
+    return ApiUtils.postwithtoken(endpoint, params)
       .then(response => {
-        console.log("response =============================",response)
+        console.log('response =============================', response);
         dispatch(actionEndRequest());
         dispatch(actionsessionCheck(response));
       })
       .catch(e => {
-        console.log("e =============================",e)
+        console.log('e =============================', e);
         dispatch(actionEndRequest());
         dispatch(actionSetError(JSON.stringify(e.errors)));
         dispatch(actionSetMessageError(JSON.stringify(e.message)));
-      });  
-    };
+      });
+  };
 }

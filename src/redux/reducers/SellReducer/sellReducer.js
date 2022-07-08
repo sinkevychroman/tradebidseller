@@ -1,5 +1,5 @@
-import createReducer from "../createReducer";
-import * as constants from "../../actions/LoginAction/constants";
+import createReducer from '../createReducer';
+import * as constants from '../../actions/LoginAction/constants';
 
 const intialState = {
   isLoading: false,
@@ -14,8 +14,9 @@ const intialState = {
   vehicleChasisData: null,
   vehicleDetailData: null,
   sessionCreatedData: null,
-  postinsertdata:null,
-  sessioncheckdata:null,
+  postinsertdata: null,
+  sessioncheckdata: null,
+  userUpdateActiveData: null,
 };
 export const sellReducer = createReducer(intialState, {
   [constants.START_REQUEST](state) {

@@ -45,6 +45,7 @@ const {width, height} = Dimensions.get('window');
 // import AsyncStorage from '@react-native-community/async-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {isTesting} from '../../utils/globals';
+import PreferenceManager from '../../utils/PreferenceManager';
 
 const TAG = 'Login';
 class Login extends Component {
@@ -56,7 +57,7 @@ class Login extends Component {
       latitude: 0,
       longitude: 0,
       //email: 'test17.auctionsoftware+04@gmail.com',
-      // password: '123456789',
+      //password: '123456789',
       email: '',
       password: '',
       hideShowPass: true,
@@ -131,6 +132,24 @@ class Login extends Component {
     }
   }
 
+  async updateUserActive() {
+    console.log('UPDATE_USER_ACTIVE_START');
+    console.log(PreferenceManager);
+    var user_id = await PreferenceManager.getPreferenceValue(
+      ConstantUtils.USER_ID,
+    );
+
+    console.log('USER_ID', user_id);
+    console.log(WebService.UPDATE_USER_ACTIVE);
+
+    this.props
+      .checkSession(WebService.UPDATE_USER_ACTIVE, user_id)
+      .then(async () => {
+        const {sessioncheckdata, msgError, error} = this.props;
+        console.log('USER_UPDATE_ACTION_RESPONSE', sessioncheckdata);
+      });
+  }
+
   hideShowPassword() {
     console.log(TAG, 'hideShowPassword');
     this.setState({hideShowPass: !this.state.hideShowPass});
@@ -173,6 +192,12 @@ class Login extends Component {
           AsyncStorage.setItem(ConstantUtils.USER_TOKEN, loginResData.token);
           AsyncStorage.setItem(ConstantUtils.USER_EMAIL, this.state.email);
 
+          console.log('USER_ID_LOGIN', loginResData.userId);
+          AsyncStorage.setItem(
+            ConstantUtils.USER_ID,
+            loginResData.userid.toString(),
+          );
+
           FunctionUtils.showToast(loginResData.message);
           if (this.state.isRemember) {
             globals.rememberBtnVal = true;
@@ -183,6 +208,7 @@ class Login extends Component {
             globals.userEmail = '';
             globals.userPass = '';
           }
+
           this.setState(
             {isLoading: false, isRemember: false, email: '', password: ''},
             Actions.push(ConstantUtils.SELL),
@@ -214,6 +240,15 @@ class Login extends Component {
   changePass(text) {
     console.log(TAG, 'changePass -> text :', text);
     this.setState({password: text});
+  }
+
+  async openForgotPassword() {
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (isConnected) {
+      Linking.openURL(WebService.BASE_URL + WebService.RESET_PASSWORD);
+    } else {
+      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
+    }
   }
 
   render() {
@@ -347,17 +382,7 @@ class Login extends Component {
                         style={styles.btnForgotPassStyle}
                         isForgot={true}
                         onPress={() => {
-                          const isConnected =
-                            await NetworkUtils.isNetworkAvailable();
-                          if (isConnected) {
-                            Linking.openURL(
-                              WebService.BASE_URL + WebService.RESET_PASSWORD,
-                            );
-                          } else {
-                            FunctionUtils.showToast(
-                              strings.INTERNET_CONNECTION,
-                            );
-                          }
+                          this.openForgotPassword();
                         }}
                       />
 
@@ -448,6 +473,8 @@ const mapStateToProps = state => {
     error: state.loginReducer.error, //accessing the redux state
     msgError: state.loginReducer.msgError, //accessing the redux state
     clientPortalResData: state.loginReducer.clientPortalResData,
+    sessionCreatedData: state.sellReducer.sessionCreatedData,
+    sessioncheckdata: state.sellReducer.sessioncheckdata,
   };
 };
 

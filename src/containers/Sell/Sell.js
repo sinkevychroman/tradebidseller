@@ -55,6 +55,8 @@ import WebService from '../../utils/WebService';
 import * as globals from '../../utils/globals';
 import Smartlook from 'smartlook-react-native-wrapper';
 import {request, requestMultiple, PERMISSIONS} from 'react-native-permissions';
+import PreferenceManager from '../../utils/PreferenceManager';
+import ApiUtils from '../../utils';
 
 const DEMO_OPTIONS_1 = ['Buy Now', 'Auction'];
 
@@ -121,8 +123,7 @@ class Sell extends Component {
     }
   }
 
-  handleAppStateChange(nextAppState) {
-    
+  async handleAppStateChange(nextAppState) {
     const isConnected = await NetworkUtils.isNetworkAvailable();
     if (isConnected) {
       if (
@@ -133,6 +134,7 @@ class Sell extends Component {
         console.log('App has come to the foreground!');
 
         this.sessionCheck();
+        this.updateUserActive();
       }
       this.setState({appState: nextAppState});
     } else {
@@ -503,10 +505,34 @@ class Sell extends Component {
     }
   };
 
+  async updateUserActive() {
+    console.log('UPDATE_USER_ACTIVE_START');
+    var user_id = await PreferenceManager.getPreferenceValue(
+      ConstantUtils.USER_ID,
+    );
+    const token = await AsyncStorage.getItem(ConstantUtils.USER_TOKEN);
+
+    const host = WebService.BASE_URL;
+    const url = `${host}${WebService.UPDATE_USER_ACTIVE}`;
+
+    let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        authorization: `Bearer ${token}`,
+      },
+      body: {user_id: user_id},
+    };
+
+    return fetch(url, options).then(response => {
+      console.log('USER_UPDATE_RESPONSE', response);
+    });
+  }
+
   async sessionCheck() {
     const isConnected = await NetworkUtils.isNetworkAvailable();
     if (isConnected) {
-      this.props.checkSession(null).then(async () => {
+      this.props.checkSession(WebService.TOKEN_CHECK, null).then(async () => {
         const {sessioncheckdata, msgError, error} = this.props;
         if (sessioncheckdata && sessioncheckdata.status === 'success') {
           console.log(

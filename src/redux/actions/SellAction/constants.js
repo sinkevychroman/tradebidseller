@@ -3,7 +3,7 @@
 export const START_REQUEST = 'START_REQUEST';
 export const END_REQUEST = 'END_REQUEST';
 export const RESP_ERROR = 'RESP_ERROR';
-export const MSG_ERROR = "MSG_ERROR";
+export const MSG_ERROR = 'MSG_ERROR';
 
 //login
 export const GET_LOGIN = 'GET_LOGIN';
@@ -32,11 +32,10 @@ export const GET_CHASIS_DETAIL = 'GET_CHASIS_DETAIL';
 export const GET_VEHICLE_DETAIL = 'GET_VEHICLE_DETAIL';
 export const GET_CREATE_SESSION = 'GET_CREATE_SESSION';
 
-
 //post
 export const RESPONSE_POST_REQUEST = 'RESPONSE_POST_REQUEST';
 
 //session check
 export const SESSION_CHECK_REQUEST = 'SESSION_CHECK_REQUEST';
 
-
+export const USER_UPDATE_ACTIVE = 'USER_UPDATE_ACTIVE';
