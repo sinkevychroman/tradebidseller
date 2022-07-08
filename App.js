@@ -52,7 +52,6 @@ class App extends Component {
       PreferenceKey.USER_TOKEN,
     );
 
-    console.log('token====>', user_token);
     if (user_token == null || user_token == '' || user_token == undefined) {
       globals.isLoggedIn = false;
       this.setState({checkLoginVal: true});

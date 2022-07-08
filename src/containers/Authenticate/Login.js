@@ -347,9 +347,17 @@ class Login extends Component {
                         style={styles.btnForgotPassStyle}
                         isForgot={true}
                         onPress={() => {
-                          Linking.openURL(
-                            WebService.BASE_URL + WebService.RESET_PASSWORD,
-                          );
+                          const isConnected =
+                            await NetworkUtils.isNetworkAvailable();
+                          if (isConnected) {
+                            Linking.openURL(
+                              WebService.BASE_URL + WebService.RESET_PASSWORD,
+                            );
+                          } else {
+                            FunctionUtils.showToast(
+                              strings.INTERNET_CONNECTION,
+                            );
+                          }
                         }}
                       />
 

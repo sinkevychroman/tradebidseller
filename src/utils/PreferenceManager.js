@@ -10,7 +10,6 @@ class PreferenceManager {
     try {
       return await AsyncStorage.getItem(key);
     } catch (e) {
-      console.log('qqweqwq', e.message);
       return '';
     }
   }

@@ -122,16 +122,22 @@ class Sell extends Component {
   }
 
   handleAppStateChange(nextAppState) {
-    if (
-      this.state.appState.match(/inactive|background/) &&
-      nextAppState === 'active' &&
-      this.state.appState !== 'active'
-    ) {
-      console.log('App has come to the foreground!');
+    
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (isConnected) {
+      if (
+        this.state.appState.match(/inactive|background/) &&
+        nextAppState === 'active' &&
+        this.state.appState !== 'active'
+      ) {
+        console.log('App has come to the foreground!');
 
-      this.sessionCheck();
+        this.sessionCheck();
+      }
+      this.setState({appState: nextAppState});
+    } else {
+      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
     }
-    this.setState({appState: nextAppState});
   }
 
   requestPermissions() {
@@ -498,26 +504,35 @@ class Sell extends Component {
   };
 
   async sessionCheck() {
-    this.props.checkSession(null).then(async () => {
-      const {sessioncheckdata, msgError, error} = this.props;
-      if (sessioncheckdata && sessioncheckdata.status === 'success') {
-        console.log(
-          'TOKEN IS VALID, SUCCESS #################################################################',
-        );
-      } else {
-        FunctionUtils.showToast(sessioncheckdata.message);
-        Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.LOGINSESSIONEXPIRE, [
-          {
-            text: ConstantUtils.LOGINAGAIN,
-            onPress: () => {
-              console.log('OK Pressed');
-              this.cleanData();
-              Actions.reset(ConstantUtils.LOGIN);
-            },
-          },
-        ]);
-      }
-    });
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (isConnected) {
+      this.props.checkSession(null).then(async () => {
+        const {sessioncheckdata, msgError, error} = this.props;
+        if (sessioncheckdata && sessioncheckdata.status === 'success') {
+          console.log(
+            'TOKEN IS VALID, SUCCESS #################################################################',
+          );
+        } else {
+          FunctionUtils.showToast(sessioncheckdata.message);
+          Alert.alert(
+            ConstantUtils.TRADEBID,
+            ConstantUtils.LOGINSESSIONEXPIRE,
+            [
+              {
+                text: ConstantUtils.LOGINAGAIN,
+                onPress: () => {
+                  console.log('OK Pressed');
+                  this.cleanData();
+                  Actions.reset(ConstantUtils.LOGIN);
+                },
+              },
+            ],
+          );
+        }
+      });
+    } else {
+      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
+    }
   }
 
   render() {
