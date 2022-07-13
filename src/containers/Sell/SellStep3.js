@@ -53,6 +53,7 @@ import Toast, {DURATION} from 'react-native-easy-toast';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Loader from '../../components/LoaderOpacity';
 import Smartlook from 'smartlook-react-native-wrapper';
+import PreferenceManager from '../../utils/PreferenceManager';
 
 const DEMO_OPTIONS_1 = ['Buy Now', 'Auction'];
 
@@ -90,6 +91,8 @@ class SellStep3 extends Component {
       emailid: '',
       appState: AppState.currentState,
     };
+
+    this.handleAppStateChange = this.handleAppStateChange.bind(this);
   }
   onSubmitData() {
     const {
@@ -269,9 +272,10 @@ class SellStep3 extends Component {
         console.log(TAG, 'componentDidMount', 'unlockAllOrientations');
         Orientation.lockToPortrait();
         this.setBackListener();
-        AppState.addEventListener('change', this._handleAppStateChange);
       },
     );
+
+    this.configureAppState();
 
     let email_id = await AsyncStorage.getItem(ConstantUtils.USER_EMAIL);
     this.setState({
@@ -353,18 +357,57 @@ class SellStep3 extends Component {
       // this.backHandler.remove();
     }
     this.didFocusListener.remove();
-    AppState.removeEventListener('change', this._handleAppStateChange);
+    AppState.removeEventListener('change', this.handleAppStateChange);
   }
 
-  _handleAppStateChange = nextAppState => {
-    if (
-      this.state.appState.match(/inactive|background/) &&
-      nextAppState === 'active'
-    ) {
-      console.log('App has come to the foreground!');
+  configureAppState() {
+    this.appStateSubscription = AppState.addEventListener(
+      'change',
+      this.handleAppStateChange,
+    );
+  }
+
+  async handleAppStateChange(nextAppState) {
+    const isConnected = await NetworkUtils.isNetworkAvailable();
+    if (isConnected) {
+      if (
+        this.state.appState.match(/inactive|background/) &&
+        nextAppState === 'active' &&
+        this.state.appState !== 'active'
+      ) {
+        console.log('App has come to the foreground!');
+
+        this.updateUserActive();
+      }
+      this.setState({appState: nextAppState});
+    } else {
+      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
     }
-    this.setState({appState: nextAppState});
-  };
+  }
+
+  async updateUserActive() {
+    console.log('UPDATE_USER_ACTIVE_START');
+    var user_id = await PreferenceManager.getPreferenceValue(
+      ConstantUtils.USER_ID,
+    );
+    const token = await AsyncStorage.getItem(ConstantUtils.USER_TOKEN);
+
+    const host = WebService.BASE_URL;
+    const url = `${host}${WebService.UPDATE_USER_ACTIVE}`;
+
+    let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        authorization: `Bearer ${token}`,
+      },
+      body: {user_id: user_id},
+    };
+
+    return fetch(url, options).then(response => {
+      console.log('USER_UPDATE_RESPONSE', response);
+    });
+  }
 
   hideShowPassword() {
     this.setState({hideShowPass: !this.state.hideShowPass});
