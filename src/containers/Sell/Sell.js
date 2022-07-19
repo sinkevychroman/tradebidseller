@@ -124,22 +124,16 @@ class Sell extends Component {
   }
 
   async handleAppStateChange(nextAppState) {
-    const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (isConnected) {
-      if (
-        this.state.appState.match(/inactive|background/) &&
-        nextAppState === 'active' &&
-        this.state.appState !== 'active'
-      ) {
-        console.log('App has come to the foreground!');
-
-        this.sessionCheck();
-        this.updateUserActive();
-      }
-      this.setState({appState: nextAppState});
-    } else {
-      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === 'active' &&
+      this.state.appState !== 'active'
+    ) {
+      console.log('App has come to the foreground!');
+      this.sessionCheck();
+      this.updateUserActive();
     }
+    this.setState({appState: nextAppState});
   }
 
   requestPermissions() {

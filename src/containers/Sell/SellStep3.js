@@ -30,6 +30,7 @@ import {
   FunctionHelper,
   PreferenceKey,
   FunctionUtils,
+  globals,
   NetworkUtils,
 } from '../../utils';
 import ProgressBar from '../../custom/ProgressBar';
@@ -368,21 +369,15 @@ class SellStep3 extends Component {
   }
 
   async handleAppStateChange(nextAppState) {
-    const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (isConnected) {
-      if (
-        this.state.appState.match(/inactive|background/) &&
-        nextAppState === 'active' &&
-        this.state.appState !== 'active'
-      ) {
-        console.log('App has come to the foreground!');
-
-        this.updateUserActive();
-      }
-      this.setState({appState: nextAppState});
-    } else {
-      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === 'active' &&
+      this.state.appState !== 'active'
+    ) {
+      console.log('App has come to the foreground!');
+      this.updateUserActive();
     }
+    this.setState({appState: nextAppState});
   }
 
   async updateUserActive() {

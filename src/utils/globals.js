@@ -8,7 +8,7 @@ export const iPhoneX =
   Dimensions.get('window').height === 812 &&
   Dimensions.get('window').width === 375;
 
-export const isInternetConnected = false;
+export var isInternetConnected = false;
 
 export const isLoggedIn = false;
 export const loginUserData = {};

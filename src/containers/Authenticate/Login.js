@@ -132,24 +132,6 @@ class Login extends Component {
     }
   }
 
-  async updateUserActive() {
-    console.log('UPDATE_USER_ACTIVE_START');
-    console.log(PreferenceManager);
-    var user_id = await PreferenceManager.getPreferenceValue(
-      ConstantUtils.USER_ID,
-    );
-
-    console.log('USER_ID', user_id);
-    console.log(WebService.UPDATE_USER_ACTIVE);
-
-    this.props
-      .checkSession(WebService.UPDATE_USER_ACTIVE, user_id)
-      .then(async () => {
-        const {sessioncheckdata, msgError, error} = this.props;
-        console.log('USER_UPDATE_ACTION_RESPONSE', sessioncheckdata);
-      });
-  }
-
   hideShowPassword() {
     console.log(TAG, 'hideShowPassword');
     this.setState({hideShowPass: !this.state.hideShowPass});
@@ -168,6 +150,8 @@ class Login extends Component {
 
   async loginBtnClick() {
     const isConnected = await NetworkUtils.isNetworkAvailable();
+
+    console.log(isConnected, 'isConnected');
     if (isConnected) {
       this.setState({isLoading: true});
       const formData = new FormData();
