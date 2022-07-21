@@ -249,12 +249,12 @@ class SellStep3 extends Component {
             }, 700);
           } else {
             this.setState({isLoading: false});
-            FunctionUtils.showToast(postinsertdata.data.msg);
+            FunctionUtils.showToast('Something went wrong');
             Actions.reset(ConstantUtils.LOGIN);
           }
         } else {
           this.setState({isLoading: false});
-          FunctionUtils.showToast(postinsertdata.data.msg);
+          FunctionUtils.showToast('Something went wrong');
           Actions.reset(ConstantUtils.LOGIN);
         }
       });

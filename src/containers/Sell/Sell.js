@@ -533,7 +533,7 @@ class Sell extends Component {
             'TOKEN IS VALID, SUCCESS #################################################################',
           );
         } else {
-          FunctionUtils.showToast(sessioncheckdata.message);
+          FunctionUtils.showToast(msgError);
           Alert.alert(
             ConstantUtils.TRADEBID,
             ConstantUtils.LOGINSESSIONEXPIRE,
