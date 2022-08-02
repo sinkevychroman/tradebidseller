@@ -281,6 +281,8 @@ PODS:
   - react-native-simple-toast (1.1.3):
     - React-Core
     - Toast (~> 4.0.0)
+  - react-native-webview (11.23.0):
+    - React-Core
   - React-perflogger (0.64.0)
   - React-RCTActionSheet (0.64.0):
     - React-Core/RCTActionSheetHeaders (= 0.64.0)
@@ -453,6 +455,7 @@ DEPENDENCIES:
   - react-native-pave-module (from `../react-native-pave-module`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-simple-toast (from `../node_modules/react-native-simple-toast`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -555,6 +558,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-simple-toast:
     :path: "../node_modules/react-native-simple-toast"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -649,6 +654,7 @@ SPEC CHECKSUMS:
   react-native-pave-module: ddc99aed0368820c464e18174aefd804926dc4b4
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   react-native-simple-toast: bf002828cf816775a6809f7a9ec3907509bce11f
+  react-native-webview: e771bc375f789ebfa02a26939a57dbc6fa897336
   React-perflogger: 9c547d8f06b9bf00cb447f2b75e8d7f19b7e02af
   React-RCTActionSheet: 3080b6e12e0e1a5b313c8c0050699b5c794a1b11
   React-RCTAnimation: 3f96f21a497ae7dabf4d2f150ee43f906aaf516f

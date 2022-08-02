@@ -16,8 +16,17 @@ import {
   Sell,
   SellStep2,
   SellStep3,
+  WebViewScene as TermsAndConditions,
+  PrivacyPolicy,
 } from '../containers';
-import {Router, Scene, Tabs, Drawer} from 'react-native-router-flux';
+import {
+  Router,
+  Scene,
+  Tabs,
+  Drawer,
+  ActionConst,
+  Actions,
+} from 'react-native-router-flux';
 import {ConstantUtils} from '../utils';
 import {colors, images, strings, fonts} from '../themes';
 import {moderateScale} from '../utils/ResponsiveUi';
@@ -48,6 +57,18 @@ export default class Route extends Component {
             initial
           />
           <Scene hideNavBar key={ConstantUtils.LOGIN} component={Login} />
+          <Scene
+            key={ConstantUtils.TERMS}
+            back={true}
+            title={'Terms And Conditions'}
+            component={TermsAndConditions}
+          />
+          <Scene
+            key={ConstantUtils.PRIVACY}
+            back={true}
+            title={'Privacy Policy'}
+            component={PrivacyPolicy}
+          />
           <Scene
             hideNavBar
             key={ConstantUtils.SELL}

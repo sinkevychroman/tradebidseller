@@ -72,6 +72,8 @@ export default ConstantUtils = {
   PROFILE: 'Profile',
   SELLSTEP2: 'SellStep2',
   SELLSTEP3: 'SellStep3',
+  TERMS: 'Terms',
+  PRIVACY: 'PrivacyPolicy',
 
   //Profile Menu ID
   ABOUT_US_ID: 111,

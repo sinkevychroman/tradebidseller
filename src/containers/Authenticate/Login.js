@@ -47,6 +47,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {isTesting} from '../../utils/globals';
 import PreferenceManager from '../../utils/PreferenceManager';
 
+const termsAndConditions = 'Terms & Conditions ';
+
 const TAG = 'Login';
 class Login extends Component {
   constructor(props) {
@@ -109,6 +111,14 @@ class Login extends Component {
 
   updateRef(name, ref) {
     this[name] = ref;
+  }
+
+  openTermsAndConditions() {
+    Actions.push(ConstantUtils.TERMS);
+  }
+
+  openPrivacyPolicy() {
+    Actions.push(ConstantUtils.PRIVACY);
   }
 
   backAction = async () => {
@@ -341,25 +351,6 @@ class Login extends Component {
                           this.rememberMeBtnClick();
                         }}
                       />
-
-                      {/*  
-                      <Button
-                        buttonTitle={strings.username_password_remember}
-                        height={moderateScale(30)}
-                        isRememberButton={true}
-                        isRemember={this.state.isRemember}
-                        width={'40%'}
-                        backgroundColor={colors.transparent}
-                        onButtonPress={() => this.rememberMeBtnClick()}
-                        textStyle={{
-                          color: colors.colorBlack,
-                          fontSize: moderateScale(14),
-                          alignSelf: 'flex-start',
-                          marginTop: moderateScale(10),
-                          fontFamily: fonts.Poppins_Light,
-                        }}
-                      /> */}
-
                       <Button
                         title={strings.forgot_password}
                         titleStyle={styles.tvForgotPassStyle}
@@ -369,24 +360,6 @@ class Login extends Component {
                           this.openForgotPassword();
                         }}
                       />
-
-                      {/* <Button
-                        buttonTitle={strings.forgot_password}
-                        height={moderateScale(30)}
-                        width={'40%'}
-                        backgroundColor={colors.trasparent}
-                        onButtonPress={() =>
-                          Linking.openURL(WebService.RESET_PASSWORD)
-                        }
-                        textStyle={{
-                          color: colors.colorBlack,
-                          fontSize: moderateScale(14),
-                          alignSelf: 'flex-start',
-                          marginTop: moderateScale(10),
-                          fontFamily: fonts.Poppins_Light,
-                          width: '100%',
-                        }}
-                      /> */}
                     </View>
 
                     <Button
@@ -439,6 +412,27 @@ class Login extends Component {
                       }}
                     /> */}
                   </View>
+
+                  <View style={styles.termsAndPrivacyContainer}>
+                    <Text style={[styles.poppinsFont]}>
+                      By using Tradebid, you agree to our
+                    </Text>
+                    <Text
+                      onPress={() => {
+                        this.openTermsAndConditions();
+                      }}
+                      style={styles.webViewLink}>
+                      {termsAndConditions}
+                    </Text>
+                    <Text style={styles.poppinsFont}>and </Text>
+                    <Text
+                      onPress={() => {
+                        this.openPrivacyPolicy();
+                      }}
+                      style={styles.webViewLink}>
+                      Privacy Policy
+                    </Text>
+                  </View>
                 </View>
               </ScrollView>
             </KeyboardAvoidingView>
@@ -473,6 +467,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.colorWhite,
     alignItems: 'center',
+  },
+  termsAndPrivacyContainer: {
+    marginTop: 20,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: 300,
+  },
+  webViewLink: {
+    color: colors.colorBlue,
+    fontFamily: fonts.Poppins_Light,
+    fontSize: moderateScale(14),
+  },
+  poppinsFont: {
+    fontFamily: fonts.Poppins_Light,
+    fontSize: moderateScale(14),
   },
   btnUserpassRememberStyle: {
     width: '35%',

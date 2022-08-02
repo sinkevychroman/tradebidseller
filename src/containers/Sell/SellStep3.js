@@ -242,20 +242,17 @@ class SellStep3 extends Component {
             postinsertdata.data.statusCode == 403
           ) {
             this.setState({isLoading: false});
-            FunctionUtils.showToast(strings.vehicle_post_success);
-            // this.toast.show(strings.vehicle_post_success, 500);
-            setTimeout(() => {
-              Actions.reset(ConstantUtils.SELL);
-            }, 700);
+            FunctionUtils.showToast('Something went wrong');
+            // setTimeout(() => {
+            //   Actions.reset(ConstantUtils.SELL);
+            // }, 700);
           } else {
             this.setState({isLoading: false});
             FunctionUtils.showToast('Something went wrong');
-            Actions.reset(ConstantUtils.LOGIN);
           }
         } else {
           this.setState({isLoading: false});
           FunctionUtils.showToast('Something went wrong');
-          Actions.reset(ConstantUtils.LOGIN);
         }
       });
     } else {
