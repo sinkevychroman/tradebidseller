@@ -31,7 +31,7 @@ export default class Splash extends Component {
   }
 
   async componentDidMount() {
-    Orientation.lockToPortrait();
+    // Orientation.lockToPortrait();
     let token = await PrefrenceManager.getPreference(ConstantUtils.USER_TOKEN);
     console.log(TAG, 'USER_TOKEN', token);
     this.setLaunchScreens();
@@ -41,12 +41,17 @@ export default class Splash extends Component {
     let isLoggedIn = await PrefrenceManager.getPreference(
       ConstantUtils.IS_USER_LOGIN,
     );
+
     console.log(TAG, 'isLoggedIn', isLoggedIn);
     if (this.isBlank(isLoggedIn)) {
-      setTimeout(() => Actions.reset(ConstantUtils.LOGIN), 3000);
+      if (Actions.currentScene != ConstantUtils.LOGIN) {
+        setTimeout(() => Actions.reset(ConstantUtils.LOGIN), 3000);
+      }
     } else {
-       setTimeout(() => Actions.reset(ConstantUtils.SELL), 3000); //uncommented
-      //setTimeout(() => Actions.reset(ConstantUtils.SELLSTEP3), 3000); 
+      if (Actions.currentScene != ConstantUtils.SELL) {
+        setTimeout(() => Actions.reset(ConstantUtils.SELL), 3000); //uncommented
+        //setTimeout(() => Actions.reset(ConstantUtils.SELLSTEP3), 3000);
+      }
     }
   }
 

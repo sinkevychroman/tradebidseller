@@ -152,9 +152,14 @@ class Sell extends Component {
         requestMultiple([
           PERMISSIONS.ANDROID.CAMERA,
           PERMISSIONS.ANDROID.RECORD_AUDIO,
+          PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
         ]).then(statuses => {
           console.log('Camera', statuses[PERMISSIONS.ANDROID.CAMERA]);
           console.log('MICROPHONE', statuses[PERMISSIONS.ANDROID.RECORD_AUDIO]);
+          console.log(
+            'location permissions',
+            statuses[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION],
+          );
         });
         break;
 

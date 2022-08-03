@@ -58,10 +58,10 @@ class Login extends Component {
       isLoading: false,
       latitude: 0,
       longitude: 0,
-      //email: 'test17.auctionsoftware+04@gmail.com',
-      //password: '123456789',
-      email: '',
-      password: '',
+      email: 'test17.auctionsoftware+04@gmail.com',
+      password: '123456789',
+     // email: '',
+      //password: '',
       hideShowPass: true,
       isRemember: false,
     };
@@ -72,7 +72,7 @@ class Login extends Component {
    * To Set testing data
    * @function setTestingData
    */
-  setTestingData() {
+  setTestingData() { 
     console.log(TAG, 'setTestingData');
     if (isTesting) {
       this.setState({
@@ -83,7 +83,6 @@ class Login extends Component {
   }
 
   async componentDidMount() {
-    console.log(TAG, 'UNSAFE_componentDidMount');
     let isUserRemember = await AsyncStorage.getItem(
       ConstantUtils.IS_USER_REMEMBER,
     );
@@ -412,7 +411,7 @@ class Login extends Component {
                       }}
                     /> */}
                   </View>
-
+                  
                   <View style={styles.termsAndPrivacyContainer}>
                     <Text style={[styles.poppinsFont]}>
                       By using Tradebid, you agree to our

@@ -26,6 +26,7 @@ import {
   Drawer,
   ActionConst,
   Actions,
+  Stack,
 } from 'react-native-router-flux';
 import {ConstantUtils} from '../utils';
 import {colors, images, strings, fonts} from '../themes';
@@ -43,20 +44,25 @@ export default class Route extends Component {
     };
   }
 
-  async componentDidMount() {}
+  // async componentDidMount() {}
 
   render() {
     const {launchScreens} = this.state;
     return (
       <Router>
-        <Scene key="root">
+        <Stack key="root">
           <Scene
             hideNavBar
             key={ConstantUtils.SPLASH}
             component={Splash}
             initial
           />
-          <Scene hideNavBar key={ConstantUtils.LOGIN} component={Login} />
+          <Scene
+            hideNavBar
+            key={ConstantUtils.LOGIN}
+            type={ActionConst.REPLACE}
+            component={Login}
+          />
           <Scene
             key={ConstantUtils.TERMS}
             back={true}
@@ -127,7 +133,7 @@ export default class Route extends Component {
               icon={TabIcon}
             />
           </Tabs> */}
-        </Scene>
+        </Stack>
       </Router>
     );
   }
