@@ -19,6 +19,7 @@ import {
   KeyboardAvoidingView,
   AppState,
   Keyboard,
+  Switch,
 } from 'react-native';
 import {colors, images, strings, fonts} from '../../themes';
 import {moderateScale} from '../../utils/ResponsiveUi';
@@ -57,6 +58,7 @@ import Smartlook from 'smartlook-react-native-wrapper';
 import {request, requestMultiple, PERMISSIONS} from 'react-native-permissions';
 import PreferenceManager from '../../utils/PreferenceManager';
 import ApiUtils from '../../utils';
+import {isEnabled} from 'react-native/Libraries/Performance/Systrace';
 
 const DEMO_OPTIONS_1 = ['Buy Now', 'Auction'];
 
@@ -90,6 +92,7 @@ class Sell extends Component {
       emailid: '',
       isActivityIndicator: false,
       appState: AppState.currentState,
+      isEnabled: false,
     };
 
     this.handleAppStateChange = this.handleAppStateChange.bind(this);
@@ -130,7 +133,7 @@ class Sell extends Component {
       this.state.appState !== 'active'
     ) {
       console.log('App has come to the foreground!');
-      this.sessionCheck();
+      // this.sessionCheck();
       this.updateUserActive();
     }
     this.setState({appState: nextAppState});
@@ -211,6 +214,10 @@ class Sell extends Component {
     this.setState({hideShowPass: !this.state.hideShowPass});
   }
 
+  toggleSwitch() {
+    this.setState({isEnabled: !this.state.isEnabled});
+  }
+
   /**
    * @function showInvalidRegistration
    */
@@ -243,6 +250,7 @@ class Sell extends Component {
 
           if (
             vehicleDetailData !== undefined &&
+            vehicleDetailData !== null &&
             vehicleDetailData.hasOwnProperty('VehicleDetailsResponse')
           ) {
             let {VehicleDetailsResponse} = vehicleDetailData;
@@ -331,7 +339,10 @@ class Sell extends Component {
 
   PaveSDKClassicScreen(props) {
     global.sessionKey = props.session_key;
-    Actions.push(ConstantUtils.SELLSTEP2, {sessionData: props});
+    Actions.push(ConstantUtils.SELLSTEP2, {
+      sessionData: props,
+      isMiles: this.state.isEnabled,
+    });
     // Actions.push(ConstantUtils.SELLSTEP3);
   }
 
@@ -711,6 +722,13 @@ class Sell extends Component {
                   // marginBottom={moderateScale(16)}
                 />
 
+                {/* <View
+                  style={{
+                    alignContent: 'center',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    width: '100%',
+                  }}> */}
                 <TextField
                   onChangeText={text => {
                     let replacedText = text.replace(/[^0-9]/g, '');
@@ -723,7 +741,9 @@ class Sell extends Component {
 
                     this.setState({milageKM: replacedText});
                   }}
-                  placeHolder={'Mileage (KM)'}
+                  placeHolder={
+                    this.state.isEnabled ? 'Mileage (Miles)' : 'Mileage (Km)'
+                  }
                   numberpad={true}
                   placeHolderTextColor={colors.darkGray}
                   maxLength={7}
@@ -740,7 +760,28 @@ class Sell extends Component {
                   }}
                   blurOnSubmit={false}
                   marginBottom={moderateScale(16)}
+                  //  width={'75%'}
                 />
+                {/* <View
+                    style={{
+                      marginBottom: 12,
+                      width: '15%',
+                      //   justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Switch
+                      value={this.state.isEnabled}
+                      onValueChange={() => this.toggleSwitch()}
+                      thumbColor={colors.colorBlue}
+                      trackColor={{
+                        false: colors.app_gray,
+                        true: colors.colorLightBlue,
+                      }}
+                    />
+                    <Text>km/miles</Text>
+                  </View>
+              </View> */}
+
                 {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
                   <View>
                     <ModalDropdown
@@ -836,7 +877,7 @@ class Sell extends Component {
                   blurOnSubmit={false}
                   _multiline={true}
                 />
-                {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
+                {/* {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
                   <View
                     style={{
                       flexDirection: 'row',
@@ -855,8 +896,8 @@ class Sell extends Component {
                       onPress={() => {
                         this.setState({isRemember: !this.state.isRemember});
                       }}
-                    />
-                    {/* <Button
+                    /> */}
+                {/* <Button
                     buttonTitle={strings.sell_vehicle_checkbox}
                     height={moderateScale(30)}
                     isvehicleCheckBox={true}
@@ -876,7 +917,7 @@ class Sell extends Component {
                       marginTop: moderateScale(10),
                     }}
                   /> */}
-                    <Image
+                {/* <Image
                       source={images.as_is}
                       style={{
                         height: moderateScale(25),
@@ -885,7 +926,7 @@ class Sell extends Component {
                       }}
                     />
                   </View>
-                )}
+                )} */}
                 <Button
                   title={strings.next_button_text}
                   titleStyle={styles.tvNextStyle}

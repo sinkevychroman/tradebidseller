@@ -269,7 +269,7 @@ PODS:
     - React-Core
   - react-native-image-picker (3.8.1):
     - React-Core
-  - react-native-netinfo (6.2.1):
+  - react-native-netinfo (9.3.0):
     - React-Core
   - react-native-orientation-locker (1.4.0):
     - React-Core
@@ -649,7 +649,7 @@ SPEC CHECKSUMS:
   react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
   react-native-camera: b8cc03e2feec0c04403d0998e37cf519d8fd4c6f
   react-native-image-picker: 31971f6184e7c1dcb4fc1f122e1ba2c3fb11ef1e
-  react-native-netinfo: 3d3769f0d65de15c83a9bf1346f8be71de5a24bf
+  react-native-netinfo: 129bd99f607a2dc5bb096168f3e5c150fd1f1c95
   react-native-orientation-locker: 2da91e5391971dace445495821c899c111dcad7a
   react-native-pave-module: ddc99aed0368820c464e18174aefd804926dc4b4
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057

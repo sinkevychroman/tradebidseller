@@ -137,8 +137,8 @@ android {
         applicationId "com.tradebid"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 20
-        versionName '2.20'
+        versionCode 22
+        versionName '2.22'
         multiDexEnabled true
         missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
 

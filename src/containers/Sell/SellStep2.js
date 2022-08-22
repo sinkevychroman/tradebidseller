@@ -181,7 +181,7 @@ export default class SellStep2 extends Component {
                 console.log("global.sessionKey",global.sessionKey)
                 console.log("onBackWhenQCDone",res)
                 setTimeout(() => {
-                  Actions.reset(ConstantUtils.SELLSTEP3);
+                  Actions.reset(ConstantUtils.SELLSTEP3, {isMiles: this.props.isMiles});
                 }, 3000);
               });
             }}

@@ -4,6 +4,7 @@ const colors = {
   colorBlack: '#000000',
   colorGray: '#969696',
   colorBlue: '#004FFF',
+  colorLightBlue: '#009FFF',
   color_half_black: "rgba(0, 0, 0, 0.5)",
 
   app_pink: "#d62196",

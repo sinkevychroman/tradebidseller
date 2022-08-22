@@ -212,7 +212,7 @@ class SellStep3 extends Component {
         'auction_type',
         auctionType == 'Auction' ? 'auction' : 'buynow',
       );
-      formData.append('is_asis', `${is_asis}`);
+      //   formData.append('is_asis', `${is_asis}`);
       formData.append('gi_mileage', `${milageKM}`);
 
       // const formData = new FormData();
@@ -527,17 +527,23 @@ class SellStep3 extends Component {
                   blurOnSubmit={false}
                   // marginBottom={moderateScale(16)}
                 />
-                <Text style={styles.titletext}>Mileage (KM)</Text>
+                <Text style={styles.titletext}>
+                  {this.props.isMiles ? 'Mileage (Miles)' : 'Mileage (Km)'}
+                </Text>
                 <TextField
                   onChangeText={text => this.setState({milageKM: text})}
-                  placeHolder={'Mileage (KM)'}
+                  placeHolder={
+                    this.props.isMiles ? 'Mileage (Miles)' : 'Mileage (Km)'
+                  }
                   placeHolderTextColor={colors.darkGray}
                   isPassword={false}
                   icon={images.email_logo}
                   height={moderateScale(55)}
                   value={`${milageKM
                     .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')} KM`}
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')} ${
+                    this.props.isMiles ? 'Miles' : 'Km'
+                  }`}
                   availToEdit={false}
                   returnKeyType="next"
                   // onSubmitEditing={() => {

@@ -1,9 +1,9 @@
 export default WebService = {
   // Live
-  // BASE_URL: 'https://trade-bid.ie/',
-  // SWEEP_URL: 'https://sweep-api-dev.herokuapp.com/history-check?',
+  //BASE_URL: 'https://trade-bid.ie/',
+ // SWEEP_URL: 'https://sweep-api-dev.herokuapp.com/history-check?',
   // QA
-  BASE_URL: 'https://tradebid.ecommerce.auction/',
+   BASE_URL: 'https://tradebid.ecommerce.auction/',
   SWEEP_URL: 'https://tradebid-historycheck-dev.herokuapp.com/history-check?',
 
   PAV_BASE_URL: 'https://pass.paveapi.com/v1/sessions',

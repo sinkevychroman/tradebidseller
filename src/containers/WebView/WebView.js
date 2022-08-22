@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ActivityIndicator} from 'react-native';
+import {ActivityIndicator, View, Text, ScrollView} from 'react-native';
 import {WebView} from 'react-native-webview';
 
 const TAG = 'TermsAndConditions';
@@ -26,6 +26,7 @@ const TermsAndConditions = () => {
     <WebView
       style={{backgroundColor: 'ffffff', flex: 1}}
       source={{uri: 'https://trade-bid.ie/terms'}}
+     // source={{uri: 'https://tradebid.ecommerce.auction/terms/mobile'}}
       renderLoading={LoadingIndicatorView}
       startInLoadingState={true}
     />

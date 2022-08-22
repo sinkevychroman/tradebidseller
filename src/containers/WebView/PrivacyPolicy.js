@@ -26,6 +26,7 @@ const PrivacyPolicy = () => {
     <WebView
       style={{backgroundColor: 'ffffff', flex: 1}}
       source={{uri: 'https://trade-bid.ie/privacy'}}
+      //source={{uri: 'https://tradebid.ecommerce.auction/privacy/mobile'}}
       renderLoading={LoadingIndicatorView}
       startInLoadingState={true}
     />

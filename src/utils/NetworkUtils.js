@@ -5,10 +5,6 @@ export default class NetworkUtils {
   static async isNetworkAvailable() {
     const response = await NetInfo.fetch();
 
-    if (Platform.OS === 'ios') {
-      return response.isConnected && response.isInternetReachable;
-    } else {
-      return true;
-    }
+    return response.isConnected && response.isInternetReachable;
   }
 }
