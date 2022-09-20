@@ -34,7 +34,12 @@ const loggerMiddleware = createLogger({
 });
 //bellow is the code for redux configurations
 function configureStore(initialState) {
-  const enhancer = compose(applyMiddleware(thunkMiddleware, loggerMiddleware));
+  const enhancer = compose(
+    applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware,
+    ),
+  );
   return createStore(appReducer, initialState, enhancer);
 }
 const store = configureStore({}); //passing the store of the redux using provider to entire app

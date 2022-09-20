@@ -277,6 +277,7 @@ class Sell extends Component {
                     showVehicleVerifyed: true,
                   });
                   FunctionUtils.showToast(strings.vehical_error);
+                  //  await this.showInvalidRegistration();
                 }
               } else {
                 await this.showInvalidRegistration();
@@ -447,6 +448,13 @@ class Sell extends Component {
     if (isConnected) {
       this.setState({isLoading: true});
       const {vehicleChasisData, vehicleDetailData} = this.props;
+
+      if (vehicleDetailData === undefined || vehicleDetailData === null) {
+        this.setState({isLoading: false});
+        FunctionUtils.showToast('Something went wrong');
+        return;
+      }
+
       const {VehicleDetailsResult} = vehicleDetailData.VehicleDetailsResponse;
       let param = JSON.stringify({
         vehicle: {
@@ -781,7 +789,7 @@ class Sell extends Component {
                     <Text>km/miles</Text>
                   </View>
               </View> */}
-
+ 
                 {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
                   <View>
                     <ModalDropdown
