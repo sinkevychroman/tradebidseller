@@ -74,7 +74,6 @@ export default class Route extends Component {
             key={ConstantUtils.ARB_POL}
             back={true}
             title={'Arbitration Policy'}
-            type={ActionConst.PUSH}
             component={ArbitrationPolicy}
           />
           <Scene

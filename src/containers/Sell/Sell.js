@@ -176,7 +176,7 @@ class Sell extends Component {
   }
 
   openArbitrationPolicy() {
-    Actions.ArbitrationPolicy();
+    Actions.push(ConstantUtils.ARB_POL);
   }
 
   configureAppState() {
@@ -579,6 +579,8 @@ class Sell extends Component {
     const isArbitrationPolicy = await AsyncStorage.getItem(
       ConstantUtils.IS_ARBITRATION_POLICY,
     );
+
+    console.log(isArbitrationPolicy, 'ARBITRATION_POLICY_LOCAL');
 
     if (isArbitrationPolicy != 'true') {
       this.props.checkSession(WebService.TOKEN_CHECK, null).then(async () => {
