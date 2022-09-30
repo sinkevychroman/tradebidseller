@@ -355,26 +355,26 @@ class Sell extends Component {
     // Actions.push(ConstantUtils.SELLSTEP3);
   }
 
-  async sessionValidation() {
-    this.setState({isLoading: true});
-    const isArbitrationPolicy = await AsyncStorage.getItem(
-      ConstantUtils.IS_ARBITRATION_POLICY,
-    );
+  sessionValidation() {
+    // this.setState({isLoading: true});
+    // const isArbitrationPolicy = await AsyncStorage.getItem(
+    //   ConstantUtils.IS_ARBITRATION_POLICY,
+    // );
 
-    if (isArbitrationPolicy != 'true') {
-      this.setState({isLoading: false});
-      Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.ARBITRATION_POLICY, [
-        {
-          text: 'OK',
-          onPress: () => {
-            console.log('OK Pressed');
-            this.openArbitrationPolicy();
-          },
-        },
-      ]);
+    // if (isArbitrationPolicy != 'true') {
+    //   this.setState({isLoading: false});
+    //   Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.ARBITRATION_POLICY, [
+    //     {
+    //       text: 'OK',
+    //       onPress: () => {
+    //         console.log('OK Pressed');
+    //         this.openArbitrationPolicy();
+    //       },
+    //     },
+    //   ]);
 
-      return;
-    }
+    //   return;
+    // }
 
     console.log(TAG, 'sessionValidation');
     const {

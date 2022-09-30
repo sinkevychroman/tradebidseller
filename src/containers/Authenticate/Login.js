@@ -60,7 +60,7 @@ class Login extends Component {
       longitude: 0,
       //  email: 'test17.auctionsoftware+04@gmail.com',
       // password: '123456789',
-      email: 'test17.auctionsoftware+rs13@gmail.com',
+      email: 'test17.auctionsoftware+rs12@gmail.com',
       password: '12345678',
       // email: '',
       // password: '',
