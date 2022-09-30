@@ -42,6 +42,7 @@ export default ConstantUtils = {
   USER_ID: 'user_id',
   CURRENT_SCREEN: 'current_screen',
   IN_APP_SUBCRIPTION: 'in_app_subcription',
+  IS_ARBITRATION_POLICY: 'isArbitrationPolicy',
 
   //Date And Time
   HH_MM_A_12: 'hh:mm a',
@@ -74,6 +75,7 @@ export default ConstantUtils = {
   SELLSTEP3: 'SellStep3',
   TERMS: 'Terms',
   PRIVACY: 'PrivacyPolicy',
+  ARB_POL: 'ArbitrationPolicy',
 
   //Profile Menu ID
   ABOUT_US_ID: 111,
@@ -148,4 +150,6 @@ export default ConstantUtils = {
   LOGINSESSIONEXPIRE: 'Login session expire',
   USER_PASSWORD: 'USERPASSWORD',
   IS_USER_REMEMBER: 'user_remember',
+  ARBITRATION_POLICY:
+    'Tradebid is subject to a standard arbitration policy. To continue please read and agree to our policy.',
 };

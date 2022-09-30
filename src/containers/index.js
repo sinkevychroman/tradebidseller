@@ -8,6 +8,7 @@ import SellStep2 from './Sell/SellStep2';
 import SellStep3 from './Sell/SellStep3';
 import TermsAndConditions from './WebView/WebView';
 import PrivacyPolicy from './WebView/PrivacyPolicy';
+import ArbitrationPolicy from './WebView/ArbitrationPolicy';
 
 export {
   Splash,
@@ -20,4 +21,5 @@ export {
   SellStep3,
   TermsAndConditions as WebViewScene,
   PrivacyPolicy,
+  ArbitrationPolicy,
 };

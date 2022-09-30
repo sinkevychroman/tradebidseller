@@ -18,6 +18,7 @@ import {
   SellStep3,
   WebViewScene as TermsAndConditions,
   PrivacyPolicy,
+  ArbitrationPolicy,
 } from '../containers';
 import {
   Router,
@@ -68,6 +69,13 @@ export default class Route extends Component {
             back={true}
             title={'Terms And Conditions'}
             component={TermsAndConditions}
+          />
+          <Scene
+            key={ConstantUtils.ARB_POL}
+            back={true}
+            title={'Arbitration Policy'}
+            type={ActionConst.PUSH}
+            component={ArbitrationPolicy}
           />
           <Scene
             key={ConstantUtils.PRIVACY}

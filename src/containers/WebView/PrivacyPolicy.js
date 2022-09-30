@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {ActivityIndicator} from 'react-native';
 import {WebView} from 'react-native-webview';
+import {WebService} from '../../utils';
 
 const TAG = 'PrivacyPolicy';
 
@@ -25,7 +26,7 @@ const PrivacyPolicy = () => {
   return (
     <WebView
       style={{backgroundColor: 'ffffff', flex: 1}}
-      source={{uri: 'https://trade-bid.ie/privacy'}}
+      source={{uri: WebService.BASE_URL + 'privacy/mobile'}}
       //source={{uri: 'https://tradebid.ecommerce.auction/privacy/mobile'}}
       renderLoading={LoadingIndicatorView}
       startInLoadingState={true}

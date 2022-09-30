@@ -148,6 +148,8 @@ class Sell extends Component {
         ]).then(statuses => {
           console.log('Camera', statuses[PERMISSIONS.IOS.CAMERA]);
           console.log('MICROPHONE', statuses[PERMISSIONS.IOS.MICROPHONE]);
+
+          this.sessionCheck();
         });
         break;
 
@@ -163,12 +165,18 @@ class Sell extends Component {
             'location permissions',
             statuses[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION],
           );
+
+          this.sessionCheck();
         });
         break;
 
       default:
         break;
     }
+  }
+
+  openArbitrationPolicy() {
+    Actions.ArbitrationPolicy();
   }
 
   configureAppState() {
@@ -347,7 +355,27 @@ class Sell extends Component {
     // Actions.push(ConstantUtils.SELLSTEP3);
   }
 
-  sessionValidation() {
+  async sessionValidation() {
+    this.setState({isLoading: true});
+    const isArbitrationPolicy = await AsyncStorage.getItem(
+      ConstantUtils.IS_ARBITRATION_POLICY,
+    );
+
+    if (isArbitrationPolicy != 'true') {
+      this.setState({isLoading: false});
+      Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.ARBITRATION_POLICY, [
+        {
+          text: 'OK',
+          onPress: () => {
+            console.log('OK Pressed');
+            this.openArbitrationPolicy();
+          },
+        },
+      ]);
+
+      return;
+    }
+
     console.log(TAG, 'sessionValidation');
     const {
       registrationNumber,
@@ -548,34 +576,34 @@ class Sell extends Component {
   }
 
   async sessionCheck() {
-    const isConnected = await NetworkUtils.isNetworkAvailable();
-    if (isConnected) {
+    const isArbitrationPolicy = await AsyncStorage.getItem(
+      ConstantUtils.IS_ARBITRATION_POLICY,
+    );
+
+    if (isArbitrationPolicy != 'true') {
       this.props.checkSession(WebService.TOKEN_CHECK, null).then(async () => {
         const {sessioncheckdata, msgError, error} = this.props;
-        if (sessioncheckdata && sessioncheckdata.status === 'success') {
-          console.log(
-            'TOKEN IS VALID, SUCCESS #################################################################',
-          );
+
+        console.log('ARBITARY_KEY', sessioncheckdata.arbitary_key);
+        if (sessioncheckdata && sessioncheckdata.arbitary_key == 1) {
+          AsyncStorage.setItem(ConstantUtils.IS_ARBITRATION_POLICY, 'true');
+          return;
         } else {
-          FunctionUtils.showToast(msgError);
           Alert.alert(
             ConstantUtils.TRADEBID,
-            ConstantUtils.LOGINSESSIONEXPIRE,
+            ConstantUtils.ARBITRATION_POLICY,
             [
               {
-                text: ConstantUtils.LOGINAGAIN,
+                text: 'OK',
                 onPress: () => {
                   console.log('OK Pressed');
-                  this.cleanData();
-                  Actions.reset(ConstantUtils.LOGIN);
+                  this.openArbitrationPolicy();
                 },
               },
             ],
           );
         }
       });
-    } else {
-      FunctionUtils.showToast(strings.INTERNET_CONNECTION);
     }
   }
 
@@ -789,7 +817,7 @@ class Sell extends Component {
                     <Text>km/miles</Text>
                   </View>
               </View> */}
- 
+
                 {emailid.includes(ConstantUtils.EMAIL_EXTENSION) ? null : (
                   <View>
                     <ModalDropdown
