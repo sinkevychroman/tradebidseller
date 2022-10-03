@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   SafeAreaView,
@@ -17,9 +17,9 @@ import {
   BackHandler,
   Dimensions,
 } from 'react-native';
-import { colors, images, strings, fonts } from '../../themes';
-import { moderateScale } from '../../utils/ResponsiveUi';
-import { Actions, ActionConst } from 'react-native-router-flux';
+import {colors, images, strings, fonts} from '../../themes';
+import {moderateScale} from '../../utils/ResponsiveUi';
+import {Actions, ActionConst} from 'react-native-router-flux';
 import {
   ConstantUtils,
   PrefrenceManager,
@@ -31,16 +31,16 @@ import ProgressBar from '../../custom/ProgressBar';
 import Button from '../../custom/Button';
 import NetInfo from '@react-native-community/netinfo';
 import DeviceInfo from 'react-native-device-info';
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 import TextField from '../../custom/TextField';
 import ButtonDropdown from '../../custom/ButtonDropdown';
-import { color } from 'react-native-reanimated';
-import PAVESDK, { PaveSDKClassic } from 'react-native-pave-module';
+import {color} from 'react-native-reanimated';
+import PAVESDK, {PaveSDKClassic} from 'react-native-pave-module';
 import Orientation from 'react-native-orientation-locker';
 
 const TAG = '==:== SellStep2 :';
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 export default class SellStep2 extends Component {
   constructor(props) {
     super(props);
@@ -56,8 +56,11 @@ export default class SellStep2 extends Component {
   }
 
   componentDidMount() {
-    console.log(TAG, "componentDidMount", "lockToLandscape")
+    console.log(TAG, 'componentDidMount', 'lockToLandscape');
+
     Orientation.lockToLandscape();
+    this.fixRNDimensions();
+
     this.didFocusListener = this.props.navigation.addListener(
       'didFocus',
       () => {
@@ -70,20 +73,48 @@ export default class SellStep2 extends Component {
     //this.getPaveProgress()
   }
 
+  fixRNDimensions() {
+    const windowDim = Dimensions.get('window');
+    const screenDim = Dimensions.get('screen');
+
+    console.log(Orientation.orientation, 'asdasasads');
+
+    Orientation.getOrientation = orientation => {
+      console.log(orientation, 'orientation get');
+    };
+
+    if (windowDim.width < windowDim.height) {
+      console.log('fixing dimensions after rotation', windowDim);
+      Dimensions.set({
+        screen: {
+          ...screenDim,
+          width: screenDim.height,
+          height: screenDim.width,
+        },
+        window: {
+          ...windowDim,
+          width: windowDim.height,
+          height: windowDim.width,
+        },
+      });
+    }
+  }
+
   getPaveProgress() {
-    console.log(TAG, "getPaveProgress_OUT");
-    PAVESDK.getInspectionProgress(sessionKey).then((res) => {
+    console.log(TAG, 'getPaveProgress_OUT');
+    PAVESDK.getInspectionProgress(sessionKey).then(res => {
       Alert.alert(
-        "getPaveProgress IN",
+        'getPaveProgress IN',
         JSON.stringify(res),
         [
           {
-            text: "OK", onPress: () => { }
+            text: 'OK',
+            onPress: () => {},
           },
         ],
-        { cancelable: false }
+        {cancelable: false},
       );
-    })
+    });
   }
 
   setBackListener() {
@@ -109,8 +140,8 @@ export default class SellStep2 extends Component {
   };
 
   componentWillUnmount() {
-    console.log(TAG, "Orientation", "unlockAllOrientations")
-    Orientation.lockToPortrait()
+    console.log(TAG, 'Orientation', 'unlockAllOrientations');
+    Orientation.lockToPortrait();
     if (Platform.OS == 'android') {
       console.log(TAG, 'componentWillUnmount', 'Remove Back Action');
       // this.backHandler.remove();
@@ -118,7 +149,7 @@ export default class SellStep2 extends Component {
   }
 
   hideShowPassword() {
-    this.setState({ hideShowPass: !this.state.hideShowPass });
+    this.setState({hideShowPass: !this.state.hideShowPass});
   }
 
   // PaveSDKClassicScreen(props) {
@@ -137,9 +168,9 @@ export default class SellStep2 extends Component {
   // }
 
   render() {
-    const { isLoading, email, password } = this.state;
+    const {isLoading, email, password} = this.state;
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <View
           style={{
             height: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
@@ -147,41 +178,44 @@ export default class SellStep2 extends Component {
           <StatusBar
             translucent
             backgroundColor={colors.colorBlack}
-            barStyle="light-content" />
+            barStyle="light-content"
+          />
         </View>
         {/* <ScrollView style={{ flex: 1 }}> */}
         {/* <ScrollView style={{ height: "100%", width: "100%" }}> */}
-        <View style={{ height: "100%", width: "100%" }}>
+        <View style={{height: '100%', width: '100%'}}>
           <PaveSDKClassic
             {...this.props.sessionData}
             isLiteVersion={true}
             sessionID={global.sessionKey}
             cancelled={() => {
-              console.log(TAG, "PaveSDKClassic")
+              console.log(TAG, 'PaveSDKClassic');
               Actions.pop();
             }}
             completed={() => {
               // PAVESDK.getInspectionProgress(global.sessionKey).then(res => {
               //  Actions.reset(ConstantUtils.SELLSTEP3);
-                // Alert.alert(
-                //   JSON.stringify(global.sessionKey),
-                //   JSON.stringify(res),
-                //   [
-                //     {
-                //       text: 'Ok',
-                //       style: 'cancel',
-                //     },
-                //   ],
-                // );
+              // Alert.alert(
+              //   JSON.stringify(global.sessionKey),
+              //   JSON.stringify(res),
+              //   [
+              //     {
+              //       text: 'Ok',
+              //       style: 'cancel',
+              //     },
+              //   ],
+              // );
               // });
             }}
             onBackWhenQCDone={() => {
               // props.navigation.goBack();
               PAVESDK.getInspectionProgress(global.sessionKey).then(res => {
-                console.log("global.sessionKey",global.sessionKey)
-                console.log("onBackWhenQCDone",res)
+                console.log('global.sessionKey', global.sessionKey);
+                console.log('onBackWhenQCDone', res);
                 setTimeout(() => {
-                  Actions.reset(ConstantUtils.SELLSTEP3, {isMiles: this.props.isMiles});
+                  Actions.reset(ConstantUtils.SELLSTEP3, {
+                    isMiles: this.props.isMiles,
+                  });
                 }, 3000);
               });
             }}

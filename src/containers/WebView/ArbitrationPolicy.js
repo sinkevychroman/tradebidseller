@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react';
+import React, {Component, useEffect, useLayoutEffect} from 'react';
 import {ActivityIndicator} from 'react-native';
 import {WebView} from 'react-native-webview';
 import {WebService} from '../../utils';
@@ -10,11 +10,6 @@ import Orientation from 'react-native-orientation-locker';
 const TAG = 'ArbitrationPolicy';
 
 const ArbitrationPolicy = props => {
-  useEffect(() => {
-    // Update the document title using the browser API
-    Orientation.lockToLandscape();
-    console.log('ARBITRATION_POLICY_LOCKTOPORTRAIT');
-  });
 
   const LoadingIndicatorView = () => {
     return (
@@ -52,7 +47,6 @@ const ArbitrationPolicy = props => {
       console.log('ARBITARY_UPDATE_RESPONSE', response);
       AsyncStorage.setItem(ConstantUtils.IS_ARBITRATION_POLICY, 'true');
       Actions.pop();
-      Orientation.lockToPortrait();
     });
   };
 

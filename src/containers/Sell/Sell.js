@@ -48,7 +48,7 @@ import Loader from '../../components/LoaderOpacity';
 import ModalDropdown from 'react-native-modal-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
-import Orientation from 'react-native-orientation-locker';
+import Orientation, {OrientationType} from 'react-native-orientation-locker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Appearance, useColorScheme} from 'react-native-appearance';
 import {isTesting} from '../../utils/globals';
@@ -137,6 +137,37 @@ class Sell extends Component {
       this.updateUserActive();
     }
     this.setState({appState: nextAppState});
+  }
+
+  fixRNDimensions() {
+    const windowDim = Dimensions.get('window');
+    const screenDim = Dimensions.get('screen');
+
+    console.log(Orientation.orientation, 'asdasasads');
+
+    Orientation.getOrientation = orientation => {
+      console.log(orientation, 'orientation get');
+    };
+
+    if (
+      (OrientationType.match(/LANDSCAPE/i) &&
+        windowDim.width < windowDim.height) ||
+      (OrientationType.match(/PORTRAIT/i) && windowDim.width > windowDim.height)
+    ) {
+      console.log('fixing dimensions after rotation', windowDim);
+      Dimensions.set({
+        screen: {
+          ...screenDim,
+          width: screenDim.height,
+          height: screenDim.width,
+        },
+        window: {
+          ...windowDim,
+          width: windowDim.height,
+          height: windowDim.width,
+        },
+      });
+    }
   }
 
   requestPermissions() {
@@ -355,26 +386,17 @@ class Sell extends Component {
     // Actions.push(ConstantUtils.SELLSTEP3);
   }
 
-  sessionValidation() {
-    // this.setState({isLoading: true});
-    // const isArbitrationPolicy = await AsyncStorage.getItem(
-    //   ConstantUtils.IS_ARBITRATION_POLICY,
-    // );
+  async sessionValidation() {
+    this.setState({isLoading: true});
 
-    // if (isArbitrationPolicy != 'true') {
-    //   this.setState({isLoading: false});
-    //   Alert.alert(ConstantUtils.TRADEBID, ConstantUtils.ARBITRATION_POLICY, [
-    //     {
-    //       text: 'OK',
-    //       onPress: () => {
-    //         console.log('OK Pressed');
-    //         this.openArbitrationPolicy();
-    //       },
-    //     },
-    //   ]);
+    const isSessionChecked = await this.sessionCheck();
 
-    //   return;
-    // }
+    if (isSessionChecked === false) {
+      this.setState({isLoading: false});
+      return;
+    }
+
+    this.setState({isLoading: false});
 
     console.log(TAG, 'sessionValidation');
     const {
@@ -576,20 +598,14 @@ class Sell extends Component {
   }
 
   async sessionCheck() {
-    const isArbitrationPolicy = await AsyncStorage.getItem(
-      ConstantUtils.IS_ARBITRATION_POLICY,
-    );
-
-    console.log(isArbitrationPolicy, 'ARBITRATION_POLICY_LOCAL');
-
-    if (isArbitrationPolicy != 'true') {
-      this.props.checkSession(WebService.TOKEN_CHECK, null).then(async () => {
+    return await this.props
+      .checkSession(WebService.TOKEN_CHECK, null)
+      .then(async () => {
         const {sessioncheckdata, msgError, error} = this.props;
 
         console.log('ARBITARY_KEY', sessioncheckdata.arbitary_key);
         if (sessioncheckdata && sessioncheckdata.arbitary_key == 1) {
-          AsyncStorage.setItem(ConstantUtils.IS_ARBITRATION_POLICY, 'true');
-          return;
+          return true;
         } else {
           Alert.alert(
             ConstantUtils.TRADEBID,
@@ -604,9 +620,10 @@ class Sell extends Component {
               },
             ],
           );
+
+          return false;
         }
       });
-    }
   }
 
   render() {
