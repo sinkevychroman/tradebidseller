@@ -139,37 +139,6 @@ class Sell extends Component {
     this.setState({appState: nextAppState});
   }
 
-  fixRNDimensions() {
-    const windowDim = Dimensions.get('window');
-    const screenDim = Dimensions.get('screen');
-
-    console.log(Orientation.orientation, 'asdasasads');
-
-    Orientation.getOrientation = orientation => {
-      console.log(orientation, 'orientation get');
-    };
-
-    if (
-      (OrientationType.match(/LANDSCAPE/i) &&
-        windowDim.width < windowDim.height) ||
-      (OrientationType.match(/PORTRAIT/i) && windowDim.width > windowDim.height)
-    ) {
-      console.log('fixing dimensions after rotation', windowDim);
-      Dimensions.set({
-        screen: {
-          ...screenDim,
-          width: screenDim.height,
-          height: screenDim.width,
-        },
-        window: {
-          ...windowDim,
-          width: windowDim.height,
-          height: windowDim.width,
-        },
-      });
-    }
-  }
-
   requestPermissions() {
     switch (Platform.OS) {
       case 'ios':
@@ -598,13 +567,34 @@ class Sell extends Component {
   }
 
   async sessionCheck() {
-    return await this.props
-      .checkSession(WebService.TOKEN_CHECK, null)
-      .then(async () => {
-        const {sessioncheckdata, msgError, error} = this.props;
+    // return await this.props
+    //   .checkSession(WebService.ARBITARY_POLICY, null)
+    //   .then(async () => {
+    //     const {sessioncheckdata, msgError, error} = this.props;
 
-        console.log('ARBITARY_KEY', sessioncheckdata.arbitary_key);
-        if (sessioncheckdata && sessioncheckdata.arbitary_key == 1) {
+    //     console.log('ARBITARY_POLICY_RESPONSE', sessioncheckdata);
+    //     console.log('ARBITARY_KEY', sessioncheckdata.arbitary_key);
+    //   });
+
+    const token = await AsyncStorage.getItem(ConstantUtils.USER_TOKEN);
+
+    const host = WebService.BASE_URL;
+    const url = `${host}${WebService.ARBITARY_POLICY}`;
+
+    let options = {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    };
+
+    return await fetch(url, options)
+      .then(response => response.json())
+      .then(json => {
+        console.log('ARBITARY_POLICY_RESPONSE', json);
+        console.log('key', json.arbitary_key);
+
+        if (json && json.arbitary_key == 1) {
           return true;
         } else {
           Alert.alert(
@@ -620,7 +610,6 @@ class Sell extends Component {
               },
             ],
           );
-
           return false;
         }
       });

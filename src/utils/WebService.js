@@ -13,6 +13,7 @@ export default WebService = {
   POST_VEHICLE: 'api/lot_insert',
   UPDATE_USER_ACTIVE: 'api/updateuserActive',
   TOKEN_CHECK: 'api/tokencheck',
+  ARBITARY_POLICY: 'api/arbitaryapi',
   ARBITARY_UPDATE: 'product/arbitary_update',
   KEY_SMARTLOOK: '4e109648e1441c1145e6afda96457ecc3cc7a682',
   // KEY_SMARTLOOK: "dcaee3e9dff723a6fad7a7bf9e5568763c67641d",  // Test Vishal Account
